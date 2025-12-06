@@ -4,39 +4,32 @@ import { Link } from "react-router-dom";
 const Contact = () => {
   return (
     <>
-      <div
-        className="ui raised very padded text container segment"
-        style={{ marginTop: 80 }}
-      >
-        <h3 className="ui header">Contact</h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae atque
-          vel asperiores neque soluta a eligendi consequuntur nobis, est
-          reprehenderit aspernatur facere doloremque excepturi labore quos harum
-          architecto nisi debitis.
+      <div className="glass page-container-wide">
+        <h3 className="text-white mb-1">Our Products</h3>
+        <p className="text-white-secondary mb-2 line-height-1-6">
+          Discover our amazing collection of products. Click on any product to
+          view more details.
         </p>
 
-        {products.map((product) => {
-          return (
-            <div
-              key={product.id}
-              className="ui link container center aligned cards"
-            >
-              <div className="card">
-                <div className="content">
-                  <div className="header">{product.name}</div>
+        <div className="grid-products">
+          {products.map((product) => {
+            return (
+              <div key={product.id} className="glass-card product-card">
+                <div className="mb-1">
+                  <h4 className="text-white product-title">{product.name}</h4>
+                  <p className="text-white-muted product-id">
+                    Product ID: {product.id}
+                  </p>
                 </div>
-                <div className="extra content">
-                  <div className="ui two buttons">
-                    <Link to={`/contact/${product.id}`}>
-                      <div className="ui basic green button">View</div>
-                    </Link>
-                  </div>
-                </div>
+                <Link to={`/contact/${product.id}`}>
+                  <button className="glass-button btn-full-width">
+                    View Details
+                  </button>
+                </Link>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </>
   );

@@ -2,51 +2,45 @@ import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav className="ui raised very padded segment">
-      <Link to="/" className="ui teal inverted segment">
-        Gloria
-      </Link>
-      <div className="ui right floated header">
-        <button className="ui button">
+    <nav className="glass-nav navbar-fixed">
+      <div className="navbar-container">
+        <Link to="/" className="navbar-brand">
+          Gloria
+        </Link>
+        <div className="navbar-links">
           <NavLink
-            style={({ isActive }) => {
-              return { color: isActive ? "red" : "black" };
-            }}
+            className={({ isActive }) =>
+              `navbar-link ${isActive ? "active" : ""}`
+            }
             to="/"
           >
             Home
           </NavLink>
-        </button>
-        <button className="ui button">
           <NavLink
-            style={({ isActive }) => {
-              return { color: isActive ? "red" : "black" };
-            }}
+            className={({ isActive }) =>
+              `navbar-link ${isActive ? "active" : ""}`
+            }
             to="/about"
           >
             About
           </NavLink>
-        </button>
-        <button className="ui button">
           <NavLink
-            style={({ isActive }) => {
-              return { color: isActive ? "red" : "black" };
-            }}
+            className={({ isActive }) =>
+              `navbar-link ${isActive ? "active" : ""}`
+            }
             to="/contact"
           >
             Contact
           </NavLink>
-        </button>
-        <button className="ui button">
           <NavLink
-            style={({ isActive }) => {
-              return { color: isActive ? "red" : "black" };
-            }}
+            className={({ isActive }) =>
+              `navbar-link ${isActive ? "active" : ""}`
+            }
             to="/login"
           >
             Login
           </NavLink>
-        </button>
+        </div>
       </div>
     </nav>
   );

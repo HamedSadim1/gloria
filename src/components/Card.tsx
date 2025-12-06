@@ -11,29 +11,35 @@ const Card = () => {
     const newUsers = products.filter((product) => product.id === user);
     setProduct(newUsers);
   }, [user]);
+
   return (
-    <div
-      className="ui raised very padded text container segment"
-      style={{ marginTop: 80 }}
-    >
-      <h3 className="ui header">{user}</h3>
+    <div className="glass page-container-medium">
+      <h3 className="text-white mb-1">Product Details</h3>
       {product.map((product) => (
-        <div className="ui card">
-          <div className="content">
-            <a className="header">{product.name}</a>
-            <div className="meta">
-              <span className="date">Joined in 2013</span>
-            </div>
-            <div className="description">
-              Kristy is an art director living in New York.
-            </div>
+        <div key={product.id} className="glass-card content-card">
+          <div className="mb-1-5">
+            <h2 className="text-white product-detail-title">{product.name}</h2>
+            <p className="text-white-muted product-detail-id">
+              Product ID: {product.id}
+            </p>
           </div>
-          <div className="extra content">
-            <a style={{ fontSize: 30 }}>
-              <Link to="/contact">
-                <i className="arrow alternate circle left icon"></i>
-              </Link>
-            </a>
+          <div className="mb-1-5">
+            <h4 className="text-white margin-0-0-0-5-0">Description</h4>
+            <p className="text-white-secondary line-height-1-6">
+              This is a premium {product.name.toLowerCase()} designed with
+              quality and style in mind. Perfect for modern living spaces and
+              professional environments.
+            </p>
+          </div>
+          <div className="flex-space-between">
+            <Link to="/contact">
+              <button className="glass-button btn-back">
+                ← Back to Products
+              </button>
+            </Link>
+            <span className="text-white-light quality-badge">
+              Premium Quality
+            </span>
           </div>
         </div>
       ))}

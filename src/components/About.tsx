@@ -1,15 +1,11 @@
 const About = () => {
   return (
-    <div
-      className="ui raised very padded text container segment"
-      style={{ marginTop: 80 }}
-    >
-      <h3 className="ui header">About</h3>
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi corporis
-        earum tempora quos, laboriosam maiores necessitatibus voluptas, cumque,
-        quidem enim porro adipisci. Iure atque quam culpa recusandae tempore
-        consequuntur nam.
+    <div className="glass page-container">
+      <h3 className="text-white mb-1">About</h3>
+      <p className="text-white-secondary line-height-1-6">
+        This application demonstrates the power of React Router with a stunning
+        glassmorphism design. Built with modern web technologies including React
+        19, TypeScript, and Vite for optimal performance.
       </p>
     </div>
   );

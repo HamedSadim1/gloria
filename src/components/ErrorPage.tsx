@@ -2,28 +2,19 @@ import { Link, Outlet } from "react-router-dom";
 
 const ErrorPage = () => {
   return (
-    <>
-      <div
-        className="ui grid middle aligned segment red inverted"
-        style={{ height: `100%`, margin: 0 }}
-      >
-        <div className="ui column center aligned">
-          <div className="ui inverted statistic">
-            <div className="value">404</div>
-            <div className="label">Error</div>
-          </div>
-
-          <div className="ui message red inverted">
-            <div className="header">Description</div>
-            <p>Not found</p>
-          </div>
-        </div>
+    <div className="error-container">
+      <div className="glass error-content">
+        <div className="error-number">404</div>
+        <h2 className="error-title">Page Not Found</h2>
+        <p className="error-message">
+          The page you're looking for doesn't exist or has been moved.
+        </p>
+        <Link to="/">
+          <button className="glass-button error-button">Go Home</button>
+        </Link>
       </div>
-      <button className="ui middle button">
-        <Link to="/">Go to Home</Link>
-      </button>
       <Outlet />
-    </>
+    </div>
   );
 };
 
