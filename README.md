@@ -1,46 +1,118 @@
-# Getting Started with Create React App
+# React Router Demo App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern React application demonstrating routing with React Router DOM, built with Vite and TypeScript. This app showcases navigation, protected routes, and dynamic routing.
 
-## Available Scripts
+## 🚀 Features
 
-In the project directory, you can run:
+- **React Router DOM v7**: Client-side routing with nested routes
+- **TypeScript**: Type-safe development
+- **Vite**: Fast build tool and development server
+- **Semantic UI**: Clean and responsive UI components
+- **Protected Routes**: Authentication-based access control
+- **Dynamic Routing**: Product detail pages with URL parameters
+- **Local Storage**: Simple user session management
 
-### `npm start`
+## 📋 Pages
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **Home**: Welcome page with introductory content
+- **About**: Information about the application
+- **Contact**: Product catalog with clickable product cards
+- **Login**: User authentication form
+- **Dashboard**: Protected user dashboard (requires login)
+- **Product Details**: Individual product pages (e.g., `/contact/:id`)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 🛠️ Tech Stack
 
-### `npm test`
+- **Frontend Framework**: React 19
+- **Build Tool**: Vite 7
+- **Language**: TypeScript 5
+- **Routing**: React Router DOM 7
+- **Styling**: Semantic UI CSS
+- **State Management**: React Hooks + Local Storage
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📦 Installation
 
-### `npm run build`
+1. Clone the repository:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   ```bash
+   git clone https://github.com/HamedSadim1/react-router.git
+   cd react-router
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Install dependencies:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   ```bash
+   npm install
+   ```
 
-### `npm run eject`
+3. Start the development server:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+   ```bash
+   npm run dev
+   ```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 🔧 Available Scripts
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build locally
 
-## Learn More
+## 🏗️ Project Structure
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```text
+src/
+├── components/
+│   ├── About.tsx          # About page
+│   ├── Card.tsx           # Product detail component
+│   ├── Contact.tsx        # Product listing page
+│   ├── Dashboard.tsx      # Protected dashboard
+│   ├── ErrorPage.tsx      # 404 error page
+│   ├── Footer.tsx         # Footer component
+│   ├── Home.tsx           # Home page
+│   ├── Login.tsx          # Login form
+│   ├── Navbar.tsx         # Navigation bar
+│   ├── ProtectedRoute.tsx # Route protection wrapper
+│   └── SharedLayout.tsx   # Layout with navbar
+├── models/
+│   └── Data.ts            # Product data
+├── App.tsx                # Main app component with routing
+├── index.tsx              # App entry point
+└── index.css              # Global styles
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🎯 Usage
+
+1. **Navigation**: Use the navbar to navigate between pages
+2. **Products**: Click on product cards in Contact page to view details
+3. **Login**: Use the login form to authenticate (stores name in localStorage)
+4. **Dashboard**: Access protected dashboard after login
+
+## 🔐 Authentication
+
+The app uses a simple localStorage-based authentication:
+
+- Login stores the username in localStorage
+- Dashboard displays the stored username
+- ProtectedRoute component wraps dashboard (currently allows all access)
+
+## 📱 Responsive Design
+
+Built with Semantic UI for responsive design that works on desktop and mobile devices.
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## 📄 License
+
+This project is for educational purposes. Feel free to use and modify as needed.
+
+---
+
+Built with ❤️ using React, TypeScript, and Vite
