@@ -1,4 +1,4 @@
-import { FC } from "react";
+import type { FC } from "react";
 
 const Dashboard: FC = () => {
   const userName = localStorage.getItem("name") || "Guest";

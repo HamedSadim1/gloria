@@ -1,7 +1,7 @@
-import React, { FC } from "react";
+import type { FC, ReactNode } from "react";
 
 interface ProtectedRouteProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 const ProtectedRoute: FC<ProtectedRouteProps> = ({ children }) => {
   return <div>{children}</div>;

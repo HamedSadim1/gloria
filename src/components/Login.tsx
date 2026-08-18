@@ -1,4 +1,4 @@
-import { useState, FC } from "react";
+import { useState, type FC } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Login: FC = () => {

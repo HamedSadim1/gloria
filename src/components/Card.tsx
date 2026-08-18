@@ -1,16 +1,10 @@
-import { useState, useEffect } from "react";
+import { useMemo } from "react";
 import { useParams, Link } from "react-router-dom";
 import { products } from "./../models/Data";
 
 const Card = () => {
-  const [product, setProduct] = useState(products);
-
   const { user } = useParams();
-
-  useEffect(() => {
-    const newUsers = products.filter((product) => product.id === user);
-    setProduct(newUsers);
-  }, [user]);
+  const product = useMemo(() => products.filter((p) => p.id === user), [user]);
 
   return (
     <div className="glass page-container-medium">
