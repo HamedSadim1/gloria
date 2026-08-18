@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
+import ErrorBoundary from "./components/ErrorBoundary";
 import Home from "./components/Home";
 import About from "./components/About";
 import Contact from "./components/Contact";
@@ -13,28 +14,30 @@ import ProtectedRoute from "./components/ProtectedRoute";
 function App() {
   return (
     <BrowserRouter>
-      <AuthProvider>
-        <div className="App flex min-h-screen flex-col">
-          <Routes>
-            <Route path="/" element={<SharedLayout />}>
-              <Route index element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="contact/:user" element={<Card />} />
-              <Route path="/login" element={<Login />} />
-              <Route
-                path="/dashboard"
-                element={
-                  <ProtectedRoute>
-                    <Dashboard />
-                  </ProtectedRoute>
-                }
-              />
-              <Route path="*" element={<ErrorPage />} />
-            </Route>
-          </Routes>
-        </div>
-      </AuthProvider>
+      <ErrorBoundary>
+        <AuthProvider>
+          <div className="App flex min-h-screen flex-col">
+            <Routes>
+              <Route path="/" element={<SharedLayout />}>
+                <Route index element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="contact/:user" element={<Card />} />
+                <Route path="/login" element={<Login />} />
+                <Route
+                  path="/dashboard"
+                  element={
+                    <ProtectedRoute>
+                      <Dashboard />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route path="*" element={<ErrorPage />} />
+              </Route>
+            </Routes>
+          </div>
+        </AuthProvider>
+      </ErrorBoundary>
     </BrowserRouter>
   );
 }
