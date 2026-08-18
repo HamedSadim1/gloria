@@ -1,13 +1,17 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 
-const Home = () => {
+const SharedLayout = () => {
   return (
     <>
       <Navbar />
-      <Outlet />
+      <main className="flex-1">
+        <Outlet />
+      </main>
+      <Footer />
     </>
   );
 };
 
-export default Home;
+export default SharedLayout;

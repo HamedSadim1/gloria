@@ -3,15 +3,24 @@ import { Link, NavLink } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { DiamondIcon } from "./Icons";
 
-const navLinks = [
-  { to: "/", label: "Home" },
-  { to: "/about", label: "About" },
-  { to: "/contact", label: "Products" },
-  { to: "/login", label: "Login" },
-];
+const getNavLinks = () => {
+  const isLoggedIn = !!localStorage.getItem("name");
+  const links = [
+    { to: "/", label: "Home" },
+    { to: "/about", label: "About" },
+    { to: "/contact", label: "Products" },
+  ];
+  if (isLoggedIn) {
+    links.push({ to: "/dashboard", label: "Dashboard" });
+  } else {
+    links.push({ to: "/login", label: "Login" });
+  }
+  return links;
+};
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navLinks = getNavLinks();
 
   return (
     <motion.nav
@@ -20,7 +29,7 @@ const Navbar = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 py-4">
+      <div className="mx-auto flex max-w-5xl items-center justify-between px-4 sm:px-6 py-4">
         <Link
           to="/"
           className="flex items-center gap-2 text-lg sm:text-xl font-bold tracking-wider text-white no-underline transition-all duration-300 hover:text-[#00f5ff]"

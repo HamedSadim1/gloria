@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { DiamondIcon } from "./Icons";
 
 const Footer = () => {
@@ -8,31 +9,33 @@ const Footer = () => {
           <span className="text-[#00f5ff]">
             <DiamondIcon className="h-4 w-4" />
           </span>
-          <span>
-            GLORIA<span className="text-[#00f5ff]">.</span>
-          </span>
+          <Link to="/" className="no-underline">
+            <span className="text-gray-500 transition-colors hover:text-white">
+              GLORIA<span className="text-[#00f5ff]">.</span>
+            </span>
+          </Link>
           <span className="mx-2 text-gray-700">|</span>
           <span>© {new Date().getFullYear()}</span>
         </div>
         <div className="flex gap-6 text-sm text-gray-500">
-          <a
-            href="#"
+          <Link
+            to="/about"
             className="no-underline transition-colors hover:text-white"
           >
             Privacy
-          </a>
-          <a
-            href="#"
+          </Link>
+          <Link
+            to="/about"
             className="no-underline transition-colors hover:text-white"
           >
             Terms
-          </a>
-          <a
-            href="#"
+          </Link>
+          <Link
+            to="/about"
             className="no-underline transition-colors hover:text-[#00f5ff]"
           >
             Status
-          </a>
+          </Link>
         </div>
       </div>
     </footer>

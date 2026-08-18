@@ -30,7 +30,6 @@ const stats = [
 const Home = () => {
   return (
     <div className="bg-grid relative min-h-screen overflow-hidden pt-28 sm:pt-32">
-      {/* Background glow effects — contained in relative parent */}
       <motion.div
         className="pointer-events-none absolute top-0 left-1/2 -z-10 h-64 sm:h-96 w-64 sm:w-96 -translate-x-1/2 rounded-full bg-[#00f5ff]/10 blur-[80px] sm:blur-[120px]"
         animate={{ opacity: [0.4, 0.7, 0.4] }}
@@ -43,7 +42,7 @@ const Home = () => {
       />
 
       {/* Hero Section */}
-      <section className="relative mx-auto max-w-6xl px-4 sm:px-6 py-8 sm:py-12">
+      <section className="relative mx-auto max-w-5xl px-4 sm:px-6 py-8 sm:py-12">
         <motion.div
           className="mb-4 sm:mb-6 inline-flex items-center gap-2 rounded-full border border-[#00f5ff]/30 bg-[#00f5ff]/10 px-3 sm:px-4 py-1.5 text-xs sm:text-sm text-[#00f5ff]"
           initial={{ opacity: 0, y: 20 }}
@@ -59,7 +58,7 @@ const Home = () => {
         </motion.div>
 
         <motion.h1
-          className="mb-4 sm:mb-6 max-w-3xl text-3xl sm:text-5xl md:text-7xl leading-tight font-bold tracking-tight text-white"
+          className="mb-4 sm:mb-6 max-w-3xl text-3xl sm:text-5xl md:text-6xl leading-tight font-bold tracking-tight text-white"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -89,7 +88,7 @@ const Home = () => {
         >
           <Link
             to="/contact"
-            className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-lg bg-[#00f5ff] px-6 sm:px-8 py-3 sm:py-4 font-semibold text-black no-underline transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,245,255,0.5)]"
+            className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-lg bg-[#00f5ff] px-6 sm:px-8 py-3 font-semibold text-black no-underline transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,245,255,0.5)]"
           >
             <span className="relative z-10">Explore Products</span>
             <motion.span
@@ -102,7 +101,7 @@ const Home = () => {
           </Link>
           <Link
             to="/about"
-            className="inline-flex items-center justify-center gap-2 rounded-lg border border-gray-700 bg-transparent px-6 sm:px-8 py-3 sm:py-4 font-semibold text-white no-underline transition-all duration-300 hover:border-[#00f5ff]/50 hover:bg-[#00f5ff]/5"
+            className="inline-flex items-center justify-center gap-2 rounded-lg border border-gray-700 bg-transparent px-6 sm:px-8 py-3 font-semibold text-white no-underline transition-all duration-300 hover:border-[#00f5ff]/50 hover:bg-[#00f5ff]/5"
           >
             Learn More
           </Link>
@@ -110,7 +109,7 @@ const Home = () => {
       </section>
 
       {/* Features Section */}
-      <section className="relative mx-auto max-w-6xl px-4 sm:px-6 py-12 sm:py-16">
+      <section className="relative mx-auto max-w-5xl px-4 sm:px-6 py-12 sm:py-16">
         <motion.div
           className="mb-8 sm:mb-12"
           initial={{ opacity: 0, y: 20 }}
@@ -158,7 +157,7 @@ const Home = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="relative mx-auto max-w-6xl px-4 sm:px-6 py-12 sm:py-16 pb-20 sm:pb-24">
+      <section className="relative mx-auto max-w-5xl px-4 sm:px-6 py-12 sm:py-16 pb-20 sm:pb-24">
         <div className="grid grid-cols-2 gap-3 sm:gap-6 sm:grid-cols-4">
           {stats.map(({ value, label }, index) => (
             <motion.div

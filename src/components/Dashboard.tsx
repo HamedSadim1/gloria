@@ -48,18 +48,32 @@ const widgets = [
 ];
 
 const activity = [
-  { action: "Login", time: "2 min ago", status: "success" },
-  { action: "Upload file", time: "15 min ago", status: "success" },
-  { action: "Update profile", time: "1 hour ago", status: "success" },
-  { action: "Export data", time: "3 hours ago", status: "pending" },
+  { action: "Login", time: "2 min ago", status: "success" as const },
+  { action: "Upload file", time: "15 min ago", status: "success" as const },
+  { action: "Update profile", time: "1 hour ago", status: "success" as const },
+  {
+    action: "Export data",
+    time: "3 hours ago",
+    status: "pending" as const,
+  },
 ];
+
+const statusColors = {
+  success: "bg-green-400",
+  pending: "bg-yellow-400",
+};
+
+const statusLabels = {
+  success: "Completed",
+  pending: "Processing",
+};
 
 const Dashboard: FC = () => {
   const userName = localStorage.getItem("name") || "Guest";
 
   return (
     <div className="bg-grid relative min-h-screen overflow-hidden px-4 sm:px-6 pt-28 sm:pt-32">
-      <div className="mx-auto max-w-4xl">
+      <div className="mx-auto max-w-5xl">
         {/* Header */}
         <motion.div
           className="mb-6 sm:mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0"
@@ -68,10 +82,10 @@ const Dashboard: FC = () => {
           transition={{ duration: 0.6 }}
         >
           <div>
-            <h1 className="mb-1 text-xl sm:text-2xl font-bold text-white">
+            <h1 className="mb-1 text-2xl sm:text-3xl font-bold text-white">
               Welcome back, {userName}
             </h1>
-            <p className="text-xs sm:text-sm text-gray-400">
+            <p className="text-sm text-gray-400">
               Here's what's happening with your account
             </p>
           </div>
@@ -149,9 +163,6 @@ const Dashboard: FC = () => {
               <ActivityIcon className="h-5 w-5 text-[#00f5ff]" />
               Recent Activity
             </h2>
-            <button className="cursor-pointer border-none bg-transparent text-xs sm:text-sm text-[#00f5ff] hover:underline">
-              View All
-            </button>
           </div>
 
           <div className="space-y-3 sm:space-y-4">
@@ -165,9 +176,7 @@ const Dashboard: FC = () => {
               >
                 <div className="flex items-center gap-2 sm:gap-3">
                   <motion.span
-                    className={`h-2 w-2 rounded-full ${
-                      status === "success" ? "bg-green-400" : "bg-yellow-400"
-                    }`}
+                    className={`h-2 w-2 rounded-full ${statusColors[status]}`}
                     animate={{ scale: [1, 1.3, 1] }}
                     transition={{
                       duration: 2,
@@ -175,9 +184,20 @@ const Dashboard: FC = () => {
                       delay: index * 0.3,
                     }}
                   />
-                  <span className="text-xs sm:text-sm text-gray-300">
-                    {action}
-                  </span>
+                  <div>
+                    <span className="text-xs sm:text-sm text-gray-300">
+                      {action}
+                    </span>
+                    <span
+                      className={`ml-2 text-[10px] sm:text-xs ${
+                        status === "pending"
+                          ? "text-yellow-400"
+                          : "text-green-400"
+                      }`}
+                    >
+                      {statusLabels[status]}
+                    </span>
+                  </div>
                 </div>
                 <span className="text-[10px] sm:text-xs text-gray-500">
                   {time}

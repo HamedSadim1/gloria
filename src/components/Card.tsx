@@ -13,10 +13,36 @@ const Card = () => {
   const { user } = useParams();
   const product = useMemo(() => products.filter((p) => p.id === user), [user]);
 
+  if (product.length === 0) {
+    return (
+      <div className="bg-grid relative min-h-screen overflow-hidden px-4 sm:px-6 pt-28 sm:pt-32">
+        <div className="mx-auto max-w-md text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h1 className="mb-4 text-2xl font-bold text-white">
+              Product Not Found
+            </h1>
+            <p className="mb-6 text-gray-400">
+              The product you're looking for doesn't exist.
+            </p>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 rounded-lg bg-[#00f5ff] px-6 py-3 font-semibold text-sm text-black no-underline transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,245,255,0.5)]"
+            >
+              ← Back to Products
+            </Link>
+          </motion.div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="bg-grid relative min-h-screen overflow-hidden px-4 sm:px-6 pt-28 sm:pt-32">
       <div className="mx-auto max-w-3xl">
-        {/* Back link */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -38,7 +64,6 @@ const Card = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: index * 0.1 }}
           >
-            {/* Header */}
             <div className="relative border-b border-gray-800 bg-gradient-to-r from-[#00f5ff]/10 to-[#bf00ff]/10 p-5 sm:p-8">
               <motion.div
                 className="mb-2 text-[10px] sm:text-xs font-medium tracking-widest text-[#00f5ff] uppercase"
@@ -58,9 +83,7 @@ const Card = () => {
               </motion.h1>
             </div>
 
-            {/* Content */}
             <div className="p-5 sm:p-8">
-              {/* Product Info Grid */}
               <div className="mb-6 sm:mb-8 grid grid-cols-2 gap-3 sm:gap-4">
                 <motion.div
                   className="rounded-lg border border-gray-800 bg-[#0a0a0f] p-3 sm:p-4"
@@ -95,7 +118,6 @@ const Card = () => {
                 </motion.div>
               </div>
 
-              {/* Description */}
               <motion.div
                 className="mb-6 sm:mb-8"
                 initial={{ opacity: 0, y: 20 }}
@@ -113,7 +135,6 @@ const Card = () => {
                 </p>
               </motion.div>
 
-              {/* Specifications */}
               <motion.div
                 className="mb-6 sm:mb-8"
                 initial={{ opacity: 0, y: 20 }}
@@ -146,7 +167,6 @@ const Card = () => {
                 </div>
               </motion.div>
 
-              {/* Actions */}
               <motion.div
                 className="flex flex-col sm:flex-row gap-3 sm:gap-4"
                 initial={{ opacity: 0, y: 20 }}
@@ -155,13 +175,13 @@ const Card = () => {
               >
                 <Link
                   to="/contact"
-                  className="flex-1 rounded-lg border border-gray-700 bg-transparent py-3 text-center font-medium text-white no-underline transition-all duration-300 hover:border-[#00f5ff]/50 hover:bg-[#00f5ff]/5"
+                  className="flex-1 rounded-lg border border-gray-700 bg-transparent px-6 py-3 text-center font-medium text-white no-underline transition-all duration-300 hover:border-[#00f5ff]/50 hover:bg-[#00f5ff]/5"
                 >
                   ← Back
                 </Link>
                 <Link
                   to="/login"
-                  className="flex-1 rounded-lg bg-[#00f5ff] py-3 text-center font-semibold text-black no-underline transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,245,255,0.4)]"
+                  className="flex-1 rounded-lg bg-[#00f5ff] px-6 py-3 text-center font-semibold text-black no-underline transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,245,255,0.5)]"
                 >
                   Contact Sales
                 </Link>

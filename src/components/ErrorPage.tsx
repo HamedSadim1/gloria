@@ -1,10 +1,9 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const ErrorPage = () => {
   return (
     <div className="bg-grid relative min-h-screen overflow-hidden px-4 sm:px-6 pt-28 sm:pt-32">
-      {/* Background glow — contained in relative parent */}
       <motion.div
         className="pointer-events-none absolute top-1/3 left-1/2 -z-10 h-64 sm:h-96 w-64 sm:w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-500/10 blur-[80px] sm:blur-[120px]"
         animate={{ opacity: [0.2, 0.4, 0.2] }}
@@ -57,13 +56,12 @@ const ErrorPage = () => {
         >
           <Link
             to="/"
-            className="inline-flex items-center gap-2 rounded-lg bg-[#00f5ff] px-6 sm:px-8 py-3 sm:py-3.5 font-semibold text-sm sm:text-base text-black no-underline transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,245,255,0.4)]"
+            className="inline-flex items-center gap-2 rounded-lg bg-[#00f5ff] px-6 sm:px-8 py-3 font-semibold text-sm text-black no-underline transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,245,255,0.5)]"
           >
             Return Home →
           </Link>
         </motion.div>
       </div>
-      <Outlet />
     </div>
   );
 };

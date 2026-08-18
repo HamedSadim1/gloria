@@ -31,7 +31,7 @@ const techStack = [
 const About = () => {
   return (
     <div className="bg-grid relative min-h-screen overflow-hidden px-4 sm:px-6 pt-28 sm:pt-32">
-      <div className="mx-auto max-w-4xl">
+      <div className="mx-auto max-w-5xl">
         {/* Header */}
         <motion.div
           className="mb-10 sm:mb-16"
@@ -40,7 +40,7 @@ const About = () => {
           transition={{ duration: 0.6 }}
         >
           <motion.div
-            className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#bf00ff]/30 bg-[#bf00ff]/10 px-3 sm:px-4 py-1.5 text-xs sm:text-sm text-[#bf00ff]"
+            className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#00f5ff]/30 bg-[#00f5ff]/10 px-3 sm:px-4 py-1.5 text-xs sm:text-sm text-[#00f5ff]"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}

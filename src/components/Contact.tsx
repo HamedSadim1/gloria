@@ -27,7 +27,7 @@ const Contact = () => {
             Products
           </motion.div>
           <motion.h1
-            className="mb-3 sm:mb-4 text-3xl sm:text-4xl font-bold text-white"
+            className="mb-3 sm:mb-4 text-3xl sm:text-4xl md:text-5xl font-bold text-white"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -35,7 +35,7 @@ const Contact = () => {
             Our Products
           </motion.h1>
           <motion.p
-            className="max-w-xl text-sm sm:text-base text-gray-400"
+            className="max-w-xl text-base sm:text-lg text-gray-400"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -58,7 +58,6 @@ const Contact = () => {
                 to={`/contact/${product.id}`}
                 className="group relative block overflow-hidden rounded-xl border border-gray-800 bg-[#12121a] no-underline transition-all duration-300 hover:border-[#00f5ff]/30 hover:shadow-[0_0_30px_rgba(0,245,255,0.1)]"
               >
-                {/* Card header gradient */}
                 <div className="relative h-24 sm:h-32 overflow-hidden bg-gradient-to-br from-[#00f5ff]/10 to-[#bf00ff]/10">
                   <motion.div
                     className="flex h-full items-center justify-center text-3xl sm:text-4xl opacity-50 transition-opacity group-hover:opacity-80"
