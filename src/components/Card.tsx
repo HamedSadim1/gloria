@@ -14,7 +14,7 @@ const Card = () => {
   const product = useMemo(() => products.filter((p) => p.id === user), [user]);
 
   return (
-    <div className="bg-grid min-h-screen px-4 sm:px-6 pt-28 sm:pt-32">
+    <div className="bg-grid relative min-h-screen overflow-hidden px-4 sm:px-6 pt-28 sm:pt-32">
       <div className="mx-auto max-w-3xl">
         {/* Back link */}
         <motion.div
@@ -33,7 +33,7 @@ const Card = () => {
         {product.map((p, index) => (
           <motion.div
             key={p.id}
-            className="overflow-hidden rounded-xl sm:rounded-2xl border border-gray-800 bg-[#12121a]"
+            className="overflow-hidden rounded-xl sm:rounded-2xl border border-gray-800 bg-[#12121a] mb-16 sm:mb-20"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: index * 0.1 }}

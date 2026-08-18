@@ -58,7 +58,7 @@ const Dashboard: FC = () => {
   const userName = localStorage.getItem("name") || "Guest";
 
   return (
-    <div className="bg-grid min-h-screen px-4 sm:px-6 pt-28 sm:pt-32">
+    <div className="bg-grid relative min-h-screen overflow-hidden px-4 sm:px-6 pt-28 sm:pt-32">
       <div className="mx-auto max-w-4xl">
         {/* Header */}
         <motion.div
@@ -139,7 +139,7 @@ const Dashboard: FC = () => {
 
         {/* Activity Feed */}
         <motion.div
-          className="rounded-xl border border-gray-800 bg-[#12121a] p-4 sm:p-6"
+          className="rounded-xl border border-gray-800 bg-[#12121a] p-4 sm:p-6 mb-16 sm:mb-20"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}

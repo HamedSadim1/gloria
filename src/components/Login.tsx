@@ -19,16 +19,16 @@ const Login: FC = () => {
   };
 
   return (
-    <div className="bg-grid flex min-h-screen items-center justify-center px-4 sm:px-6 pt-24 pb-8">
-      {/* Background glow */}
+    <div className="bg-grid relative flex min-h-screen items-center justify-center overflow-hidden px-4 sm:px-6 pt-28 sm:pt-32 pb-8">
+      {/* Background glow — contained in relative parent */}
       <motion.div
         className="pointer-events-none absolute top-1/3 left-1/2 -z-10 h-64 sm:h-96 w-64 sm:w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#bf00ff]/10 blur-[80px] sm:blur-[120px]"
-        animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
+        animate={{ opacity: [0.2, 0.5, 0.2] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
 
       <motion.div
-        className="w-full max-w-md"
+        className="relative w-full max-w-md"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}

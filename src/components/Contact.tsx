@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const Contact = () => {
   return (
-    <div className="bg-grid min-h-screen px-4 sm:px-6 pt-28 sm:pt-32">
+    <div className="bg-grid relative min-h-screen overflow-hidden px-4 sm:px-6 pt-28 sm:pt-32">
       <div className="mx-auto max-w-5xl">
         {/* Header */}
         <motion.div
@@ -46,7 +46,7 @@ const Contact = () => {
         </motion.div>
 
         {/* Product Grid */}
-        <div className="grid grid-cols-1 gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3 pb-16 sm:pb-20">
           {products.map((product, index) => (
             <motion.div
               key={product.id}

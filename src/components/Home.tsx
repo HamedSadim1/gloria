@@ -29,21 +29,21 @@ const stats = [
 
 const Home = () => {
   return (
-    <div className="bg-grid min-h-screen pt-24">
-      {/* Hero Section */}
-      <section className="relative mx-auto max-w-6xl px-4 sm:px-6 py-12 sm:py-20">
-        {/* Background glow effects */}
-        <motion.div
-          className="pointer-events-none absolute top-0 left-1/2 -z-10 h-64 sm:h-96 w-64 sm:w-96 -translate-x-1/2 rounded-full bg-[#00f5ff]/10 blur-[80px] sm:blur-[120px]"
-          animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="pointer-events-none absolute top-20 right-0 -z-10 h-48 sm:h-64 w-48 sm:w-64 rounded-full bg-[#bf00ff]/10 blur-[60px] sm:blur-[100px]"
-          animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.6, 0.3] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        />
+    <div className="bg-grid relative min-h-screen overflow-hidden pt-28 sm:pt-32">
+      {/* Background glow effects — contained in relative parent */}
+      <motion.div
+        className="pointer-events-none absolute top-0 left-1/2 -z-10 h-64 sm:h-96 w-64 sm:w-96 -translate-x-1/2 rounded-full bg-[#00f5ff]/10 blur-[80px] sm:blur-[120px]"
+        animate={{ opacity: [0.4, 0.7, 0.4] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="pointer-events-none absolute top-20 right-0 -z-10 h-48 sm:h-64 w-48 sm:w-64 rounded-full bg-[#bf00ff]/10 blur-[60px] sm:blur-[100px]"
+        animate={{ opacity: [0.2, 0.5, 0.2] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+      />
 
+      {/* Hero Section */}
+      <section className="relative mx-auto max-w-6xl px-4 sm:px-6 py-8 sm:py-12">
         <motion.div
           className="mb-4 sm:mb-6 inline-flex items-center gap-2 rounded-full border border-[#00f5ff]/30 bg-[#00f5ff]/10 px-3 sm:px-4 py-1.5 text-xs sm:text-sm text-[#00f5ff]"
           initial={{ opacity: 0, y: 20 }}
@@ -110,7 +110,7 @@ const Home = () => {
       </section>
 
       {/* Features Section */}
-      <section className="mx-auto max-w-6xl px-4 sm:px-6 py-12 sm:py-20">
+      <section className="relative mx-auto max-w-6xl px-4 sm:px-6 py-12 sm:py-16">
         <motion.div
           className="mb-8 sm:mb-12"
           initial={{ opacity: 0, y: 20 }}
@@ -158,7 +158,7 @@ const Home = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="mx-auto max-w-6xl px-4 sm:px-6 py-12 sm:py-16">
+      <section className="relative mx-auto max-w-6xl px-4 sm:px-6 py-12 sm:py-16 pb-20 sm:pb-24">
         <div className="grid grid-cols-2 gap-3 sm:gap-6 sm:grid-cols-4">
           {stats.map(({ value, label }, index) => (
             <motion.div

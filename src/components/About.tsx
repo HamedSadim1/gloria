@@ -30,7 +30,7 @@ const techStack = [
 
 const About = () => {
   return (
-    <div className="bg-grid min-h-screen px-4 sm:px-6 pt-28 sm:pt-32">
+    <div className="bg-grid relative min-h-screen overflow-hidden px-4 sm:px-6 pt-28 sm:pt-32">
       <div className="mx-auto max-w-4xl">
         {/* Header */}
         <motion.div
@@ -116,7 +116,7 @@ const About = () => {
 
         {/* Mission */}
         <motion.div
-          className="rounded-xl border border-gray-800 bg-[#12121a] p-5 sm:p-8"
+          className="rounded-xl border border-gray-800 bg-[#12121a] p-5 sm:p-8 mb-16 sm:mb-20"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
