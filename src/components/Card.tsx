@@ -14,7 +14,7 @@ const Card = () => {
   const product = useMemo(() => products.filter((p) => p.id === user), [user]);
 
   return (
-    <div className="bg-grid min-h-screen px-6 pt-32">
+    <div className="bg-grid min-h-screen px-4 sm:px-6 pt-28 sm:pt-32">
       <div className="mx-auto max-w-3xl">
         {/* Back link */}
         <motion.div
@@ -24,7 +24,7 @@ const Card = () => {
         >
           <Link
             to="/contact"
-            className="mb-8 inline-flex items-center gap-2 text-sm text-gray-400 no-underline transition-colors hover:text-[#00f5ff]"
+            className="mb-6 sm:mb-8 inline-flex items-center gap-2 text-xs sm:text-sm text-gray-400 no-underline transition-colors hover:text-[#00f5ff]"
           >
             ← Back to Products
           </Link>
@@ -33,15 +33,15 @@ const Card = () => {
         {product.map((p, index) => (
           <motion.div
             key={p.id}
-            className="overflow-hidden rounded-2xl border border-gray-800 bg-[#12121a]"
+            className="overflow-hidden rounded-xl sm:rounded-2xl border border-gray-800 bg-[#12121a]"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: index * 0.1 }}
           >
             {/* Header */}
-            <div className="relative border-b border-gray-800 bg-gradient-to-r from-[#00f5ff]/10 to-[#bf00ff]/10 p-8">
+            <div className="relative border-b border-gray-800 bg-gradient-to-r from-[#00f5ff]/10 to-[#bf00ff]/10 p-5 sm:p-8">
               <motion.div
-                className="mb-2 text-xs font-medium tracking-widest text-[#00f5ff] uppercase"
+                className="mb-2 text-[10px] sm:text-xs font-medium tracking-widest text-[#00f5ff] uppercase"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
@@ -49,7 +49,7 @@ const Card = () => {
                 Product Details
               </motion.div>
               <motion.h1
-                className="text-3xl font-bold capitalize text-white"
+                className="text-2xl sm:text-3xl font-bold capitalize text-white"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
@@ -59,26 +59,32 @@ const Card = () => {
             </div>
 
             {/* Content */}
-            <div className="p-8">
+            <div className="p-5 sm:p-8">
               {/* Product Info Grid */}
-              <div className="mb-8 grid grid-cols-2 gap-4">
+              <div className="mb-6 sm:mb-8 grid grid-cols-2 gap-3 sm:gap-4">
                 <motion.div
-                  className="rounded-lg border border-gray-800 bg-[#0a0a0f] p-4"
+                  className="rounded-lg border border-gray-800 bg-[#0a0a0f] p-3 sm:p-4"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.5 }}
                 >
-                  <div className="mb-1 text-xs text-gray-500">Product ID</div>
-                  <div className="font-mono text-sm text-white">{p.id}</div>
+                  <div className="mb-1 text-[10px] sm:text-xs text-gray-500">
+                    Product ID
+                  </div>
+                  <div className="font-mono text-[10px] sm:text-sm text-white break-all">
+                    {p.id}
+                  </div>
                 </motion.div>
                 <motion.div
-                  className="rounded-lg border border-gray-800 bg-[#0a0a0f] p-4"
+                  className="rounded-lg border border-gray-800 bg-[#0a0a0f] p-3 sm:p-4"
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.6 }}
                 >
-                  <div className="mb-1 text-xs text-gray-500">Status</div>
-                  <div className="flex items-center gap-2 text-sm text-green-400">
+                  <div className="mb-1 text-[10px] sm:text-xs text-gray-500">
+                    Status
+                  </div>
+                  <div className="flex items-center gap-2 text-xs sm:text-sm text-green-400">
                     <motion.span
                       className="h-2 w-2 rounded-full bg-green-400"
                       animate={{ scale: [1, 1.3, 1] }}
@@ -91,15 +97,15 @@ const Card = () => {
 
               {/* Description */}
               <motion.div
-                className="mb-8"
+                className="mb-6 sm:mb-8"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.7 }}
               >
-                <h2 className="mb-3 text-sm font-semibold tracking-widest text-[#00f5ff] uppercase">
+                <h2 className="mb-3 text-xs sm:text-sm font-semibold tracking-widest text-[#00f5ff] uppercase">
                   Description
                 </h2>
-                <p className="leading-relaxed text-gray-300">
+                <p className="text-sm sm:text-base leading-relaxed text-gray-300">
                   This is a premium {p.name.toLowerCase()} designed with quality
                   and style in mind. Crafted using the finest materials and
                   cutting-edge manufacturing processes, this product represents
@@ -109,19 +115,19 @@ const Card = () => {
 
               {/* Specifications */}
               <motion.div
-                className="mb-8"
+                className="mb-6 sm:mb-8"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.8 }}
               >
-                <h2 className="mb-3 text-sm font-semibold tracking-widest text-[#00f5ff] uppercase">
+                <h2 className="mb-3 text-xs sm:text-sm font-semibold tracking-widest text-[#00f5ff] uppercase">
                   Specifications
                 </h2>
                 <div className="space-y-2">
                   {specs.map(({ label, value }, specIndex) => (
                     <motion.div
                       key={label}
-                      className="flex items-center justify-between border-b border-gray-800 py-3"
+                      className="flex items-center justify-between border-b border-gray-800 py-2 sm:py-3"
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{
@@ -129,8 +135,10 @@ const Card = () => {
                         delay: 0.9 + specIndex * 0.1,
                       }}
                     >
-                      <span className="text-sm text-gray-400">{label}</span>
-                      <span className="text-sm font-medium text-white">
+                      <span className="text-xs sm:text-sm text-gray-400">
+                        {label}
+                      </span>
+                      <span className="text-xs sm:text-sm font-medium text-white">
                         {value}
                       </span>
                     </motion.div>
@@ -140,7 +148,7 @@ const Card = () => {
 
               {/* Actions */}
               <motion.div
-                className="flex gap-4"
+                className="flex flex-col sm:flex-row gap-3 sm:gap-4"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 1.2 }}

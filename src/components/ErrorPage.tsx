@@ -3,17 +3,17 @@ import { motion } from "framer-motion";
 
 const ErrorPage = () => {
   return (
-    <div className="bg-grid flex min-h-screen flex-col items-center justify-center px-6 pt-24">
+    <div className="bg-grid flex min-h-screen flex-col items-center justify-center px-4 sm:px-6 pt-24 pb-8">
       {/* Background glow */}
       <motion.div
-        className="pointer-events-none absolute top-1/3 left-1/2 -z-10 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-500/10 blur-[120px]"
+        className="pointer-events-none absolute top-1/3 left-1/2 -z-10 h-64 sm:h-96 w-64 sm:w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-500/10 blur-[80px] sm:blur-[120px]"
         animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       />
 
       <div className="w-full max-w-md text-center">
         <motion.div
-          className="mb-6 text-8xl font-bold tracking-tighter text-gray-800"
+          className="mb-4 sm:mb-6 text-6xl sm:text-8xl font-bold tracking-tighter text-gray-800"
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
@@ -21,7 +21,7 @@ const ErrorPage = () => {
           404
         </motion.div>
         <motion.div
-          className="mb-4 inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-4 py-1.5 text-sm text-red-400"
+          className="mb-3 sm:mb-4 inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-3 sm:px-4 py-1.5 text-xs sm:text-sm text-red-400"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
@@ -34,7 +34,7 @@ const ErrorPage = () => {
           Error
         </motion.div>
         <motion.h1
-          className="mb-4 text-2xl font-bold text-white"
+          className="mb-3 sm:mb-4 text-xl sm:text-2xl font-bold text-white"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
@@ -42,7 +42,7 @@ const ErrorPage = () => {
           Page Not Found
         </motion.h1>
         <motion.p
-          className="mb-8 text-gray-400"
+          className="mb-6 sm:mb-8 text-sm sm:text-base text-gray-400"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
@@ -57,7 +57,7 @@ const ErrorPage = () => {
         >
           <Link
             to="/"
-            className="inline-flex items-center gap-2 rounded-lg bg-[#00f5ff] px-8 py-3.5 font-semibold text-black no-underline transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,245,255,0.4)]"
+            className="inline-flex items-center gap-2 rounded-lg bg-[#00f5ff] px-6 sm:px-8 py-3 sm:py-3.5 font-semibold text-sm sm:text-base text-black no-underline transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,245,255,0.4)]"
           >
             Return Home →
           </Link>
