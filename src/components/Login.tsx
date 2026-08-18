@@ -1,6 +1,7 @@
 import { useState, type FC } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { DiamondIcon } from "./Icons";
 
 const Login: FC = () => {
   const [name, setName] = useState("");
@@ -39,11 +40,11 @@ const Login: FC = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <motion.div
-            className="mb-4 inline-flex h-12 sm:h-16 w-12 sm:w-16 items-center justify-center rounded-xl sm:rounded-2xl border border-[#00f5ff]/30 bg-[#00f5ff]/10 text-xl sm:text-2xl text-[#00f5ff]"
+            className="mb-4 inline-flex h-12 sm:h-16 w-12 sm:w-16 items-center justify-center rounded-xl sm:rounded-2xl border border-[#00f5ff]/30 bg-[#00f5ff]/10 text-[#00f5ff]"
             animate={{ rotate: [0, 5, -5, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           >
-            ◆
+            <DiamondIcon className="h-6 w-6 sm:h-8 sm:w-8" />
           </motion.div>
           <h1 className="mb-2 text-xl sm:text-2xl font-bold text-white">
             Welcome Back

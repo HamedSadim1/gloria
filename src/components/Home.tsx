@@ -1,19 +1,20 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { BoltIcon, ShieldIcon, PaletteIcon, ArrowRightIcon } from "./Icons";
 
 const features = [
   {
-    icon: "⚡",
+    Icon: BoltIcon,
     title: "Lightning Fast",
     desc: "Built with Vite for instant HMR and blazing builds",
   },
   {
-    icon: "🔒",
+    Icon: ShieldIcon,
     title: "Type Safe",
     desc: "Full TypeScript coverage for reliable code",
   },
   {
-    icon: "🎨",
+    Icon: PaletteIcon,
     title: "Modern Design",
     desc: "Glassmorphism UI with neon accents",
   },
@@ -92,11 +93,11 @@ const Home = () => {
           >
             <span className="relative z-10">Explore Products</span>
             <motion.span
-              className="relative z-10"
+              className="relative z-10 inline-flex"
               animate={{ x: [0, 5, 0] }}
               transition={{ duration: 1.5, repeat: Infinity }}
             >
-              →
+              <ArrowRightIcon className="h-5 w-5" />
             </motion.span>
           </Link>
           <Link
@@ -126,7 +127,7 @@ const Home = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {features.map(({ icon, title, desc }, index) => (
+          {features.map(({ Icon, title, desc }, index) => (
             <motion.div
               key={title}
               className="group rounded-xl border border-gray-800 bg-[#12121a] p-6 sm:p-8 transition-all duration-300 hover:border-[#00f5ff]/30 hover:bg-[#1a1a2e]"
@@ -137,7 +138,7 @@ const Home = () => {
               whileHover={{ y: -5 }}
             >
               <motion.div
-                className="mb-3 sm:mb-4 text-2xl sm:text-3xl"
+                className="mb-3 sm:mb-4 text-[#00f5ff]"
                 animate={{ rotate: [0, 10, -10, 0] }}
                 transition={{
                   duration: 4,
@@ -145,7 +146,7 @@ const Home = () => {
                   ease: "easeInOut",
                 }}
               >
-                {icon}
+                <Icon className="h-8 w-8 sm:h-10 sm:w-10" />
               </motion.div>
               <h3 className="mb-2 text-base sm:text-lg font-semibold text-white">
                 {title}

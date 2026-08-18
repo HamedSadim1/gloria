@@ -1,38 +1,49 @@
 import type { FC } from "react";
 import { motion } from "framer-motion";
+import {
+  ChartBarIcon,
+  ZapIcon,
+  HardDriveIcon,
+  UsersIcon,
+  ActivityIcon,
+} from "./Icons";
 
 const widgets = [
   {
-    icon: "📊",
+    Icon: ChartBarIcon,
     label: "Analytics",
     value: "12.5k",
     change: "+24%",
     color: "from-cyan-500/20 to-blue-500/20",
     borderColor: "hover:border-cyan-500/30",
+    iconColor: "text-cyan-400",
   },
   {
-    icon: "⚡",
+    Icon: ZapIcon,
     label: "Performance",
     value: "99.9%",
     change: "+2.1%",
     color: "from-purple-500/20 to-pink-500/20",
     borderColor: "hover:border-purple-500/30",
+    iconColor: "text-purple-400",
   },
   {
-    icon: "📁",
+    Icon: HardDriveIcon,
     label: "Storage",
     value: "2.4 TB",
     change: "+180GB",
     color: "from-orange-500/20 to-red-500/20",
     borderColor: "hover:border-orange-500/30",
+    iconColor: "text-orange-400",
   },
   {
-    icon: "👥",
+    Icon: UsersIcon,
     label: "Users",
     value: "8,421",
     change: "+12%",
     color: "from-green-500/20 to-emerald-500/20",
     borderColor: "hover:border-green-500/30",
+    iconColor: "text-green-400",
   },
 ];
 
@@ -81,7 +92,10 @@ const Dashboard: FC = () => {
         {/* Stats Grid */}
         <div className="mb-6 sm:mb-8 grid grid-cols-2 gap-3 sm:gap-4">
           {widgets.map(
-            ({ icon, label, value, change, color, borderColor }, index) => (
+            (
+              { Icon, label, value, change, color, borderColor, iconColor },
+              index,
+            ) => (
               <motion.div
                 key={label}
                 className={`rounded-xl border border-gray-800 bg-[#12121a] p-3 sm:p-5 transition-all duration-300 ${borderColor}`}
@@ -92,7 +106,7 @@ const Dashboard: FC = () => {
               >
                 <div className="mb-2 sm:mb-3 flex items-center justify-between">
                   <motion.span
-                    className={`flex h-8 sm:h-10 w-8 sm:w-10 items-center justify-center rounded-lg bg-gradient-to-br ${color} text-base sm:text-lg`}
+                    className={`flex h-8 sm:h-10 w-8 sm:w-10 items-center justify-center rounded-lg bg-gradient-to-br ${color} ${iconColor}`}
                     animate={{ rotate: [0, 5, -5, 0] }}
                     transition={{
                       duration: 4,
@@ -101,7 +115,7 @@ const Dashboard: FC = () => {
                       delay: index * 0.5,
                     }}
                   >
-                    {icon}
+                    <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
                   </motion.span>
                   <span className="text-[10px] sm:text-xs font-medium text-green-400">
                     {change}
@@ -131,7 +145,8 @@ const Dashboard: FC = () => {
           transition={{ duration: 0.6, delay: 0.6 }}
         >
           <div className="mb-4 sm:mb-6 flex items-center justify-between">
-            <h2 className="text-base sm:text-lg font-semibold text-white">
+            <h2 className="flex items-center gap-2 text-base sm:text-lg font-semibold text-white">
+              <ActivityIcon className="h-5 w-5 text-[#00f5ff]" />
               Recent Activity
             </h2>
             <button className="cursor-pointer border-none bg-transparent text-xs sm:text-sm text-[#00f5ff] hover:underline">

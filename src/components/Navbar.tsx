@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { DiamondIcon } from "./Icons";
 
 const navLinks = [
   { to: "/", label: "Home" },
@@ -29,7 +30,7 @@ const Navbar = () => {
             animate={{ rotate: [0, 360] }}
             transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
           >
-            ◆
+            <DiamondIcon className="h-5 w-5 sm:h-6 sm:w-6" />
           </motion.span>
           <span>
             GLORIA<span className="text-[#00f5ff]">.</span>

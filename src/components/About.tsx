@@ -1,26 +1,27 @@
 import { motion } from "framer-motion";
+import { BoltIcon, ShieldIcon, AtomIcon, PaletteIcon } from "./Icons";
 
 const techStack = [
   {
-    icon: "⚡",
+    Icon: BoltIcon,
     name: "Vite",
     desc: "Next generation frontend tooling",
     color: "from-purple-500 to-pink-500",
   },
   {
-    icon: "🔷",
+    Icon: ShieldIcon,
     name: "TypeScript",
     desc: "JavaScript with syntax for types",
     color: "from-blue-500 to-cyan-500",
   },
   {
-    icon: "⚛️",
+    Icon: AtomIcon,
     name: "React 19",
     desc: "The library for web and native UIs",
     color: "from-cyan-500 to-blue-500",
   },
   {
-    icon: "🎨",
+    Icon: PaletteIcon,
     name: "Tailwind CSS",
     desc: "Utility-first CSS framework",
     color: "from-teal-500 to-green-500",
@@ -82,7 +83,7 @@ const About = () => {
             Tech Stack
           </motion.h2>
           <div className="grid grid-cols-1 gap-3 sm:gap-4 sm:grid-cols-2">
-            {techStack.map(({ icon, name, desc, color }, index) => (
+            {techStack.map(({ Icon, name, desc, color }, index) => (
               <motion.div
                 key={name}
                 className="group flex items-start gap-3 sm:gap-4 rounded-xl border border-gray-800 bg-[#12121a] p-4 sm:p-6 transition-all duration-300 hover:border-gray-700"
@@ -93,7 +94,7 @@ const About = () => {
                 whileHover={{ scale: 1.02 }}
               >
                 <motion.span
-                  className={`flex h-10 sm:h-12 w-10 sm:w-12 shrink-0 items-center justify-center rounded-lg sm:rounded-xl bg-gradient-to-br ${color} text-lg sm:text-xl`}
+                  className={`flex h-10 sm:h-12 w-10 sm:w-12 shrink-0 items-center justify-center rounded-lg sm:rounded-xl bg-gradient-to-br ${color} text-white`}
                   animate={{ rotate: [0, 10, -10, 0] }}
                   transition={{
                     duration: 4,
@@ -102,7 +103,7 @@ const About = () => {
                     delay: index * 0.5,
                   }}
                 >
-                  {icon}
+                  <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
                 </motion.span>
                 <div>
                   <h3 className="mb-1 font-semibold text-white">{name}</h3>
