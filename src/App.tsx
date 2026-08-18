@@ -12,7 +12,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
+      <div className="App flex min-h-screen flex-col">
         <Routes>
           <Route path="/" element={<SharedLayout />}>
             <Route index element={<Home />} />

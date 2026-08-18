@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const ErrorPage = () => {
   return (
-    <div className="bg-grid relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 sm:px-6 pt-28 sm:pt-32 pb-8">
+    <div className="bg-grid relative min-h-screen overflow-hidden px-4 sm:px-6 pt-28 sm:pt-32">
       {/* Background glow — contained in relative parent */}
       <motion.div
         className="pointer-events-none absolute top-1/3 left-1/2 -z-10 h-64 sm:h-96 w-64 sm:w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-500/10 blur-[80px] sm:blur-[120px]"
@@ -11,7 +11,7 @@ const ErrorPage = () => {
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      <div className="relative w-full max-w-md text-center">
+      <div className="mx-auto w-full max-w-md text-center">
         <motion.div
           className="mb-4 sm:mb-6 text-6xl sm:text-8xl font-bold tracking-tighter text-gray-800"
           initial={{ opacity: 0, scale: 0.5 }}

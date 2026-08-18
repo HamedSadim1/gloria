@@ -19,7 +19,7 @@ const Login: FC = () => {
   };
 
   return (
-    <div className="bg-grid relative flex min-h-screen items-center justify-center overflow-hidden px-4 sm:px-6 pt-28 sm:pt-32 pb-8">
+    <div className="bg-grid relative min-h-screen overflow-hidden px-4 sm:px-6 pt-28 sm:pt-32">
       {/* Background glow — contained in relative parent */}
       <motion.div
         className="pointer-events-none absolute top-1/3 left-1/2 -z-10 h-64 sm:h-96 w-64 sm:w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#bf00ff]/10 blur-[80px] sm:blur-[120px]"
@@ -27,12 +27,7 @@ const Login: FC = () => {
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      <motion.div
-        className="relative w-full max-w-md"
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
+      <div className="mx-auto w-full max-w-md">
         <motion.div
           className="mb-6 sm:mb-8 text-center"
           initial={{ opacity: 0, y: 20 }}
@@ -121,7 +116,7 @@ const Login: FC = () => {
             Contact Admin
           </a>
         </motion.p>
-      </motion.div>
+      </div>
     </div>
   );
 };
