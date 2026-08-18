@@ -43,18 +43,37 @@ const Card = () => {
   return (
     <div className="bg-grid relative min-h-screen overflow-hidden px-4 sm:px-6 pt-28 sm:pt-32">
       <div className="mx-auto max-w-3xl">
-        <motion.div
+        <motion.nav
+          className="mb-6 sm:mb-8"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.4 }}
+          aria-label="Breadcrumb"
         >
-          <Link
-            to="/contact"
-            className="mb-6 sm:mb-8 inline-flex items-center gap-2 text-xs sm:text-sm text-gray-400 no-underline transition-colors hover:text-[#00f5ff]"
-          >
-            ← Back to Products
-          </Link>
-        </motion.div>
+          <ol className="flex items-center gap-1.5 text-xs sm:text-sm">
+            <li>
+              <Link
+                to="/"
+                className="text-gray-500 no-underline transition-colors hover:text-white"
+              >
+                Home
+              </Link>
+            </li>
+            <li className="text-gray-600">/</li>
+            <li>
+              <Link
+                to="/contact"
+                className="text-gray-500 no-underline transition-colors hover:text-white"
+              >
+                Products
+              </Link>
+            </li>
+            <li className="text-gray-600">/</li>
+            <li>
+              <span className="text-[#00f5ff]">Details</span>
+            </li>
+          </ol>
+        </motion.nav>
 
         {product.map((p, index) => (
           <motion.div
