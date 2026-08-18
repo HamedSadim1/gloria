@@ -1,26 +1,28 @@
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { DiamondIcon } from "./Icons";
-
-const getNavLinks = () => {
-  const isLoggedIn = !!localStorage.getItem("name");
-  const links = [
-    { to: "/", label: "Home" },
-    { to: "/about", label: "About" },
-    { to: "/contact", label: "Products" },
-  ];
-  if (isLoggedIn) {
-    links.push({ to: "/dashboard", label: "Dashboard" });
-  } else {
-    links.push({ to: "/login", label: "Login" });
-  }
-  return links;
-};
+import { useAuth } from "../contexts/AuthContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const navLinks = getNavLinks();
+  const { isLoggedIn, userName, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const navLinks = [
+    { to: "/", label: "Home" },
+    { to: "/about", label: "About" },
+    { to: "/contact", label: "Products" },
+    ...(isLoggedIn
+      ? [{ to: "/dashboard", label: "Dashboard" }]
+      : [{ to: "/login", label: "Login" }]),
+  ];
+
+  const handleLogout = () => {
+    logout();
+    setIsOpen(false);
+    navigate("/");
+  };
 
   return (
     <motion.nav
@@ -84,30 +86,53 @@ const Navbar = () => {
               </NavLink>
             </motion.div>
           ))}
+
+          {isLoggedIn && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.5 }}
+            >
+              <div className="ml-2 flex items-center gap-2 border-l border-gray-700 pl-4">
+                <span className="text-xs text-gray-500">{userName}</span>
+                <button
+                  onClick={handleLogout}
+                  className="cursor-pointer rounded-lg border border-gray-700 bg-transparent px-3 py-1.5 text-xs font-medium text-gray-400 transition-all duration-200 hover:border-red-500/50 hover:bg-red-500/10 hover:text-red-400"
+                >
+                  Logout
+                </button>
+              </div>
+            </motion.div>
+          )}
         </div>
 
         {/* Mobile hamburger */}
-        <button
-          className="flex flex-col items-center justify-center gap-1.5 border-none bg-transparent p-2 md:hidden"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle menu"
-        >
-          <motion.span
-            className="block h-0.5 w-6 bg-white"
-            animate={isOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
-            transition={{ duration: 0.3 }}
-          />
-          <motion.span
-            className="block h-0.5 w-6 bg-white"
-            animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
-            transition={{ duration: 0.3 }}
-          />
-          <motion.span
-            className="block h-0.5 w-6 bg-white"
-            animate={isOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
-            transition={{ duration: 0.3 }}
-          />
-        </button>
+        <div className="flex items-center gap-3 md:hidden">
+          {isLoggedIn && (
+            <span className="text-[10px] text-gray-500">{userName}</span>
+          )}
+          <button
+            className="flex flex-col items-center justify-center gap-1.5 border-none bg-transparent p-2"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
+          >
+            <motion.span
+              className="block h-0.5 w-6 bg-white"
+              animate={isOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
+              transition={{ duration: 0.3 }}
+            />
+            <motion.span
+              className="block h-0.5 w-6 bg-white"
+              animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
+              transition={{ duration: 0.3 }}
+            />
+            <motion.span
+              className="block h-0.5 w-6 bg-white"
+              animate={isOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
+              transition={{ duration: 0.3 }}
+            />
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}
@@ -143,6 +168,21 @@ const Navbar = () => {
                   </NavLink>
                 </motion.div>
               ))}
+
+              {isLoggedIn && (
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3, delay: navLinks.length * 0.05 }}
+                >
+                  <button
+                    onClick={handleLogout}
+                    className="w-full cursor-pointer rounded-lg border border-red-500/30 bg-transparent px-4 py-3 text-left text-sm font-medium text-red-400 transition-all duration-200 hover:bg-red-500/10"
+                  >
+                    Logout
+                  </button>
+                </motion.div>
+              )}
             </div>
           </motion.div>
         )}

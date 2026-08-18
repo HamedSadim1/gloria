@@ -183,7 +183,7 @@ const Card = () => {
                   to="/login"
                   className="flex-1 rounded-lg bg-[#00f5ff] px-6 py-3 text-center font-semibold text-black no-underline transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,245,255,0.5)]"
                 >
-                  Contact Sales
+                  Sign in to Purchase
                 </Link>
               </motion.div>
             </div>

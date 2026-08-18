@@ -1,14 +1,15 @@
 import type { FC, ReactNode } from "react";
 import { Navigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 interface ProtectedRouteProps {
   children: ReactNode;
 }
 
 const ProtectedRoute: FC<ProtectedRouteProps> = ({ children }) => {
-  const userName = localStorage.getItem("name");
+  const { isLoggedIn } = useAuth();
 
-  if (!userName) {
+  if (!isLoggedIn) {
     return <Navigate to="/login" replace />;
   }
 

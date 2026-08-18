@@ -1,21 +1,50 @@
 import { useState, type FC } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { DiamondIcon } from "./Icons";
+import { useAuth } from "../contexts/AuthContext";
 
 const Login: FC = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [errors, setErrors] = useState<{ name?: string; email?: string }>({});
+  const [isLoading, setIsLoading] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const { login } = useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
-    e.preventDefault();
-    if (!name || !email) return;
+  const validate = () => {
+    const newErrors: { name?: string; email?: string } = {};
+    if (!name.trim()) {
+      newErrors.name = "Username is required";
+    } else if (name.trim().length < 2) {
+      newErrors.name = "Username must be at least 2 characters";
+    }
+    if (!email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      newErrors.email = "Please enter a valid email";
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
-    localStorage.setItem("name", name);
-    setName("");
-    setEmail("");
-    navigate("/dashboard");
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
+    e.preventDefault();
+    if (!validate()) return;
+
+    setIsLoading(true);
+
+    // Simulate API call
+    await new Promise((resolve) => setTimeout(resolve, 800));
+
+    login(name.trim());
+    setIsLoading(false);
+    setShowSuccess(true);
+
+    setTimeout(() => {
+      navigate("/dashboard");
+    }, 1000);
   };
 
   return (
@@ -48,69 +77,160 @@ const Login: FC = () => {
           </p>
         </motion.div>
 
-        <motion.form
-          onSubmit={handleSubmit}
-          className="rounded-xl sm:rounded-2xl border border-gray-800 bg-[#12121a] p-5 sm:p-8"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <motion.div
-            className="mb-4 sm:mb-5"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-          >
-            <label
-              htmlFor="username"
-              className="mb-2 block text-sm font-medium text-gray-300"
+        <AnimatePresence mode="wait">
+          {showSuccess ? (
+            <motion.div
+              key="success"
+              className="rounded-xl sm:rounded-2xl border border-green-500/30 bg-[#12121a] p-8 text-center"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.3 }}
             >
-              Username
-            </label>
-            <input
-              id="username"
-              type="text"
-              className="w-full rounded-lg border border-gray-700 bg-[#0a0a0f] px-4 py-3 text-white placeholder-gray-500 transition-all duration-200 focus:border-[#00f5ff] focus:outline-none focus:ring-1 focus:ring-[#00f5ff]/50"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Enter your username"
-            />
-          </motion.div>
-
-          <motion.div
-            className="mb-6 sm:mb-8"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-          >
-            <label
-              htmlFor="email"
-              className="mb-2 block text-sm font-medium text-gray-300"
+              <motion.div
+                className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-green-500/20 text-green-400"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ type: "spring", stiffness: 200, damping: 15 }}
+              >
+                <svg
+                  className="h-8 w-8"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </motion.div>
+              <h2 className="mb-2 text-lg font-semibold text-white">
+                Welcome, {name}!
+              </h2>
+              <p className="text-sm text-gray-400">
+                Redirecting to your dashboard...
+              </p>
+            </motion.div>
+          ) : (
+            <motion.form
+              key="form"
+              onSubmit={handleSubmit}
+              className="rounded-xl sm:rounded-2xl border border-gray-800 bg-[#12121a] p-5 sm:p-8"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
             >
-              Email
-            </label>
-            <input
-              id="email"
-              type="email"
-              className="w-full rounded-lg border border-gray-700 bg-[#0a0a0f] px-4 py-3 text-white placeholder-gray-500 transition-all duration-200 focus:border-[#00f5ff] focus:outline-none focus:ring-1 focus:ring-[#00f5ff]/50"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
-            />
-          </motion.div>
+              <motion.div
+                className="mb-4 sm:mb-5"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+              >
+                <label
+                  htmlFor="username"
+                  className="mb-2 block text-sm font-medium text-gray-300"
+                >
+                  Username
+                </label>
+                <input
+                  id="username"
+                  type="text"
+                  className={`w-full rounded-lg border bg-[#0a0a0f] px-4 py-3 text-white placeholder-gray-500 transition-all duration-200 focus:outline-none focus:ring-1 ${
+                    errors.name
+                      ? "border-red-500 focus:border-red-500 focus:ring-red-500/50"
+                      : "border-gray-700 focus:border-[#00f5ff] focus:ring-[#00f5ff]/50"
+                  }`}
+                  value={name}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                    if (errors.name)
+                      setErrors((prev) => ({ ...prev, name: undefined }));
+                  }}
+                  placeholder="Enter your username"
+                  disabled={isLoading}
+                />
+                {errors.name && (
+                  <motion.p
+                    className="mt-1.5 text-xs text-red-400"
+                    initial={{ opacity: 0, y: -5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                  >
+                    {errors.name}
+                  </motion.p>
+                )}
+              </motion.div>
 
-          <motion.button
-            type="submit"
-            className="w-full cursor-pointer rounded-lg bg-[#00f5ff] px-6 py-3 font-semibold text-black transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,245,255,0.5)] hover:brightness-110 active:scale-[0.98]"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.7 }}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            Sign In
-          </motion.button>
-        </motion.form>
+              <motion.div
+                className="mb-6 sm:mb-8"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+              >
+                <label
+                  htmlFor="email"
+                  className="mb-2 block text-sm font-medium text-gray-300"
+                >
+                  Email
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  className={`w-full rounded-lg border bg-[#0a0a0f] px-4 py-3 text-white placeholder-gray-500 transition-all duration-200 focus:outline-none focus:ring-1 ${
+                    errors.email
+                      ? "border-red-500 focus:border-red-500 focus:ring-red-500/50"
+                      : "border-gray-700 focus:border-[#00f5ff] focus:ring-[#00f5ff]/50"
+                  }`}
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    if (errors.email)
+                      setErrors((prev) => ({ ...prev, email: undefined }));
+                  }}
+                  placeholder="Enter your email"
+                  disabled={isLoading}
+                />
+                {errors.email && (
+                  <motion.p
+                    className="mt-1.5 text-xs text-red-400"
+                    initial={{ opacity: 0, y: -5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                  >
+                    {errors.email}
+                  </motion.p>
+                )}
+              </motion.div>
+
+              <motion.button
+                type="submit"
+                disabled={isLoading}
+                className="w-full cursor-pointer rounded-lg bg-[#00f5ff] px-6 py-3 font-semibold text-black transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,245,255,0.5)] hover:brightness-110 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.7 }}
+                whileHover={isLoading ? {} : { scale: 1.02 }}
+                whileTap={isLoading ? {} : { scale: 0.98 }}
+              >
+                {isLoading ? (
+                  <span className="inline-flex items-center gap-2">
+                    <motion.span
+                      className="h-4 w-4 rounded-full border-2 border-black/30 border-t-black"
+                      animate={{ rotate: 360 }}
+                      transition={{
+                        duration: 1,
+                        repeat: Infinity,
+                        ease: "linear",
+                      }}
+                    />
+                    Signing in...
+                  </span>
+                ) : (
+                  "Sign In"
+                )}
+              </motion.button>
+            </motion.form>
+          )}
+        </AnimatePresence>
 
         <motion.p
           className="mt-4 sm:mt-6 text-center text-xs text-gray-500"
