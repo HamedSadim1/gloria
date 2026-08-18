@@ -1,11 +1,9 @@
 const Footer = () => {
   return (
-    <footer className="footer">
-      <div className="ui inverted vertical footer segment  ">
-        <div className="ui container">
-          Travel Match 2015. All Rights Reserved
-        </div>
-      </div>
+    <footer className="mt-24 border-t border-white/10 py-8 text-center">
+      <p className="text-sm text-white/40">
+        © {new Date().getFullYear()} Gloria. All rights reserved.
+      </p>
     </footer>
   );
 };
