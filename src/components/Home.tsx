@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const features = [
   {
@@ -18,42 +19,85 @@ const features = [
   },
 ];
 
+const stats = [
+  { value: "100%", label: "TypeScript" },
+  { value: "v19", label: "React" },
+  { value: "<1s", label: "Build Time" },
+  { value: "0", label: "Tracking*" },
+];
+
 const Home = () => {
   return (
     <div className="bg-grid min-h-screen pt-24">
       {/* Hero Section */}
       <section className="relative mx-auto max-w-6xl px-6 py-20">
         {/* Background glow effects */}
-        <div className="pointer-events-none absolute top-0 left-1/2 -z-10 h-96 w-96 -translate-x-1/2 rounded-full bg-[#00f5ff]/10 blur-[120px]" />
-        <div className="pointer-events-none absolute top-20 right-0 -z-10 h-64 w-64 rounded-full bg-[#bf00ff]/10 blur-[100px]" />
+        <motion.div
+          className="pointer-events-none absolute top-0 left-1/2 -z-10 h-96 w-96 -translate-x-1/2 rounded-full bg-[#00f5ff]/10 blur-[120px]"
+          animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="pointer-events-none absolute top-20 right-0 -z-10 h-64 w-64 rounded-full bg-[#bf00ff]/10 blur-[100px]"
+          animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.6, 0.3] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        />
 
-        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#00f5ff]/30 bg-[#00f5ff]/10 px-4 py-1.5 text-sm text-[#00f5ff]">
-          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#00f5ff]" />
+        <motion.div
+          className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#00f5ff]/30 bg-[#00f5ff]/10 px-4 py-1.5 text-sm text-[#00f5ff]"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <motion.span
+            className="h-1.5 w-1.5 rounded-full bg-[#00f5ff]"
+            animate={{ opacity: [1, 0.3, 1] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          />
           System Online
-        </div>
+        </motion.div>
 
-        <h1 className="mb-6 max-w-3xl text-5xl leading-tight font-bold tracking-tight text-white md:text-7xl">
+        <motion.h1
+          className="mb-6 max-w-3xl text-5xl leading-tight font-bold tracking-tight text-white md:text-7xl"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
           Next Gen
           <br />
           <span className="bg-gradient-to-r from-[#00f5ff] to-[#bf00ff] bg-clip-text text-transparent">
             Digital Platform
           </span>
-        </h1>
+        </motion.h1>
 
-        <p className="mb-10 max-w-xl text-lg leading-relaxed text-gray-400">
+        <motion.p
+          className="mb-10 max-w-xl text-lg leading-relaxed text-gray-400"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
           Experience the future of web development. Built with cutting-edge
           technologies for performance, security, and stunning visuals.
-        </p>
+        </motion.p>
 
-        <div className="flex flex-wrap gap-4">
+        <motion.div
+          className="flex flex-wrap gap-4"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+        >
           <Link
             to="/contact"
             className="group relative inline-flex items-center gap-2 overflow-hidden rounded-lg bg-[#00f5ff] px-8 py-4 font-semibold text-black no-underline transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,245,255,0.5)]"
           >
             <span className="relative z-10">Explore Products</span>
-            <span className="relative z-10 transition-transform group-hover:translate-x-1">
+            <motion.span
+              className="relative z-10"
+              animate={{ x: [0, 5, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            >
               →
-            </span>
+            </motion.span>
           </Link>
           <Link
             to="/about"
@@ -61,28 +105,49 @@ const Home = () => {
           >
             Learn More
           </Link>
-        </div>
+        </motion.div>
       </section>
 
       {/* Features Section */}
       <section className="mx-auto max-w-6xl px-6 py-20">
-        <div className="mb-12">
+        <motion.div
+          className="mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <h2 className="mb-2 text-sm font-semibold tracking-widest text-[#00f5ff] uppercase">
             Features
           </h2>
           <p className="text-3xl font-bold text-white">Built for the future</p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-          {features.map(({ icon, title, desc }) => (
-            <div
+          {features.map(({ icon, title, desc }, index) => (
+            <motion.div
               key={title}
               className="group rounded-xl border border-gray-800 bg-[#12121a] p-8 transition-all duration-300 hover:border-[#00f5ff]/30 hover:bg-[#1a1a2e]"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              whileHover={{ y: -5 }}
             >
-              <div className="mb-4 text-3xl">{icon}</div>
+              <motion.div
+                className="mb-4 text-3xl"
+                animate={{ rotate: [0, 10, -10, 0] }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                {icon}
+              </motion.div>
               <h3 className="mb-2 text-lg font-semibold text-white">{title}</h3>
               <p className="text-sm leading-relaxed text-gray-400">{desc}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>
@@ -90,21 +155,26 @@ const Home = () => {
       {/* Stats Section */}
       <section className="mx-auto max-w-6xl px-6 py-16">
         <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
-          {[
-            { value: "100%", label: "TypeScript" },
-            { value: "v19", label: "React" },
-            { value: "<1s", label: "Build Time" },
-            { value: "0", label: "Dependencies*" },
-          ].map(({ value, label }) => (
-            <div
+          {stats.map(({ value, label }, index) => (
+            <motion.div
               key={label}
               className="rounded-xl border border-gray-800 bg-[#12121a] p-6 text-center"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <div className="mb-1 text-2xl font-bold text-[#00f5ff]">
+              <motion.div
+                className="mb-1 text-2xl font-bold text-[#00f5ff]"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.3 + index * 0.1 }}
+              >
                 {value}
-              </div>
+              </motion.div>
               <div className="text-sm text-gray-500">{label}</div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>

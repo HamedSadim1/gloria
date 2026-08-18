@@ -1,5 +1,6 @@
 import { useState, type FC } from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Login: FC = () => {
   const [name, setName] = useState("");
@@ -19,24 +20,50 @@ const Login: FC = () => {
   return (
     <div className="bg-grid flex min-h-screen items-center justify-center px-6 pt-24">
       {/* Background glow */}
-      <div className="pointer-events-none absolute top-1/3 left-1/2 -z-10 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#bf00ff]/10 blur-[120px]" />
+      <motion.div
+        className="pointer-events-none absolute top-1/3 left-1/2 -z-10 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#bf00ff]/10 blur-[120px]"
+        animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+      />
 
-      <div className="w-full max-w-md">
-        <div className="mb-8 text-center">
-          <div className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-2xl border border-[#00f5ff]/30 bg-[#00f5ff]/10 text-2xl text-[#00f5ff]">
+      <motion.div
+        className="w-full max-w-md"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        <motion.div
+          className="mb-8 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <motion.div
+            className="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-2xl border border-[#00f5ff]/30 bg-[#00f5ff]/10 text-2xl text-[#00f5ff]"
+            animate={{ rotate: [0, 5, -5, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          >
             ◆
-          </div>
+          </motion.div>
           <h1 className="mb-2 text-2xl font-bold text-white">Welcome Back</h1>
           <p className="text-sm text-gray-400">
             Sign in to access your dashboard
           </p>
-        </div>
+        </motion.div>
 
-        <form
+        <motion.form
           onSubmit={handleSubmit}
           className="rounded-2xl border border-gray-800 bg-[#12121a] p-8"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <div className="mb-5">
+          <motion.div
+            className="mb-5"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+          >
             <label className="mb-2 block text-sm font-medium text-gray-300">
               Username
             </label>
@@ -47,9 +74,14 @@ const Login: FC = () => {
               onChange={(e) => setName(e.target.value)}
               placeholder="Enter your username"
             />
-          </div>
+          </motion.div>
 
-          <div className="mb-8">
+          <motion.div
+            className="mb-8"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+          >
             <label className="mb-2 block text-sm font-medium text-gray-300">
               Email
             </label>
@@ -60,23 +92,33 @@ const Login: FC = () => {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
             />
-          </div>
+          </motion.div>
 
-          <button
+          <motion.button
             type="submit"
             className="w-full cursor-pointer rounded-lg bg-[#00f5ff] py-3.5 font-semibold text-black transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,245,255,0.4)] hover:brightness-110 active:scale-[0.98]"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.7 }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
           >
             Sign In
-          </button>
-        </form>
+          </motion.button>
+        </motion.form>
 
-        <p className="mt-6 text-center text-xs text-gray-500">
+        <motion.p
+          className="mt-6 text-center text-xs text-gray-500"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.8 }}
+        >
           Don't have an account?{" "}
           <a href="#" className="text-[#00f5ff] no-underline hover:underline">
             Contact Admin
           </a>
-        </p>
-      </div>
+        </motion.p>
+      </motion.div>
     </div>
   );
 };
