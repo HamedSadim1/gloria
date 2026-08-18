@@ -7,41 +7,100 @@ const Card = () => {
   const product = useMemo(() => products.filter((p) => p.id === user), [user]);
 
   return (
-    <div className="mx-auto mt-32 max-w-2xl px-6">
-      <h2 className="mb-6 text-2xl font-bold text-white">Product Details</h2>
+    <div className="bg-grid min-h-screen px-6 pt-32">
+      <div className="mx-auto max-w-3xl">
+        {/* Back link */}
+        <Link
+          to="/contact"
+          className="mb-8 inline-flex items-center gap-2 text-sm text-gray-400 no-underline transition-colors hover:text-[#00f5ff]"
+        >
+          ← Back to Products
+        </Link>
 
-      <div className="space-y-4">
         {product.map((p) => (
           <div
             key={p.id}
-            className="rounded-2xl border border-white/15 bg-white/10 p-8 shadow-2xl backdrop-blur-xl"
+            className="overflow-hidden rounded-2xl border border-gray-800 bg-[#12121a]"
           >
-            <div className="mb-6">
-              <h3 className="mb-2 text-3xl font-bold text-white">{p.name}</h3>
-              <p className="text-sm text-white/50">Product ID: {p.id}</p>
+            {/* Header */}
+            <div className="relative border-b border-gray-800 bg-gradient-to-r from-[#00f5ff]/10 to-[#bf00ff]/10 p-8">
+              <div className="mb-2 text-xs font-medium tracking-widest text-[#00f5ff] uppercase">
+                Product Details
+              </div>
+              <h1 className="text-3xl font-bold capitalize text-white">
+                {p.name}
+              </h1>
             </div>
 
-            <div className="mb-8">
-              <h4 className="mb-2 text-lg font-semibold text-white">
-                Description
-              </h4>
-              <p className="leading-relaxed text-white/70">
-                This is a premium {p.name.toLowerCase()} designed with quality
-                and style in mind. Perfect for modern living spaces and
-                professional environments.
-              </p>
-            </div>
+            {/* Content */}
+            <div className="p-8">
+              {/* Product Info Grid */}
+              <div className="mb-8 grid grid-cols-2 gap-4">
+                <div className="rounded-lg border border-gray-800 bg-[#0a0a0f] p-4">
+                  <div className="mb-1 text-xs text-gray-500">Product ID</div>
+                  <div className="font-mono text-sm text-white">{p.id}</div>
+                </div>
+                <div className="rounded-lg border border-gray-800 bg-[#0a0a0f] p-4">
+                  <div className="mb-1 text-xs text-gray-500">Status</div>
+                  <div className="flex items-center gap-2 text-sm text-green-400">
+                    <span className="h-2 w-2 rounded-full bg-green-400" />
+                    Active
+                  </div>
+                </div>
+              </div>
 
-            <div className="flex items-center justify-between">
-              <Link
-                to="/contact"
-                className="rounded-lg border border-white/20 bg-white/15 px-5 py-2.5 font-medium text-white no-underline backdrop-blur-sm transition-all duration-200 hover:bg-white/25"
-              >
-                ← Back to Products
-              </Link>
-              <span className="rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-medium text-white/70">
-                Premium Quality
-              </span>
+              {/* Description */}
+              <div className="mb-8">
+                <h2 className="mb-3 text-sm font-semibold tracking-widest text-[#00f5ff] uppercase">
+                  Description
+                </h2>
+                <p className="leading-relaxed text-gray-300">
+                  This is a premium {p.name.toLowerCase()} designed with quality
+                  and style in mind. Crafted using the finest materials and
+                  cutting-edge manufacturing processes, this product represents
+                  the perfect blend of form and function.
+                </p>
+              </div>
+
+              {/* Specifications */}
+              <div className="mb-8">
+                <h2 className="mb-3 text-sm font-semibold tracking-widest text-[#00f5ff] uppercase">
+                  Specifications
+                </h2>
+                <div className="space-y-2">
+                  {[
+                    { label: "Category", value: "Premium Collection" },
+                    { label: "Quality", value: "A+" },
+                    { label: "Warranty", value: "5 Years" },
+                  ].map(({ label, value }) => (
+                    <div
+                      key={label}
+                      className="flex items-center justify-between border-b border-gray-800 py-3"
+                    >
+                      <span className="text-sm text-gray-400">{label}</span>
+                      <span className="text-sm font-medium text-white">
+                        {value}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Actions */}
+              <div className="flex gap-4">
+                <Link
+                  to="/contact"
+                  className="flex-1 rounded-lg border border-gray-700 bg-transparent py-3 text-center font-medium text-white no-underline transition-all duration-300 hover:border-[#00f5ff]/50 hover:bg-[#00f5ff]/5"
+                >
+                  ← Back
+                </Link>
+                <Link
+                  to="/login"
+                  className="flex-1 rounded-lg bg-[#00f5ff] py-3 text-center font-semibold text-black no-underline transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,245,255,0.4)]"
+                >
+                  Contact Sales
+                </Link>
+              </div>
             </div>
           </div>
         ))}
