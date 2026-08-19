@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { STAGGER } from "@/config/constants";
+import { cn } from "@/utils";
 
 interface NavLinkItem {
   to: string;
@@ -47,11 +48,12 @@ const MobileMenu = ({
                   onClick={onClose}
                   role="menuitem"
                   className={({ isActive }) =>
-                    `block rounded-lg px-4 py-3 text-sm font-medium no-underline transition-all duration-200 ${
+                    cn(
+                      "block rounded-lg px-4 py-3 text-sm font-medium no-underline transition-all duration-200",
                       isActive
                         ? "bg-neon-cyan/10 text-neon-cyan"
-                        : "text-gray-400 hover:bg-white/5 hover:text-white"
-                    }`
+                        : "text-gray-400 hover:bg-white/5 hover:text-white",
+                    )
                   }
                 >
                   {label}

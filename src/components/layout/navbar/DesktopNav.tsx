@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import NavUserMenu from "@/components/layout/navbar/NavUserMenu";
 import { ANIM, STAGGER, DELAY } from "@/config/constants";
+import { cn } from "@/utils";
 
 interface NavLink {
   to: string;
@@ -33,9 +34,10 @@ const DesktopNav = ({
           <NavLink
             to={to}
             className={({ isActive }) =>
-              `relative px-4 py-2 text-sm font-medium tracking-wide no-underline transition-all duration-300 ${
-                isActive ? "text-neon-cyan" : "text-gray-400 hover:text-white"
-              }`
+              cn(
+                "relative px-4 py-2 text-sm font-medium tracking-wide no-underline transition-all duration-300",
+                isActive ? "text-neon-cyan" : "text-gray-400 hover:text-white",
+              )
             }
           >
             {({ isActive }) => (
