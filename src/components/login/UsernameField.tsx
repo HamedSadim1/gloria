@@ -31,7 +31,7 @@ const UsernameField = ({
       <input
         id="username"
         type="text"
-        className={`w-full rounded-lg border bg-dark-900 px-4 py-3 text-white placeholder-gray-500 transition-all duration-200 focus:outline-none focus:ring-1 ${
+        className={`w-full rounded-lg border bg-dark-900 px-4 py-3 text-white placeholder-gray-500 transition-all duration-200 focus:outline-hidden focus:ring-1 ${
           error
             ? "border-red-500 focus:border-red-500 focus:ring-red-500/50"
             : "border-gray-700 focus:border-neon-cyan focus:ring-neon-cyan/50"

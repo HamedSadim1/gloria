@@ -33,7 +33,7 @@ const DashboardWidget = ({
     >
       <div className="mb-2 sm:mb-3 flex items-center justify-between">
         <motion.span
-          className={`flex h-8 sm:h-10 w-8 sm:w-10 items-center justify-center rounded-lg bg-gradient-to-br ${color} ${iconColor}`}
+          className={`flex h-8 sm:h-10 w-8 sm:w-10 items-center justify-center rounded-lg bg-linear-to-br ${color} ${iconColor}`}
           animate={{ rotate: [0, 5, -5, 0] }}
           transition={{
             duration: ANIM.ROTATION,

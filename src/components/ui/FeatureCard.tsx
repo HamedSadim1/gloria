@@ -54,7 +54,7 @@ const FeatureCard = ({
       >
         {iconColor ? (
           <span
-            className={`inline-flex items-center justify-center rounded-lg sm:rounded-xl bg-gradient-to-br ${iconColor} text-white ${containerSizes[iconSize]}`}
+            className={`inline-flex items-center justify-center rounded-lg sm:rounded-xl bg-linear-to-br ${iconColor} text-white ${containerSizes[iconSize]}`}
           >
             <Icon className={iconSizes[iconSize]} />
           </span>

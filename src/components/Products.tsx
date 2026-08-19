@@ -38,7 +38,7 @@ const Products = () => {
                 to={productUrl(product.id)}
                 className="group relative block overflow-hidden rounded-xl border border-gray-800 bg-dark-800 no-underline transition-all duration-300 hover:border-neon-cyan/30 hover:shadow-[0_0_30px_rgba(0,245,255,0.1)]"
               >
-                <div className="relative h-24 sm:h-32 overflow-hidden bg-gradient-to-br from-neon-cyan/10 to-neon-purple/10">
+                <div className="relative h-24 sm:h-32 overflow-hidden bg-linear-to-br from-neon-cyan/10 to-neon-purple/10">
                   <motion.div
                     className="flex h-full items-center justify-center text-3xl sm:text-4xl opacity-50 transition-opacity group-hover:opacity-80"
                     whileHover={{ scale: 1.1 }}

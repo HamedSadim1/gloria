@@ -59,7 +59,7 @@ export const CONTENT_WIDTH = "max-w-5xl";
 // ── Shared Tailwind classes ──────────────────────────────────────────
 /** Gradient text class (cyan → purple) */
 export const GRADIENT_TEXT =
-  "bg-gradient-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent";
+  "bg-linear-to-r from-neon-cyan to-neon-purple bg-clip-text text-transparent";
 
 /** Repeated section heading class (small uppercase cyan label) */
 export const SECTION_HEADING_CLASS =

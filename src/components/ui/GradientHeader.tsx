@@ -10,7 +10,7 @@ interface GradientHeaderProps {
 
 const GradientHeader = ({ label, title, titleId }: GradientHeaderProps) => {
   return (
-    <div className="relative border-b border-gray-800 bg-gradient-to-r from-neon-cyan/10 to-neon-purple/10 p-5 sm:p-8">
+    <div className="relative border-b border-gray-800 bg-linear-to-r from-neon-cyan/10 to-neon-purple/10 p-5 sm:p-8">
       <motion.div
         className="mb-2 text-[10px] sm:text-xs font-medium tracking-widest text-neon-cyan uppercase"
         initial={{ opacity: 0, y: 10 }}
