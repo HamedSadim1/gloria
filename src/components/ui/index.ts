@@ -10,3 +10,6 @@ export { default as SectionHeading } from "./SectionHeading";
 export { default as FeatureCard } from "./FeatureCard";
 export { default as GradientHeader } from "./GradientHeader";
 export { default as SpecRow } from "./SpecRow";
+export { default as Button } from "./Button";
+export { default as DashboardWidget } from "./DashboardWidget";
+export { default as ActivityRow } from "./ActivityRow";

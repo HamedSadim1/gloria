@@ -1,6 +1,6 @@
 import { Component, type ErrorInfo, type ReactNode } from "react";
 import { motion } from "framer-motion";
-import { AmbientGlow, Badge, FadeIn } from "./ui";
+import { AmbientGlow, Badge, FadeIn, Button } from "./ui";
 
 interface Props {
   children: ReactNode;
@@ -95,18 +95,13 @@ class ErrorBoundary extends Component<Props, State> {
 
             <FadeIn delay={0.6} y={20}>
               <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
-                <button
-                  onClick={this.handleReset}
-                  className="cursor-pointer rounded-lg bg-[#00f5ff] px-6 py-3 font-semibold text-black transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,245,255,0.5)] focus-visible:ring-2 focus-visible:ring-[#00f5ff] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0f]"
-                >
-                  Go to Home
-                </button>
-                <button
+                <Button onClick={this.handleReset}>Go to Home</Button>
+                <Button
+                  variant="secondary"
                   onClick={() => window.location.reload()}
-                  className="cursor-pointer rounded-lg border border-gray-700 bg-transparent px-6 py-3 font-semibold text-white transition-all duration-300 hover:border-[#00f5ff]/50 hover:bg-[#00f5ff]/5 focus-visible:ring-2 focus-visible:ring-[#00f5ff] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0f]"
                 >
                   Reload Page
-                </button>
+                </Button>
               </div>
             </FadeIn>
           </div>

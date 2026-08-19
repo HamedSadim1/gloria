@@ -9,7 +9,14 @@ import {
   ActivityIcon,
 } from "./Icons";
 import { useAuth } from "../hooks/useAuth";
-import { PageLayout, FadeIn, StatusDot } from "./ui";
+import {
+  PageLayout,
+  FadeIn,
+  StatusDot,
+  Button,
+  DashboardWidget,
+  ActivityRow,
+} from "./ui";
 
 const widgets = [
   {
@@ -61,16 +68,6 @@ const activity = [
   },
 ];
 
-const statusColors = {
-  success: "bg-green-400",
-  pending: "bg-yellow-400",
-};
-
-const statusLabels = {
-  success: "Completed",
-  pending: "Processing",
-};
-
 const Dashboard: FC = () => {
   const { userName, logout } = useAuth();
   const navigate = useNavigate();
@@ -105,12 +102,9 @@ const Dashboard: FC = () => {
               <StatusDot color="bg-green-400" />
               <span className="text-xs sm:text-sm text-gray-300">Online</span>
             </motion.div>
-            <button
-              onClick={handleLogout}
-              className="cursor-pointer rounded-lg border border-gray-700 bg-[#12121a] px-3 sm:px-4 py-2 text-xs sm:text-sm text-gray-400 transition-all duration-200 hover:border-red-500/50 hover:bg-red-500/10 hover:text-red-400 focus-visible:ring-2 focus-visible:ring-[#00f5ff]"
-            >
+            <Button variant="secondary" onClick={handleLogout}>
               Logout
-            </button>
+            </Button>
           </div>
         </FadeIn>
 
@@ -119,51 +113,9 @@ const Dashboard: FC = () => {
           className="mb-6 sm:mb-8 grid grid-cols-2 gap-3 sm:gap-4"
           aria-label="Stats overview"
         >
-          {widgets.map(
-            (
-              { Icon, label, value, change, color, borderColor, iconColor },
-              index,
-            ) => (
-              <motion.div
-                key={label}
-                className={`rounded-xl border border-gray-800 bg-[#12121a] p-3 sm:p-5 transition-all duration-300 ${borderColor}`}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                whileHover={{ y: -5, scale: 1.02 }}
-              >
-                <div className="mb-2 sm:mb-3 flex items-center justify-between">
-                  <motion.span
-                    className={`flex h-8 sm:h-10 w-8 sm:w-10 items-center justify-center rounded-lg bg-gradient-to-br ${color} ${iconColor}`}
-                    animate={{ rotate: [0, 5, -5, 0] }}
-                    transition={{
-                      duration: 4,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                      delay: index * 0.5,
-                    }}
-                    aria-hidden="true"
-                  >
-                    <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
-                  </motion.span>
-                  <span className="text-[10px] sm:text-xs font-medium text-green-400">
-                    {change}
-                  </span>
-                </div>
-                <motion.div
-                  className="text-xl sm:text-2xl font-bold text-white"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.8, delay: 0.5 + index * 0.1 }}
-                >
-                  {value}
-                </motion.div>
-                <div className="text-[10px] sm:text-xs text-gray-400">
-                  {label}
-                </div>
-              </motion.div>
-            ),
-          )}
+          {widgets.map((widget, index) => (
+            <DashboardWidget key={widget.label} {...widget} index={index} />
+          ))}
         </section>
 
         {/* Activity Feed */}
@@ -191,35 +143,8 @@ const Dashboard: FC = () => {
             </div>
           ) : (
             <div className="space-y-3 sm:space-y-4">
-              {activity.map(({ action, time, status }, index) => (
-                <motion.div
-                  key={`${action}-${time}`}
-                  className="flex items-center justify-between border-b border-gray-800 pb-3 sm:pb-4 last:border-0 last:pb-0"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.4, delay: 0.7 + index * 0.1 }}
-                >
-                  <div className="flex items-center gap-2 sm:gap-3">
-                    <StatusDot color={statusColors[status]} />
-                    <div>
-                      <span className="text-xs sm:text-sm text-gray-300">
-                        {action}
-                      </span>
-                      <span
-                        className={`ml-2 text-[10px] sm:text-xs ${
-                          status === "pending"
-                            ? "text-yellow-400"
-                            : "text-green-400"
-                        }`}
-                      >
-                        {statusLabels[status]}
-                      </span>
-                    </div>
-                  </div>
-                  <span className="text-[10px] sm:text-xs text-gray-400">
-                    {time}
-                  </span>
-                </motion.div>
+              {activity.map((item, index) => (
+                <ActivityRow key={item.action} {...item} index={index} />
               ))}
             </div>
           )}
