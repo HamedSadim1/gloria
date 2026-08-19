@@ -34,7 +34,7 @@ const Breadcrumb = () => (
         /
       </li>
       <li>
-        <span className="text-[#00f5ff]">Details</span>
+        <span className="text-neon-cyan">Details</span>
       </li>
     </ol>
   </motion.nav>

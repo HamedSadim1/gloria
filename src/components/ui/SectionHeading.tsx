@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { motion } from "framer-motion";
+import { ANIM } from "../../config/constants";
 
 interface SectionHeadingProps {
   /** Small uppercase label (e.g. "Features", "Tech Stack") */
@@ -25,11 +26,11 @@ const SectionHeading = ({
       whileInView={viewport ? { opacity: 1, y: 0 } : undefined}
       animate={viewport ? undefined : { opacity: 1, y: 0 }}
       viewport={viewport ? { once: true } : undefined}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: ANIM.FADE }}
     >
       <h2
         id={id}
-        className="mb-2 text-xs sm:text-sm font-semibold tracking-widest text-[#00f5ff] uppercase"
+        className="mb-2 text-xs sm:text-sm font-semibold tracking-widest text-neon-cyan uppercase"
       >
         {label}
       </h2>

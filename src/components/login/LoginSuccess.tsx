@@ -8,7 +8,7 @@ const LoginSuccess = ({ name }: LoginSuccessProps) => {
   return (
     <motion.div
       key="success"
-      className="rounded-xl sm:rounded-2xl border border-green-500/30 bg-[#12121a] p-8 text-center"
+      className="rounded-xl sm:rounded-2xl border border-green-500/30 bg-dark-800 p-8 text-center"
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}

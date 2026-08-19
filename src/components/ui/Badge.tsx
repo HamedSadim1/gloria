@@ -8,7 +8,7 @@ interface BadgeProps {
 }
 
 const variantClasses = {
-  cyan: "border-[#00f5ff]/30 bg-[#00f5ff]/10 text-[#00f5ff]",
+  cyan: "border-neon-cyan/30 bg-neon-cyan/10 text-neon-cyan",
   red: "border-red-500/30 bg-red-500/10 text-red-400",
 };
 
@@ -18,7 +18,7 @@ const Badge = ({ children, showDot, variant = "cyan" }: BadgeProps) => {
       className={`mb-4 inline-flex items-center gap-2 rounded-full border px-3 sm:px-4 py-1.5 text-xs sm:text-sm ${variantClasses[variant]}`}
     >
       {showDot && (
-        <StatusDot color={variant === "red" ? "bg-red-400" : "bg-[#00f5ff]"} />
+        <StatusDot color={variant === "red" ? "bg-red-400" : "bg-neon-cyan"} />
       )}
       {children}
     </div>

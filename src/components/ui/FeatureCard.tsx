@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import type { ElementType } from "react";
+import { ANIM, STAGGER } from "../../config/constants";
 
 interface FeatureCardProps {
   Icon: ElementType;
@@ -34,17 +35,21 @@ const FeatureCard = ({
 }: FeatureCardProps) => {
   return (
     <motion.div
-      className="group rounded-xl border border-gray-800 bg-[#12121a] p-6 sm:p-8 transition-all duration-300 hover:border-[#00f5ff]/30 hover:bg-[#1a1a2e]"
+      className="group rounded-xl border border-gray-800 bg-dark-800 p-6 sm:p-8 transition-all duration-300 hover:border-neon-cyan/30 hover:bg-dark-700"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
+      transition={{ duration: ANIM.FADE, delay: index * STAGGER }}
       whileHover={{ y: -5 }}
     >
       <motion.div
-        className={`mb-3 sm:mb-4 ${iconColor ?? "text-[#00f5ff]"}`}
+        className={`mb-3 sm:mb-4 ${iconColor ?? "text-neon-cyan"}`}
         animate={{ rotate: [0, 10, -10, 0] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        transition={{
+          duration: ANIM.ROTATION,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
         aria-hidden="true"
       >
         {iconColor ? (

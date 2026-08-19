@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRightIcon } from "../Icons";
+import { ANIM } from "../../config/constants";
 
 interface BouncingArrowProps {
   className?: string;
@@ -10,7 +11,7 @@ const BouncingArrow = ({ className }: BouncingArrowProps) => {
     <motion.span
       className={className}
       animate={{ x: [0, 5, 0] }}
-      transition={{ duration: 1.5, repeat: Infinity }}
+      transition={{ duration: ANIM.BOUNCE, repeat: Infinity }}
       aria-hidden="true"
     >
       <ArrowRightIcon className="h-5 w-5" />

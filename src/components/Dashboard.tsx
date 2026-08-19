@@ -18,6 +18,7 @@ import {
   ActivityRow,
 } from "./ui";
 import { ROUTES } from "../config/routes";
+import { ANIM } from "../config/constants";
 
 const widgets = [
   {
@@ -96,9 +97,9 @@ const Dashboard: FC = () => {
           </div>
           <div className="flex items-center gap-3 self-start">
             <motion.div
-              className="flex items-center gap-2 rounded-lg border border-gray-700 bg-[#12121a] px-3 sm:px-4 py-2"
+              className="flex items-center gap-2 rounded-lg border border-gray-700 bg-dark-800 px-3 sm:px-4 py-2"
               animate={{ opacity: [0.7, 1, 0.7] }}
-              transition={{ duration: 2, repeat: Infinity }}
+              transition={{ duration: ANIM.PULSE, repeat: Infinity }}
             >
               <StatusDot color="bg-green-400" />
               <span className="text-xs sm:text-sm text-gray-300">Online</span>
@@ -121,7 +122,7 @@ const Dashboard: FC = () => {
 
         {/* Activity Feed */}
         <motion.section
-          className="rounded-xl border border-gray-800 bg-[#12121a] p-4 sm:p-6 mb-16 sm:mb-20"
+          className="rounded-xl border border-gray-800 bg-dark-800 p-4 sm:p-6 mb-16 sm:mb-20"
           aria-labelledby="activity-heading"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -132,7 +133,7 @@ const Dashboard: FC = () => {
               id="activity-heading"
               className="flex items-center gap-2 text-base sm:text-lg font-semibold text-white"
             >
-              <ActivityIcon className="h-5 w-5 text-[#00f5ff]" />
+              <ActivityIcon className="h-5 w-5 text-neon-cyan" />
               Recent Activity
             </h2>
           </div>

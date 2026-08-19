@@ -7,7 +7,7 @@ interface AmbientGlowProps {
 }
 
 const AmbientGlow = ({
-  color = "bg-[#00f5ff]/10",
+  color = "bg-neon-cyan/10",
   className = "top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2",
   duration = 8,
 }: AmbientGlowProps) => {

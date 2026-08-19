@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { DiamondIcon } from "../Icons";
 import { ROUTES } from "../../config/routes";
-import { BRAND } from "../../config/constants";
+import { BRAND, ANIM } from "../../config/constants";
 
 interface BrandLogoProps {
   /** Render as a link (Navbar) or plain text (Footer) */
@@ -20,11 +20,15 @@ const BrandLogo = ({ linked = false, size = "md" }: BrandLogoProps) => {
   const content = (
     <span className="flex items-center gap-2 text-gray-400 transition-colors hover:text-white">
       <motion.span
-        className="text-[#00f5ff]"
+        className="text-neon-cyan"
         animate={linked ? { rotate: [0, 360] } : undefined}
         transition={
           linked
-            ? { duration: 20, repeat: Infinity, ease: "linear" }
+            ? {
+                duration: ANIM.BRAND_ROTATION,
+                repeat: Infinity,
+                ease: "linear",
+              }
             : undefined
         }
         aria-hidden="true"
@@ -33,7 +37,7 @@ const BrandLogo = ({ linked = false, size = "md" }: BrandLogoProps) => {
       </motion.span>
       <span>
         {BRAND}
-        <span className="text-[#00f5ff]">.</span>
+        <span className="text-neon-cyan">.</span>
       </span>
     </span>
   );

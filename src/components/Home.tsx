@@ -43,7 +43,7 @@ const Home = () => {
     <PageLayout>
       <AmbientGlow className="top-0 left-1/2 -translate-x-1/2" />
       <AmbientGlow
-        color="bg-[#bf00ff]/10"
+        color="bg-neon-purple/10"
         className="top-20 right-0"
         duration={10}
       />
@@ -81,14 +81,14 @@ const Home = () => {
         >
           <Link
             to={ROUTES.PRODUCTS}
-            className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-lg bg-[#00f5ff] px-6 sm:px-8 py-3 font-semibold text-black no-underline transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,245,255,0.5)]"
+            className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-lg bg-neon-cyan px-6 sm:px-8 py-3 font-semibold text-black no-underline transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,245,255,0.5)]"
           >
             <span className="relative z-10">Explore Products</span>
             <BouncingArrow className="relative z-10 inline-flex" />
           </Link>
           <Link
             to={ROUTES.ABOUT}
-            className="inline-flex items-center justify-center gap-2 rounded-lg border border-gray-700 bg-transparent px-6 sm:px-8 py-3 font-semibold text-white no-underline transition-all duration-300 hover:border-[#00f5ff]/50 hover:bg-[#00f5ff]/5"
+            className="inline-flex items-center justify-center gap-2 rounded-lg border border-gray-700 bg-transparent px-6 sm:px-8 py-3 font-semibold text-white no-underline transition-all duration-300 hover:border-neon-cyan/50 hover:bg-neon-cyan/5"
           >
             Learn More
           </Link>

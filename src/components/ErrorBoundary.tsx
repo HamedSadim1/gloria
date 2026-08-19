@@ -2,6 +2,7 @@ import { Component, type ErrorInfo, type ReactNode } from "react";
 import { motion } from "framer-motion";
 import { AmbientGlow, Badge, FadeIn, Button } from "./ui";
 import { ROUTES } from "../config/routes";
+import { ANIM } from "../config/constants";
 
 interface Props {
   children: ReactNode;
@@ -47,7 +48,11 @@ class ErrorBoundary extends Component<Props, State> {
             <motion.div
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
+              transition={{
+                duration: ANIM.FADE,
+                type: "spring",
+                stiffness: 100,
+              }}
             >
               <div className="mb-6 inline-flex h-20 w-20 items-center justify-center rounded-2xl border border-red-500/30 bg-red-500/10">
                 <svg
@@ -83,7 +88,7 @@ class ErrorBoundary extends Component<Props, State> {
 
             {this.state.error && (
               <FadeIn delay={0.5} y={20} className="mb-6">
-                <div className="rounded-lg border border-gray-800 bg-[#12121a] p-4 text-left">
+                <div className="rounded-lg border border-gray-800 bg-dark-800 p-4 text-left">
                   <p className="mb-1 text-xs font-medium text-gray-400 uppercase">
                     Error Details
                   </p>

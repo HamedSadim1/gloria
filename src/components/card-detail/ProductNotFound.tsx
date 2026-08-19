@@ -16,7 +16,7 @@ const ProductNotFound = () => (
       <FadeIn delay={0.2} y={20}>
         <Link
           to={ROUTES.PRODUCTS}
-          className="inline-flex items-center gap-2 rounded-lg bg-[#00f5ff] px-6 py-3 font-semibold text-sm text-black no-underline transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,245,255,0.5)]"
+          className="inline-flex items-center gap-2 rounded-lg bg-neon-cyan px-6 py-3 font-semibold text-sm text-black no-underline transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,245,255,0.5)]"
         >
           ← Back to Products
         </Link>

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
+import { ANIM } from "../../config/constants";
 
 interface FadeInProps {
   children: ReactNode;
@@ -22,7 +23,7 @@ const FadeIn = ({
   y = 30,
   x,
   delay = 0,
-  duration = 0.6,
+  duration = ANIM.FADE,
   viewport = false,
   className,
 }: FadeInProps) => {

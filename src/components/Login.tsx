@@ -5,6 +5,11 @@ import { useAuth } from "../hooks/useAuth";
 import { PageLayout, AmbientGlow, FadeIn } from "./ui";
 import { ROUTES } from "../config/routes";
 import {
+  MIN_USERNAME_LENGTH,
+  API_DELAY_MS,
+  LOGIN_REDIRECT_MS,
+} from "../config/constants";
+import {
   LoginHeader,
   LoginSuccess,
   UsernameField,
@@ -34,8 +39,8 @@ const Login: FC = () => {
     const newErrors: { name?: string } = {};
     if (!name.trim()) {
       newErrors.name = "Username is required";
-    } else if (name.trim().length < 2) {
-      newErrors.name = "Username must be at least 2 characters";
+    } else if (name.trim().length < MIN_USERNAME_LENGTH) {
+      newErrors.name = `Username must be at least ${MIN_USERNAME_LENGTH} characters`;
     }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -50,7 +55,7 @@ const Login: FC = () => {
     setIsLoading(true);
 
     // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 800));
+    await new Promise((resolve) => setTimeout(resolve, API_DELAY_MS));
 
     login(name.trim());
     setIsLoading(false);
@@ -58,12 +63,12 @@ const Login: FC = () => {
 
     timeoutRef.current = window.setTimeout(() => {
       navigate(ROUTES.DASHBOARD);
-    }, 1000);
+    }, LOGIN_REDIRECT_MS);
   };
 
   return (
     <PageLayout>
-      <AmbientGlow color="bg-[#bf00ff]/10" />
+      <AmbientGlow color="bg-neon-purple/10" />
 
       <div className="mx-auto w-full max-w-md">
         <LoginHeader />
@@ -75,7 +80,7 @@ const Login: FC = () => {
             <form
               key="form"
               onSubmit={handleSubmit}
-              className="rounded-xl sm:rounded-2xl border border-gray-800 bg-[#12121a] p-5 sm:p-8"
+              className="rounded-xl sm:rounded-2xl border border-gray-800 bg-dark-800 p-5 sm:p-8"
             >
               <UsernameField
                 value={name}
@@ -96,7 +101,7 @@ const Login: FC = () => {
             Don't have an account?{" "}
             <Link
               to={ROUTES.PRODUCTS}
-              className="text-[#00f5ff] no-underline hover:underline"
+              className="text-neon-cyan no-underline hover:underline"
             >
               View Products
             </Link>

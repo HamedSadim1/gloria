@@ -7,7 +7,11 @@ import {
   StatCard,
   SectionHeading,
 } from "./ui";
-import { GRADIENT_TEXT, SECTION_HEADING_CLASS } from "../config/constants";
+import {
+  GRADIENT_TEXT,
+  SECTION_HEADING_CLASS,
+  ANIM,
+} from "../config/constants";
 
 const techStack = [
   {
@@ -81,12 +85,12 @@ const About = () => {
 
         {/* Mission */}
         <motion.section
-          className="rounded-xl border border-gray-800 bg-[#12121a] p-5 sm:p-8 mb-16 sm:mb-20"
+          className="rounded-xl border border-gray-800 bg-dark-800 p-5 sm:p-8 mb-16 sm:mb-20"
           aria-labelledby="mission-heading"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: ANIM.FADE }}
         >
           <h2 id="mission-heading" className={SECTION_HEADING_CLASS}>
             Our Mission

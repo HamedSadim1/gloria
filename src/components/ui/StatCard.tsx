@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { ANIM, STAGGER } from "../../config/constants";
 
 interface StatCardProps {
   value: string;
@@ -19,20 +20,20 @@ const StatCard = ({
 }: StatCardProps) => {
   return (
     <motion.div
-      className={`rounded-xl border border-gray-800 bg-[#12121a] p-4 sm:p-6 ${centered ? "text-center" : ""}`}
+      className={`rounded-xl border border-gray-800 bg-dark-800 p-4 sm:p-6 ${centered ? "text-center" : ""}`}
       initial={{ opacity: 0, scale: 0.8 }}
       whileInView={viewport ? { opacity: 1, scale: 1 } : undefined}
       animate={viewport ? undefined : { opacity: 1, scale: 1 }}
       viewport={viewport ? { once: true } : undefined}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      transition={{ duration: ANIM.ITEM, delay: index * STAGGER }}
     >
       <motion.div
-        className="mb-1 text-xl sm:text-2xl font-bold text-[#00f5ff]"
+        className="mb-1 text-xl sm:text-2xl font-bold text-neon-cyan"
         initial={{ opacity: 0 }}
         whileInView={viewport ? { opacity: 1 } : undefined}
         animate={viewport ? undefined : { opacity: 1 }}
         viewport={viewport ? { once: true } : undefined}
-        transition={{ duration: 0.8, delay: 0.3 + index * 0.1 }}
+        transition={{ duration: ANIM.SLOW, delay: 0.3 + index * STAGGER }}
       >
         {value}
       </motion.div>

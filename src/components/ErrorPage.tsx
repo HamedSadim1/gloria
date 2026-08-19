@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { PageLayout, AmbientGlow, Badge, FadeIn } from "./ui";
 import { ROUTES } from "../config/routes";
+import { ANIM } from "../config/constants";
 
 const ErrorPage = () => {
   return (
@@ -14,7 +15,7 @@ const ErrorPage = () => {
           aria-hidden="true"
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
+          transition={{ duration: ANIM.FADE, type: "spring", stiffness: 100 }}
         >
           404
         </motion.div>
@@ -39,7 +40,7 @@ const ErrorPage = () => {
         <FadeIn delay={0.6} y={20}>
           <Link
             to={ROUTES.HOME}
-            className="inline-flex items-center gap-2 rounded-lg bg-[#00f5ff] px-6 sm:px-8 py-3 font-semibold text-sm text-black no-underline transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,245,255,0.5)]"
+            className="inline-flex items-center gap-2 rounded-lg bg-neon-cyan px-6 sm:px-8 py-3 font-semibold text-sm text-black no-underline transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,245,255,0.5)]"
           >
             Return Home →
           </Link>

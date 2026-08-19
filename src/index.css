@@ -54,7 +54,7 @@ html {
 
 /* Global focus-visible ring for keyboard navigation */
 :focus-visible {
-  outline: 2px solid #00f5ff;
+  outline: 2px solid var(--color-neon-cyan);
   outline-offset: 2px;
 }
 
