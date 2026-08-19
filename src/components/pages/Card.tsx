@@ -3,7 +3,14 @@ import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { PageLayout, GradientHeader } from "../ui";
 import { ANIM } from "../../config/constants";
-import { getProductById } from "../../utils";
+import { productUrl, ROUTES } from "../../config/routes";
+import {
+  getProductById,
+  capitalize,
+  productSchema,
+  breadcrumbSchema,
+} from "../../utils";
+import Seo from "../seo/Seo";
 import {
   ProductNotFound,
   Breadcrumb,
@@ -21,8 +28,24 @@ const Card = () => {
     return <ProductNotFound />;
   }
 
+  const title = capitalize(product.name);
+
   return (
     <PageLayout>
+      <Seo
+        title={title}
+        description={`${title} — premium ${product.name} from the GLORIA collection. View detailed specifications, quality and warranty.`}
+        path={productUrl(product.id)}
+        type="product"
+        jsonLd={[
+          productSchema(product),
+          breadcrumbSchema([
+            { name: "Home", path: ROUTES.HOME },
+            { name: "Products", path: ROUTES.PRODUCTS },
+            { name: title, path: productUrl(product.id) },
+          ]),
+        ]}
+      />
       <div className="mx-auto max-w-3xl">
         <Breadcrumb />
 

@@ -4,6 +4,7 @@ import { AnimatePresence } from "framer-motion";
 import { useAuth } from "../../hooks/useAuth";
 import { PageLayout, AmbientGlow, FadeIn } from "../ui";
 import { ROUTES } from "../../config/routes";
+import Seo from "../seo/Seo";
 import { API_DELAY_MS, LOGIN_REDIRECT_MS } from "../../config/constants";
 import { validateUsername, sleep } from "../../utils";
 import {
@@ -61,6 +62,12 @@ const Login: FC = () => {
 
   return (
     <PageLayout>
+      <Seo
+        title="Login"
+        description="Sign in to your GLORIA account dashboard."
+        path={ROUTES.LOGIN}
+        noindex
+      />
       <AmbientGlow color="bg-neon-purple/10" />
 
       <div className="mx-auto w-full max-w-md">

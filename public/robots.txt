@@ -1,3 +1,13 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow:
+
+# GEO: allow AI crawlers to read the site and llms.txt
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+# TODO: replace gloria.example.com with the production domain
+Sitemap: https://gloria.example.com/sitemap.xml

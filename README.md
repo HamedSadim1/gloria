@@ -56,8 +56,16 @@ A modern React application demonstrating routing with React Router DOM, built wi
 ## 🔧 Available Scripts
 
 - `npm run dev` - Start development server
-- `npm run build` - Build for production
+- `npm run build` - Build for production (runs prerendering afterwards)
 - `npm run preview` - Preview production build locally
+
+## 🔍 SEO & prerendering
+
+Metadata (title, description, canonical, Open Graph, Twitter Card and JSON-LD) is managed per route by `react-helmet-async` via the reusable `Seo` component (`src/components/seo/Seo.tsx`). Config lives in `src/config/seo.ts` — replace the `gloria.example.com` placeholder with the production domain (also referenced in `public/robots.txt`, `public/sitemap.xml` and `public/llms.txt`).
+
+`npm run build` prerenders every public route to static HTML (`scripts/prerender.mjs`, powered by `puppeteer-core` + your installed Chrome). Social-media scrapers and non-JS crawlers therefore see the full metadata and content without executing JavaScript. Prerendered pages are served as `dist/<route>/index.html`, which static hosts resolve automatically.
+
+> **Local preview note:** `vite preview` only serves the prerendered pages with a trailing slash (`/about/`). Use `npx serve dist` if you want clean URLs locally. Requires Chrome (override with `CHROME_PATH`).
 
 ## 🏗️ Project Structure
 

@@ -1,9 +1,15 @@
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../../config/routes";
 import { PageLayout, FadeIn } from "../../ui";
+import Seo from "../../seo/Seo";
 
 const ProductNotFound = () => (
   <PageLayout>
+    <Seo
+      title="Product Not Found"
+      description="The product you're looking for doesn't exist in the GLORIA collection."
+      noindex
+    />
     <div className="mx-auto max-w-md text-center">
       <FadeIn y={20} className="mb-4">
         <h1 className="text-2xl font-bold text-white">Product Not Found</h1>

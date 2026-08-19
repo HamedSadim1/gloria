@@ -6,6 +6,7 @@
     "framer-motion": "^13.1.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
+    "react-helmet-async": "^3.0.0",
     "react-router-dom": "^7.18.2"
   },
   "devDependencies": {
@@ -22,6 +23,7 @@
     "husky": "^9.1.7",
     "lint-staged": "^17.3.0",
     "prettier": "^3.9.6",
+    "puppeteer-core": "^25.8.0",
     "tailwindcss": "^4.3.3",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.67.0",
@@ -30,6 +32,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "postbuild": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/prerender.mjs",
     "preview": "vite preview",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",

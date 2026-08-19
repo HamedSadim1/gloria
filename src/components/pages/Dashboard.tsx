@@ -17,6 +17,7 @@ import {
 import { useAuth } from "../../hooks/useAuth";
 import { ROUTES } from "../../config/routes";
 import { ANIM } from "../../config/constants";
+import Seo from "../seo/Seo";
 
 const widgets = [
   {
@@ -79,6 +80,12 @@ const Dashboard: FC = () => {
 
   return (
     <PageLayout>
+      <Seo
+        title="Dashboard"
+        description="Your GLORIA account dashboard."
+        path={ROUTES.DASHBOARD}
+        noindex
+      />
       <div className="mx-auto max-w-5xl">
         {/* Header */}
         <FadeIn

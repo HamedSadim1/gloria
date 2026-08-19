@@ -2,18 +2,25 @@ import { products } from "../../models/Data";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { PageLayout, PageHeader, ArrowRightIcon } from "../ui";
-import { productUrl } from "../../config/routes";
+import { productUrl, ROUTES } from "../../config/routes";
 import {
   ID_DISPLAY_LENGTH,
   ANIM,
   STAGGER,
   DELAY,
 } from "../../config/constants";
-import { formatIndex, truncate } from "../../utils";
+import { formatIndex, truncate, itemListSchema } from "../../utils";
+import Seo from "../seo/Seo";
 
 const Products = () => {
   return (
     <PageLayout>
+      <Seo
+        title="Products"
+        description="Discover our collection of premium products — seating, tables and living room furniture. Click any item to view detailed specifications."
+        path={ROUTES.PRODUCTS}
+        jsonLd={itemListSchema()}
+      />
       <div className="mx-auto max-w-5xl">
         {/* Header */}
         <PageHeader

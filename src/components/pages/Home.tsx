@@ -14,6 +14,9 @@ import {
 } from "../ui";
 import { ROUTES } from "../../config/routes";
 import { GRADIENT_TEXT } from "../../config/constants";
+import { SEO } from "../../config/seo";
+import Seo from "../seo/Seo";
+import { organizationSchema, websiteSchema } from "../../utils";
 
 const features = [
   {
@@ -43,6 +46,12 @@ const stats = [
 const Home = () => {
   return (
     <PageLayout>
+      <Seo
+        title={SEO.DEFAULT_TITLE}
+        description={SEO.DEFAULT_DESCRIPTION}
+        path="/"
+        jsonLd={[websiteSchema(), organizationSchema()]}
+      />
       <AmbientGlow className="top-0 left-1/2 -translate-x-1/2" />
       <AmbientGlow
         color="bg-neon-purple/10"

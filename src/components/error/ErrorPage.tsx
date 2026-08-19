@@ -3,10 +3,16 @@ import { motion } from "framer-motion";
 import { PageLayout, AmbientGlow, Badge, FadeIn } from "../ui";
 import { ROUTES } from "../../config/routes";
 import { ANIM } from "../../config/constants";
+import Seo from "../seo/Seo";
 
 const ErrorPage = () => {
   return (
     <PageLayout>
+      <Seo
+        title="Page Not Found"
+        description="The page you're looking for doesn't exist or has been moved."
+        noindex
+      />
       <AmbientGlow color="bg-red-500/10" duration={6} />
 
       <div className="mx-auto w-full max-w-md text-center">
