@@ -12,11 +12,9 @@ const Login: FC = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
   const timeoutRef = useRef<number | null>(null);
-  const mountedRef = useRef(true);
 
   useEffect(() => {
     return () => {
-      mountedRef.current = false;
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
       }
@@ -42,8 +40,6 @@ const Login: FC = () => {
 
     // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 800));
-
-    if (!mountedRef.current) return;
 
     login(name.trim());
     setIsLoading(false);
