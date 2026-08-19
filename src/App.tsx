@@ -1,17 +1,19 @@
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { AuthProvider } from "@/contexts/AuthContext";
 import ErrorBoundary from "@/components/error/ErrorBoundary";
-import Home from "@/components/pages/Home";
-import About from "@/components/pages/About";
-import Products from "@/components/pages/Products";
-import Card from "@/components/pages/Card";
 import ErrorPage from "@/components/error/ErrorPage";
 import SharedLayout from "@/components/layout/SharedLayout";
-import Login from "@/components/pages/Login";
-import Dashboard from "@/components/pages/Dashboard";
 import ProtectedRoute from "@/components/layout/ProtectedRoute";
 import { ROUTES } from "@/config/routes";
+
+const Home = lazy(() => import("@/components/pages/Home"));
+const About = lazy(() => import("@/components/pages/About"));
+const Products = lazy(() => import("@/components/pages/Products"));
+const Card = lazy(() => import("@/components/pages/Card"));
+const Login = lazy(() => import("@/components/pages/Login"));
+const Dashboard = lazy(() => import("@/components/pages/Dashboard"));
 
 function App() {
   return (
@@ -20,24 +22,26 @@ function App() {
         <BrowserRouter>
           <AuthProvider>
             <div className="App flex min-h-screen flex-col">
-              <Routes>
-                <Route path={ROUTES.HOME} element={<SharedLayout />}>
-                  <Route index element={<Home />} />
-                  <Route path={ROUTES.ABOUT} element={<About />} />
-                  <Route path={ROUTES.PRODUCTS} element={<Products />} />
-                  <Route path={ROUTES.PRODUCT_DETAIL} element={<Card />} />
-                  <Route path={ROUTES.LOGIN} element={<Login />} />
-                  <Route
-                    path={ROUTES.DASHBOARD}
-                    element={
-                      <ProtectedRoute>
-                        <Dashboard />
-                      </ProtectedRoute>
-                    }
-                  />
-                  <Route path="*" element={<ErrorPage />} />
-                </Route>
-              </Routes>
+              <Suspense fallback={null}>
+                <Routes>
+                  <Route path={ROUTES.HOME} element={<SharedLayout />}>
+                    <Route index element={<Home />} />
+                    <Route path={ROUTES.ABOUT} element={<About />} />
+                    <Route path={ROUTES.PRODUCTS} element={<Products />} />
+                    <Route path={ROUTES.PRODUCT_DETAIL} element={<Card />} />
+                    <Route path={ROUTES.LOGIN} element={<Login />} />
+                    <Route
+                      path={ROUTES.DASHBOARD}
+                      element={
+                        <ProtectedRoute>
+                          <Dashboard />
+                        </ProtectedRoute>
+                      }
+                    />
+                    <Route path="*" element={<ErrorPage />} />
+                  </Route>
+                </Routes>
+              </Suspense>
             </div>
           </AuthProvider>
         </BrowserRouter>
