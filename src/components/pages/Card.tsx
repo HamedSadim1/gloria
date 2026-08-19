@@ -21,8 +21,8 @@ import {
 } from "@/components/pages/card-detail";
 
 const Card = () => {
-  const { user } = useParams();
-  const product = useMemo(() => getProductById(user), [user]);
+  const { id } = useParams();
+  const product = useMemo(() => getProductById(id), [id]);
 
   if (!product) {
     return <ProductNotFound />;
