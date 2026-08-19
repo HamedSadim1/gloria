@@ -61,7 +61,8 @@ const Products = () => {
                         {product.name}
                       </h3>
                       <p className="font-mono text-[10px] sm:text-xs text-gray-400">
-                        ID: {truncate(product.id, ID_DISPLAY_LENGTH)}...
+                        ID: {truncate(product.id, ID_DISPLAY_LENGTH)}
+                        {product.id.length > ID_DISPLAY_LENGTH && "..."}
                       </p>
                     </div>
                   </div>
