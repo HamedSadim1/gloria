@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, type FC } from "react";
+import { useState, useEffect, useActionState, type FC } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { useAuth } from "@/hooks/useAuth";
@@ -14,51 +14,47 @@ import {
   SubmitButton,
 } from "@/components/pages/login/index";
 
+type LoginState =
+  | { status: "idle" }
+  | { status: "error"; error: string; submitted: string }
+  | { status: "success"; name: string };
+
 const Login: FC = () => {
   const [name, setName] = useState("");
-  const [errors, setErrors] = useState<{ name?: string }>({});
-  const [isLoading, setIsLoading] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false);
   const { login } = useAuth();
   const navigate = useNavigate();
-  const timeoutRef = useRef<number | null>(null);
-  const isSubmitting = useRef(false);
 
-  useEffect(() => {
-    return () => {
-      isSubmitting.current = false;
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
+  const [state, formAction, isPending] = useActionState(
+    async (_prev: LoginState, formData: FormData): Promise<LoginState> => {
+      const submitted = String(formData.get("username") ?? "").trim();
+      const validationError = validateUsername(submitted);
+      if (validationError) {
+        return { status: "error", error: validationError, submitted };
       }
-    };
-  }, []);
 
-  const validate = () => {
-    const error = validateUsername(name);
-    const newErrors = error ? { name: error } : {};
-    setErrors(newErrors);
-    return !error;
-  };
+      // Simulate API call
+      await sleep(API_DELAY_MS);
+      login(submitted);
+      return { status: "success", name: submitted };
+    },
+    { status: "idle" },
+  );
 
-  const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
-    e.preventDefault();
-    if (!validate()) return;
-    if (isSubmitting.current) return;
-    isSubmitting.current = true;
+  // Show the validation error only while the input still holds the submitted value
+  const error =
+    state.status === "error" && state.submitted === name
+      ? state.error
+      : undefined;
 
-    setIsLoading(true);
-
-    // Simulate API call
-    await sleep(API_DELAY_MS);
-
-    login(name.trim());
-    setIsLoading(false);
-    setShowSuccess(true);
-
-    timeoutRef.current = window.setTimeout(() => {
-      navigate(ROUTES.DASHBOARD);
-    }, LOGIN_REDIRECT_MS);
-  };
+  // Redirect to the dashboard after a successful login
+  useEffect(() => {
+    if (state.status !== "success") return;
+    const timeout = window.setTimeout(
+      () => navigate(ROUTES.DASHBOARD),
+      LOGIN_REDIRECT_MS,
+    );
+    return () => window.clearTimeout(timeout);
+  }, [state.status, navigate]);
 
   return (
     <PageLayout>
@@ -74,24 +70,21 @@ const Login: FC = () => {
         <LoginHeader />
 
         <AnimatePresence mode="wait">
-          {showSuccess ? (
-            <LoginSuccess name={name} />
+          {state.status === "success" ? (
+            <LoginSuccess name={state.name} />
           ) : (
             <form
               key="form"
-              onSubmit={handleSubmit}
+              action={formAction}
               className="rounded-xl sm:rounded-2xl border border-gray-800 bg-dark-800 p-5 sm:p-8"
             >
               <UsernameField
                 value={name}
-                error={errors.name}
-                disabled={isLoading}
+                error={error}
+                disabled={isPending}
                 onChange={setName}
-                onClearError={() =>
-                  setErrors((prev) => ({ ...prev, name: undefined }))
-                }
               />
-              <SubmitButton isLoading={isLoading} />
+              <SubmitButton />
             </form>
           )}
         </AnimatePresence>

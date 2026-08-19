@@ -6,7 +6,6 @@ interface UsernameFieldProps {
   error?: string;
   disabled?: boolean;
   onChange: (value: string) => void;
-  onClearError: () => void;
 }
 
 const UsernameField = ({
@@ -14,7 +13,6 @@ const UsernameField = ({
   error,
   disabled,
   onChange,
-  onClearError,
 }: UsernameFieldProps) => {
   return (
     <motion.div
@@ -31,6 +29,7 @@ const UsernameField = ({
       </label>
       <input
         id="username"
+        name="username"
         type="text"
         className={cn(
           "w-full rounded-lg border bg-dark-900 px-4 py-3 text-white placeholder-gray-500 transition-all duration-200 focus:outline-hidden focus:ring-1",
@@ -39,10 +38,7 @@ const UsernameField = ({
             : "border-gray-700 focus:border-neon-cyan focus:ring-neon-cyan/50",
         )}
         value={value}
-        onChange={(e) => {
-          onChange(e.target.value);
-          if (error) onClearError();
-        }}
+        onChange={(e) => onChange(e.target.value)}
         placeholder="Enter your username"
         disabled={disabled}
       />
