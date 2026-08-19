@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { useState, useMemo, type ReactNode } from "react";
 import { AuthContext } from "./authContextInstance";
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
@@ -11,20 +11,27 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   });
 
   const login = (name: string) => {
-    localStorage.setItem("name", name);
+    try {
+      localStorage.setItem("name", name);
+    } catch {
+      // Private browsing or storage full — continue without persisting
+    }
     setUserName(name);
   };
 
   const logout = () => {
-    localStorage.removeItem("name");
+    try {
+      localStorage.removeItem("name");
+    } catch {
+      // Ignore storage errors
+    }
     setUserName(null);
   };
 
-  return (
-    <AuthContext.Provider
-      value={{ userName, login, logout, isLoggedIn: !!userName }}
-    >
-      {children}
-    </AuthContext.Provider>
+  const value = useMemo(
+    () => ({ userName, login, logout, isLoggedIn: !!userName }),
+    [userName],
   );
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

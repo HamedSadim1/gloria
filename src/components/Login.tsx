@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { DiamondIcon } from "./Icons";
 import { useAuth } from "../hooks/useAuth";
+import { PageLayout, AmbientGlow, FadeIn } from "./ui";
 
 const Login: FC = () => {
   const [name, setName] = useState("");
@@ -12,9 +13,11 @@ const Login: FC = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
   const timeoutRef = useRef<number | null>(null);
+  const isSubmitting = useRef(false);
 
   useEffect(() => {
     return () => {
+      isSubmitting.current = false;
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
       }
@@ -35,6 +38,8 @@ const Login: FC = () => {
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     if (!validate()) return;
+    if (isSubmitting.current) return;
+    isSubmitting.current = true;
 
     setIsLoading(true);
 
@@ -51,21 +56,11 @@ const Login: FC = () => {
   };
 
   return (
-    <div className="bg-grid relative min-h-screen overflow-hidden px-4 sm:px-6 pt-28 sm:pt-32">
-      <motion.div
-        className="pointer-events-none absolute top-1/3 left-1/2 -z-10 h-64 sm:h-96 w-64 sm:w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#bf00ff]/10 blur-[80px] sm:blur-[120px]"
-        animate={{ opacity: [0.2, 0.5, 0.2] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        aria-hidden="true"
-      />
+    <PageLayout>
+      <AmbientGlow color="bg-[#bf00ff]/10" />
 
       <div className="mx-auto w-full max-w-md">
-        <motion.div
-          className="mb-6 sm:mb-8 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
+        <FadeIn delay={0.2} y={20} className="mb-6 sm:mb-8 text-center">
           <motion.div
             className="mb-4 inline-flex h-12 sm:h-16 w-12 sm:w-16 items-center justify-center rounded-xl sm:rounded-2xl border border-[#00f5ff]/30 bg-[#00f5ff]/10 text-[#00f5ff]"
             animate={{ rotate: [0, 5, -5, 0] }}
@@ -80,7 +75,7 @@ const Login: FC = () => {
           <p className="text-xs sm:text-sm text-gray-400">
             Sign in to access your dashboard
           </p>
-        </motion.div>
+        </FadeIn>
 
         <AnimatePresence mode="wait">
           {showSuccess ? (
@@ -198,22 +193,19 @@ const Login: FC = () => {
           )}
         </AnimatePresence>
 
-        <motion.p
-          className="mt-4 sm:mt-6 text-center text-xs text-gray-400"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
-        >
-          Don't have an account?{" "}
-          <Link
-            to="/contact"
-            className="text-[#00f5ff] no-underline hover:underline"
-          >
-            View Products
-          </Link>
-        </motion.p>
+        <FadeIn delay={0.8} y={0} className="mt-4 sm:mt-6 text-center">
+          <p className="text-xs text-gray-400">
+            Don't have an account?{" "}
+            <Link
+              to="/contact"
+              className="text-[#00f5ff] no-underline hover:underline"
+            >
+              View Products
+            </Link>
+          </p>
+        </FadeIn>
       </div>
-    </div>
+    </PageLayout>
   );
 };
 

@@ -13,8 +13,8 @@ import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
-    <BrowserRouter>
-      <ErrorBoundary>
+    <ErrorBoundary>
+      <BrowserRouter>
         <AuthProvider>
           <div className="App flex min-h-screen flex-col">
             <Routes>
@@ -37,8 +37,8 @@ function App() {
             </Routes>
           </div>
         </AuthProvider>
-      </ErrorBoundary>
-    </BrowserRouter>
+      </BrowserRouter>
+    </ErrorBoundary>
   );
 }
 

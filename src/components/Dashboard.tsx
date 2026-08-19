@@ -9,6 +9,7 @@ import {
   ActivityIcon,
 } from "./Icons";
 import { useAuth } from "../hooks/useAuth";
+import { PageLayout, FadeIn, StatusDot } from "./ui";
 
 const widgets = [
   {
@@ -80,14 +81,12 @@ const Dashboard: FC = () => {
   };
 
   return (
-    <div className="bg-grid relative min-h-screen overflow-hidden px-4 sm:px-6 pt-28 sm:pt-32">
+    <PageLayout>
       <div className="mx-auto max-w-5xl">
         {/* Header */}
-        <motion.div
+        <FadeIn
+          y={20}
           className="mb-6 sm:mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
         >
           <div>
             <h1 className="mb-1 text-2xl sm:text-3xl font-bold text-white">
@@ -103,12 +102,7 @@ const Dashboard: FC = () => {
               animate={{ opacity: [0.7, 1, 0.7] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              <motion.span
-                className="h-2 w-2 rounded-full bg-green-400"
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                aria-hidden="true"
-              />
+              <StatusDot color="bg-green-400" />
               <span className="text-xs sm:text-sm text-gray-300">Online</span>
             </motion.div>
             <button
@@ -118,7 +112,7 @@ const Dashboard: FC = () => {
               Logout
             </button>
           </div>
-        </motion.div>
+        </FadeIn>
 
         {/* Stats Grid */}
         <section
@@ -206,16 +200,7 @@ const Dashboard: FC = () => {
                   transition={{ duration: 0.4, delay: 0.7 + index * 0.1 }}
                 >
                   <div className="flex items-center gap-2 sm:gap-3">
-                    <motion.span
-                      className={`h-2 w-2 rounded-full ${statusColors[status]}`}
-                      animate={{ scale: [1, 1.3, 1] }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        delay: index * 0.3,
-                      }}
-                      aria-hidden="true"
-                    />
+                    <StatusDot color={statusColors[status]} />
                     <div>
                       <span className="text-xs sm:text-sm text-gray-300">
                         {action}
@@ -240,7 +225,7 @@ const Dashboard: FC = () => {
           )}
         </motion.section>
       </div>
-    </div>
+    </PageLayout>
   );
 };
 

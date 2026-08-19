@@ -1,50 +1,20 @@
 import { products } from "./../models/Data";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { PageLayout, PageHeader } from "./ui";
+import { ArrowRightIcon } from "./Icons";
 
 const Products = () => {
   return (
-    <div className="bg-grid relative min-h-screen overflow-hidden px-4 sm:px-6 pt-28 sm:pt-32">
+    <PageLayout>
       <div className="mx-auto max-w-5xl">
         {/* Header */}
-        <motion.div
-          className="mb-8 sm:mb-12"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <motion.div
-            className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#00f5ff]/30 bg-[#00f5ff]/10 px-3 sm:px-4 py-1.5 text-xs sm:text-sm text-[#00f5ff]"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <motion.span
-              className="h-1.5 w-1.5 rounded-full bg-[#00f5ff]"
-              animate={{ opacity: [1, 0.3, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              aria-hidden="true"
-            />
-            Products
-          </motion.div>
-          <motion.h1
-            className="mb-3 sm:mb-4 text-3xl sm:text-4xl md:text-5xl font-bold text-white"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            Our Products
-          </motion.h1>
-          <motion.p
-            className="max-w-xl text-base sm:text-lg text-gray-400"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            Discover our collection of premium products. Click on any item to
-            view detailed specifications.
-          </motion.p>
-        </motion.div>
+        <PageHeader
+          badge="Products"
+          showDot
+          title="Our Products"
+          description="Discover our collection of premium products. Click on any item to view detailed specifications."
+        />
 
         {/* Product Grid */}
         <section
@@ -89,12 +59,13 @@ const Products = () => {
                       Premium
                     </span>
                     <motion.span
-                      className="text-xs sm:text-sm text-gray-400 transition-colors group-hover:text-[#00f5ff]"
+                      className="inline-flex items-center gap-1 text-xs sm:text-sm text-gray-400 transition-colors group-hover:text-[#00f5ff]"
                       animate={{ x: [0, 5, 0] }}
                       transition={{ duration: 1.5, repeat: Infinity }}
                       aria-hidden="true"
                     >
-                      View Details →
+                      View Details
+                      <ArrowRightIcon className="h-4 w-4" />
                     </motion.span>
                   </div>
                 </div>
@@ -103,7 +74,7 @@ const Products = () => {
           ))}
         </section>
       </div>
-    </div>
+    </PageLayout>
   );
 };
 

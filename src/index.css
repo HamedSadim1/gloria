@@ -56,7 +56,6 @@ html {
 :focus-visible {
   outline: 2px solid #00f5ff;
   outline-offset: 2px;
-  border-radius: 4px;
 }
 
 /* Disable all animations, transitions, and motion for users who prefer reduced motion */

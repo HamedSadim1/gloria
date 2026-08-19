@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { DiamondIcon } from "./Icons";
@@ -8,6 +8,13 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { isLoggedIn, userName, logout } = useAuth();
   const navigate = useNavigate();
+
+  // Close mobile menu on browser back/forward
+  useEffect(() => {
+    const handler = () => setIsOpen(false);
+    window.addEventListener("popstate", handler);
+    return () => window.removeEventListener("popstate", handler);
+  }, []);
 
   const navLinks = [
     { to: "/", label: "Home" },
@@ -119,7 +126,6 @@ const Navbar = () => {
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
           >
-            {" "}
             <motion.span
               className="block h-0.5 w-6 bg-white"
               animate={isOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}

@@ -2,12 +2,7 @@ import { useMemo } from "react";
 import { useParams, Link } from "react-router-dom";
 import { products } from "./../models/Data";
 import { motion } from "framer-motion";
-
-const specs = [
-  { label: "Category", value: "Premium Collection" },
-  { label: "Quality", value: "A+" },
-  { label: "Warranty", value: "5 Years" },
-];
+import { PageLayout, FadeIn, StatusDot, GradientHeader, SpecRow } from "./ui";
 
 const Card = () => {
   const { user } = useParams();
@@ -18,33 +13,31 @@ const Card = () => {
 
   if (!product) {
     return (
-      <div className="bg-grid relative min-h-screen overflow-hidden px-4 sm:px-6 pt-28 sm:pt-32">
+      <PageLayout>
         <div className="mx-auto max-w-md text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1 className="mb-4 text-2xl font-bold text-white">
-              Product Not Found
-            </h1>
-            <p className="mb-6 text-gray-400">
+          <FadeIn y={20} className="mb-4">
+            <h1 className="text-2xl font-bold text-white">Product Not Found</h1>
+          </FadeIn>
+          <FadeIn delay={0.1} y={20} className="mb-6">
+            <p className="text-gray-400">
               The product you're looking for doesn't exist.
             </p>
+          </FadeIn>
+          <FadeIn delay={0.2} y={20}>
             <Link
               to="/contact"
               className="inline-flex items-center gap-2 rounded-lg bg-[#00f5ff] px-6 py-3 font-semibold text-sm text-black no-underline transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,245,255,0.5)]"
             >
               ← Back to Products
             </Link>
-          </motion.div>
+          </FadeIn>
         </div>
-      </div>
+      </PageLayout>
     );
   }
 
   return (
-    <div className="bg-grid relative min-h-screen overflow-hidden px-4 sm:px-6 pt-28 sm:pt-32">
+    <PageLayout>
       <div className="mx-auto max-w-3xl">
         <motion.nav
           className="mb-6 sm:mb-8"
@@ -89,68 +82,38 @@ const Card = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="relative border-b border-gray-800 bg-gradient-to-r from-[#00f5ff]/10 to-[#bf00ff]/10 p-5 sm:p-8">
-            <motion.div
-              className="mb-2 text-[10px] sm:text-xs font-medium tracking-widest text-[#00f5ff] uppercase"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
-              Product Details
-            </motion.div>
-            <motion.h1
-              id="product-heading"
-              className="text-2xl sm:text-3xl font-bold capitalize text-white"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-            >
-              {product.name}
-            </motion.h1>
-          </div>
+          <GradientHeader
+            label="Product Details"
+            title={product.name}
+            titleId="product-heading"
+          />
 
           <div className="p-5 sm:p-8">
             <div className="mb-6 sm:mb-8 grid grid-cols-2 gap-3 sm:gap-4">
-              <motion.div
-                className="rounded-lg border border-gray-800 bg-[#0a0a0f] p-3 sm:p-4"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-              >
-                <div className="mb-1 text-[10px] sm:text-xs text-gray-400">
-                  Product ID
+              <FadeIn x={-20} delay={0.5} y={0}>
+                <div className="rounded-lg border border-gray-800 bg-[#0a0a0f] p-3 sm:p-4">
+                  <div className="mb-1 text-[10px] sm:text-xs text-gray-400">
+                    Product ID
+                  </div>
+                  <div className="font-mono text-[10px] sm:text-sm text-white break-all">
+                    {product.id}
+                  </div>
                 </div>
-                <div className="font-mono text-[10px] sm:text-sm text-white break-all">
-                  {product.id}
+              </FadeIn>
+              <FadeIn x={20} delay={0.6} y={0}>
+                <div className="rounded-lg border border-gray-800 bg-[#0a0a0f] p-3 sm:p-4">
+                  <div className="mb-1 text-[10px] sm:text-xs text-gray-400">
+                    Status
+                  </div>
+                  <div className="flex items-center gap-2 text-xs sm:text-sm text-green-400">
+                    <StatusDot color="bg-green-400" pulse={false} />
+                    Active
+                  </div>
                 </div>
-              </motion.div>
-              <motion.div
-                className="rounded-lg border border-gray-800 bg-[#0a0a0f] p-3 sm:p-4"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.6 }}
-              >
-                <div className="mb-1 text-[10px] sm:text-xs text-gray-400">
-                  Status
-                </div>
-                <div className="flex items-center gap-2 text-xs sm:text-sm text-green-400">
-                  <motion.span
-                    className="h-2 w-2 rounded-full bg-green-400"
-                    animate={{ scale: [1, 1.3, 1] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                    aria-hidden="true"
-                  />
-                  Active
-                </div>
-              </motion.div>
+              </FadeIn>
             </div>
 
-            <motion.div
-              className="mb-6 sm:mb-8"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.7 }}
-            >
+            <FadeIn delay={0.7} className="mb-6 sm:mb-8">
               <h2 className="mb-3 text-xs sm:text-sm font-semibold tracking-widest text-[#00f5ff] uppercase">
                 Description
               </h2>
@@ -160,45 +123,27 @@ const Card = () => {
                 and cutting-edge manufacturing processes, this product
                 represents the perfect blend of form and function.
               </p>
-            </motion.div>
+            </FadeIn>
 
-            <motion.div
-              className="mb-6 sm:mb-8"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.8 }}
-            >
+            <FadeIn delay={0.8} className="mb-6 sm:mb-8">
               <h2 className="mb-3 text-xs sm:text-sm font-semibold tracking-widest text-[#00f5ff] uppercase">
                 Specifications
               </h2>
               <div className="space-y-2">
-                {specs.map(({ label, value }, specIndex) => (
-                  <motion.div
+                {product.specs.map(({ label, value }, specIndex) => (
+                  <SpecRow
                     key={label}
-                    className="flex items-center justify-between border-b border-gray-800 py-2 sm:py-3"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{
-                      duration: 0.4,
-                      delay: 0.9 + specIndex * 0.1,
-                    }}
-                  >
-                    <span className="text-xs sm:text-sm text-gray-400">
-                      {label}
-                    </span>
-                    <span className="text-xs sm:text-sm font-medium text-white">
-                      {value}
-                    </span>
-                  </motion.div>
+                    label={label}
+                    value={value}
+                    index={specIndex}
+                  />
                 ))}
               </div>
-            </motion.div>
+            </FadeIn>
 
-            <motion.div
+            <FadeIn
+              delay={1.2}
               className="flex flex-col sm:flex-row gap-3 sm:gap-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 1.2 }}
             >
               <Link
                 to="/contact"
@@ -212,11 +157,11 @@ const Card = () => {
               >
                 Sign in to Purchase
               </Link>
-            </motion.div>
+            </FadeIn>
           </div>
         </motion.section>
       </div>
-    </div>
+    </PageLayout>
   );
 };
 
