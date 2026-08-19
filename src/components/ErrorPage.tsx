@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { PageLayout, AmbientGlow, Badge, FadeIn } from "./ui";
+import { ROUTES } from "../config/routes";
 
 const ErrorPage = () => {
   return (
@@ -37,7 +38,7 @@ const ErrorPage = () => {
 
         <FadeIn delay={0.6} y={20}>
           <Link
-            to="/"
+            to={ROUTES.HOME}
             className="inline-flex items-center gap-2 rounded-lg bg-[#00f5ff] px-6 sm:px-8 py-3 font-semibold text-sm text-black no-underline transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,245,255,0.5)]"
           >
             Return Home →

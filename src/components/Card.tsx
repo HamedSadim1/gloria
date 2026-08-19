@@ -4,6 +4,7 @@ import { products } from "./../models/Data";
 import { motion } from "framer-motion";
 import { PageLayout, FadeIn, StatusDot, GradientHeader, SpecRow } from "./ui";
 import { ROUTES } from "../config/routes";
+import { SECTION_HEADING_CLASS } from "../config/constants";
 
 const Card = () => {
   const { user } = useParams();
@@ -115,9 +116,7 @@ const Card = () => {
             </div>
 
             <FadeIn delay={0.7} className="mb-6 sm:mb-8">
-              <h2 className="mb-3 text-xs sm:text-sm font-semibold tracking-widest text-[#00f5ff] uppercase">
-                Description
-              </h2>
+              <h2 className={`${SECTION_HEADING_CLASS} mb-3`}>Description</h2>
               <p className="text-sm sm:text-base leading-relaxed text-gray-300">
                 This is a premium {product.name.toLowerCase()} designed with
                 quality and style in mind. Crafted using the finest materials
@@ -127,7 +126,7 @@ const Card = () => {
             </FadeIn>
 
             <FadeIn delay={0.8} className="mb-6 sm:mb-8">
-              <h2 className="mb-3 text-xs sm:text-sm font-semibold tracking-widest text-[#00f5ff] uppercase">
+              <h2 className={`${SECTION_HEADING_CLASS} mb-3`}>
                 Specifications
               </h2>
               <div className="space-y-2">

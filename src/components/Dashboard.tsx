@@ -17,6 +17,7 @@ import {
   DashboardWidget,
   ActivityRow,
 } from "./ui";
+import { ROUTES } from "../config/routes";
 
 const widgets = [
   {
@@ -74,7 +75,7 @@ const Dashboard: FC = () => {
 
   const handleLogout = () => {
     logout();
-    navigate("/");
+    navigate(ROUTES.HOME);
   };
 
   return (

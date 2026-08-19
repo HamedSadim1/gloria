@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { DiamondIcon } from "./Icons";
 import { useAuth } from "../hooks/useAuth";
 import { ROUTES } from "../config/routes";
-import { BRAND } from "../config/constants";
+import { BrandLogo } from "./ui";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,23 +40,7 @@ const Navbar = () => {
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
       <div className="mx-auto flex max-w-5xl items-center justify-between px-4 sm:px-6 py-4">
-        <Link
-          to={ROUTES.HOME}
-          className="flex items-center gap-2 text-lg sm:text-xl font-bold tracking-wider text-white no-underline transition-all duration-300 hover:text-[#00f5ff]"
-        >
-          <motion.span
-            className="text-[#00f5ff]"
-            animate={{ rotate: [0, 360] }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            aria-hidden="true"
-          >
-            <DiamondIcon className="h-5 w-5 sm:h-6 sm:w-6" />
-          </motion.span>
-          <span>
-            {BRAND}
-            <span className="text-[#00f5ff]">.</span>
-          </span>
-        </Link>
+        <BrandLogo linked />
 
         {/* Desktop nav */}
         <div className="hidden items-center gap-1 md:flex">

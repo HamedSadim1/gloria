@@ -11,6 +11,7 @@ import {
   FeatureCard,
 } from "./ui";
 import { ROUTES } from "../config/routes";
+import { GRADIENT_TEXT } from "../config/constants";
 
 const features = [
   {
@@ -58,9 +59,7 @@ const Home = () => {
           <h1>
             Next Gen
             <br />
-            <span className="bg-gradient-to-r from-[#00f5ff] to-[#bf00ff] bg-clip-text text-transparent">
-              Digital Platform
-            </span>
+            <span className={GRADIENT_TEXT}>Digital Platform</span>
           </h1>
         </FadeIn>
 

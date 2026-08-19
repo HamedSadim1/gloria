@@ -1,6 +1,7 @@
 import { Component, type ErrorInfo, type ReactNode } from "react";
 import { motion } from "framer-motion";
 import { AmbientGlow, Badge, FadeIn, Button } from "./ui";
+import { ROUTES } from "../config/routes";
 
 interface Props {
   children: ReactNode;
@@ -29,7 +30,7 @@ class ErrorBoundary extends Component<Props, State> {
 
   handleReset = () => {
     this.setState({ hasError: false, error: null });
-    window.location.href = "/";
+    window.location.href = ROUTES.HOME;
   };
 
   render() {

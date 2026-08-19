@@ -7,6 +7,7 @@ import {
   StatCard,
   SectionHeading,
 } from "./ui";
+import { GRADIENT_TEXT, SECTION_HEADING_CLASS } from "../config/constants";
 
 const techStack = [
   {
@@ -51,10 +52,7 @@ const About = () => {
           title={
             <>
               Built with
-              <span className="bg-gradient-to-r from-[#00f5ff] to-[#bf00ff] bg-clip-text text-transparent">
-                {" "}
-                passion
-              </span>
+              <span className={GRADIENT_TEXT}> passion</span>
             </>
           }
           description="This application demonstrates the power of modern web technologies. Built with cutting-edge tools for optimal performance and developer experience."
@@ -90,10 +88,7 @@ const About = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2
-            id="mission-heading"
-            className="mb-4 text-xs sm:text-sm font-semibold tracking-widest text-[#00f5ff] uppercase"
-          >
+          <h2 id="mission-heading" className={SECTION_HEADING_CLASS}>
             Our Mission
           </h2>
           <p className="mb-6 text-base sm:text-lg leading-relaxed text-gray-300">
