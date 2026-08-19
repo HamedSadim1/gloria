@@ -17,26 +17,6 @@ const Footer = () => {
           <span className="mx-2 text-gray-700">|</span>
           <span>© {new Date().getFullYear()}</span>
         </div>
-        <div className="flex gap-6 text-sm text-gray-500">
-          <Link
-            to="/about"
-            className="no-underline transition-colors hover:text-white"
-          >
-            Privacy
-          </Link>
-          <Link
-            to="/about"
-            className="no-underline transition-colors hover:text-white"
-          >
-            Terms
-          </Link>
-          <Link
-            to="/about"
-            className="no-underline transition-colors hover:text-[#00f5ff]"
-          >
-            Status
-          </Link>
-        </div>
       </div>
     </footer>
   );

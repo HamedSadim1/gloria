@@ -91,7 +91,7 @@ const Dashboard: FC = () => {
         >
           <div>
             <h1 className="mb-1 text-2xl sm:text-3xl font-bold text-white">
-              Welcome back, {userName || "Guest"}
+              Welcome back{userName ? `, ${userName}` : ""}
             </h1>
             <p className="text-sm text-gray-400">
               Here's what's happening with your account

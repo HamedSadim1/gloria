@@ -1,4 +1,4 @@
-import { useState, type FC } from "react";
+import { useState, useRef, useEffect, type FC } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { DiamondIcon } from "./Icons";
@@ -6,24 +6,29 @@ import { useAuth } from "../contexts/AuthContext";
 
 const Login: FC = () => {
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [errors, setErrors] = useState<{ name?: string; email?: string }>({});
+  const [errors, setErrors] = useState<{ name?: string }>({});
   const [isLoading, setIsLoading] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const { login } = useAuth();
   const navigate = useNavigate();
+  const timeoutRef = useRef<number | null>(null);
+  const mountedRef = useRef(true);
+
+  useEffect(() => {
+    return () => {
+      mountedRef.current = false;
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
 
   const validate = () => {
-    const newErrors: { name?: string; email?: string } = {};
+    const newErrors: { name?: string } = {};
     if (!name.trim()) {
       newErrors.name = "Username is required";
     } else if (name.trim().length < 2) {
       newErrors.name = "Username must be at least 2 characters";
-    }
-    if (!email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      newErrors.email = "Please enter a valid email";
     }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -38,11 +43,13 @@ const Login: FC = () => {
     // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 800));
 
+    if (!mountedRef.current) return;
+
     login(name.trim());
     setIsLoading(false);
     setShowSuccess(true);
 
-    setTimeout(() => {
+    timeoutRef.current = window.setTimeout(() => {
       navigate("/dashboard");
     }, 1000);
   };
@@ -122,7 +129,7 @@ const Login: FC = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
             >
               <motion.div
-                className="mb-4 sm:mb-5"
+                className="mb-6 sm:mb-8"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
@@ -157,46 +164,6 @@ const Login: FC = () => {
                     animate={{ opacity: 1, y: 0 }}
                   >
                     {errors.name}
-                  </motion.p>
-                )}
-              </motion.div>
-
-              <motion.div
-                className="mb-6 sm:mb-8"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.6 }}
-              >
-                <label
-                  htmlFor="email"
-                  className="mb-2 block text-sm font-medium text-gray-300"
-                >
-                  Email
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  className={`w-full rounded-lg border bg-[#0a0a0f] px-4 py-3 text-white placeholder-gray-500 transition-all duration-200 focus:outline-none focus:ring-1 ${
-                    errors.email
-                      ? "border-red-500 focus:border-red-500 focus:ring-red-500/50"
-                      : "border-gray-700 focus:border-[#00f5ff] focus:ring-[#00f5ff]/50"
-                  }`}
-                  value={email}
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                    if (errors.email)
-                      setErrors((prev) => ({ ...prev, email: undefined }));
-                  }}
-                  placeholder="Enter your email"
-                  disabled={isLoading}
-                />
-                {errors.email && (
-                  <motion.p
-                    className="mt-1.5 text-xs text-red-400"
-                    initial={{ opacity: 0, y: -5 }}
-                    animate={{ opacity: 1, y: 0 }}
-                  >
-                    {errors.email}
                   </motion.p>
                 )}
               </motion.div>

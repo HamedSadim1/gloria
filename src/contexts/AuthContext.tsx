@@ -10,9 +10,13 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | null>(null);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [userName, setUserName] = useState<string | null>(
-    localStorage.getItem("name"),
-  );
+  const [userName, setUserName] = useState<string | null>(() => {
+    try {
+      return localStorage.getItem("name");
+    } catch {
+      return null;
+    }
+  });
 
   const login = (name: string) => {
     localStorage.setItem("name", name);

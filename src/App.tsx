@@ -3,7 +3,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 import ErrorBoundary from "./components/ErrorBoundary";
 import Home from "./components/Home";
 import About from "./components/About";
-import Contact from "./components/Contact";
+import Products from "./components/Products";
 import Card from "./components/Card";
 import ErrorPage from "./components/ErrorPage";
 import SharedLayout from "./components/SharedLayout";
@@ -21,8 +21,8 @@ function App() {
               <Route path="/" element={<SharedLayout />}>
                 <Route index element={<Home />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="contact/:user" element={<Card />} />
+                <Route path="/contact" element={<Products />} />
+                <Route path="/contact/:user" element={<Card />} />
                 <Route path="/login" element={<Login />} />
                 <Route
                   path="/dashboard"

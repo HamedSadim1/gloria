@@ -2,7 +2,7 @@ import { products } from "./../models/Data";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-const Contact = () => {
+const Products = () => {
   return (
     <div className="bg-grid relative min-h-screen overflow-hidden px-4 sm:px-6 pt-28 sm:pt-32">
       <div className="mx-auto max-w-5xl">
@@ -102,4 +102,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default Products;

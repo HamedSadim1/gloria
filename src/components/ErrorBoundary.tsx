@@ -1,8 +1,10 @@
 import { Component, type ErrorInfo, type ReactNode } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 interface Props {
   children: ReactNode;
+  onNavigateHome?: () => void;
 }
 
 interface State {
@@ -26,7 +28,11 @@ class ErrorBoundary extends Component<Props, State> {
 
   handleReset = () => {
     this.setState({ hasError: false, error: null });
-    window.location.href = "/";
+    if (this.props.onNavigateHome) {
+      this.props.onNavigateHome();
+    } else {
+      window.location.href = "/";
+    }
   };
 
   render() {
@@ -135,4 +141,13 @@ class ErrorBoundary extends Component<Props, State> {
   }
 }
 
-export default ErrorBoundary;
+const ErrorBoundaryWithNav = ({ children }: { children: ReactNode }) => {
+  const navigate = useNavigate();
+  return (
+    <ErrorBoundary onNavigateHome={() => navigate("/", { replace: true })}>
+      {children}
+    </ErrorBoundary>
+  );
+};
+
+export default ErrorBoundaryWithNav;
