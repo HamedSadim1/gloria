@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ANIM } from "../../config/constants";
+import { ANIM } from "@/config/constants";
 
 interface StatusDotProps {
   color?: string;

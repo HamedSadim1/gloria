@@ -1,6 +1,6 @@
-import { SEO } from "../config/seo";
-import { ROUTES, productUrl } from "../config/routes";
-import { products, type Product } from "../models/Data";
+import { SEO } from "@/config/seo";
+import { ROUTES, productUrl } from "@/config/routes";
+import { products, type Product } from "@/models/Data";
 
 /** Resolve a relative path against the production site URL */
 export const absoluteUrl = (path: string): string => `${SEO.SITE_URL}${path}`;

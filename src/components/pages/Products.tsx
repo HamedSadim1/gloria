@@ -1,16 +1,11 @@
-import { products } from "../../models/Data";
+import { products } from "@/models/Data";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { PageLayout, PageHeader, ArrowRightIcon } from "../ui";
-import { productUrl, ROUTES } from "../../config/routes";
-import {
-  ID_DISPLAY_LENGTH,
-  ANIM,
-  STAGGER,
-  DELAY,
-} from "../../config/constants";
-import { formatIndex, truncate, itemListSchema } from "../../utils";
-import Seo from "../seo/Seo";
+import { PageLayout, PageHeader, ArrowRightIcon } from "@/components/ui";
+import { productUrl, ROUTES } from "@/config/routes";
+import { ID_DISPLAY_LENGTH, ANIM, STAGGER, DELAY } from "@/config/constants";
+import { formatIndex, truncate, itemListSchema } from "@/utils";
+import Seo from "@/components/seo/Seo";
 
 const Products = () => {
   return (

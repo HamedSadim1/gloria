@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { PageLayout, AmbientGlow, Badge, FadeIn } from "../ui";
-import { ROUTES } from "../../config/routes";
-import { ANIM } from "../../config/constants";
-import Seo from "../seo/Seo";
+import { PageLayout, AmbientGlow, Badge, FadeIn } from "@/components/ui";
+import { ROUTES } from "@/config/routes";
+import { ANIM } from "@/config/constants";
+import Seo from "@/components/seo/Seo";
 
 const ErrorPage = () => {
   return (

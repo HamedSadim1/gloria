@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { FadeIn } from "../../ui";
-import { ROUTES } from "../../../config/routes";
+import { FadeIn } from "@/components/ui";
+import { ROUTES } from "@/config/routes";
 
 const ProductActions = () => (
   <FadeIn delay={1.2} className="flex flex-col sm:flex-row gap-3 sm:gap-4">

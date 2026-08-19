@@ -11,12 +11,12 @@ import {
   StatCard,
   SectionHeading,
   FeatureCard,
-} from "../ui";
-import { ROUTES } from "../../config/routes";
-import { GRADIENT_TEXT } from "../../config/constants";
-import { SEO } from "../../config/seo";
-import Seo from "../seo/Seo";
-import { organizationSchema, websiteSchema } from "../../utils";
+} from "@/components/ui";
+import { ROUTES } from "@/config/routes";
+import { GRADIENT_TEXT } from "@/config/constants";
+import { SEO } from "@/config/seo";
+import Seo from "@/components/seo/Seo";
+import { organizationSchema, websiteSchema } from "@/utils";
 
 const features = [
   {

@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
-import FadeIn from "./FadeIn";
-import Badge from "./Badge";
+import FadeIn from "@/components/ui/FadeIn";
+import Badge from "@/components/ui/Badge";
 
 interface PageHeaderProps {
   badge?: string;

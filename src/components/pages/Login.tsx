@@ -1,18 +1,18 @@
 import { useState, useRef, useEffect, type FC } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
-import { useAuth } from "../../hooks/useAuth";
-import { PageLayout, AmbientGlow, FadeIn } from "../ui";
-import { ROUTES } from "../../config/routes";
-import Seo from "../seo/Seo";
-import { API_DELAY_MS, LOGIN_REDIRECT_MS } from "../../config/constants";
-import { validateUsername, sleep } from "../../utils";
+import { useAuth } from "@/hooks/useAuth";
+import { PageLayout, AmbientGlow, FadeIn } from "@/components/ui";
+import { ROUTES } from "@/config/routes";
+import Seo from "@/components/seo/Seo";
+import { API_DELAY_MS, LOGIN_REDIRECT_MS } from "@/config/constants";
+import { validateUsername, sleep } from "@/utils";
 import {
   LoginHeader,
   LoginSuccess,
   UsernameField,
   SubmitButton,
-} from "./login/index";
+} from "@/components/pages/login/index";
 
 const Login: FC = () => {
   const [name, setName] = useState("");

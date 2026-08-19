@@ -1,6 +1,6 @@
 import { useState, useMemo, type ReactNode } from "react";
-import { AuthContext } from "./authContextInstance";
-import { safeGetItem, safeSetItem, safeRemoveItem } from "../utils/storage";
+import { AuthContext } from "@/contexts/authContextInstance";
+import { safeGetItem, safeSetItem, safeRemoveItem } from "@/utils/storage";
 
 const STORAGE_KEY = "name";
 

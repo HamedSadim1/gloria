@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import type { ElementType } from "react";
-import { ANIM, STAGGER } from "../../config/constants";
+import { ANIM, STAGGER } from "@/config/constants";
 
 interface FeatureCardProps {
   Icon: ElementType;

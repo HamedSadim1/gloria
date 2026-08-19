@@ -1,8 +1,8 @@
-export { safeGetItem, safeSetItem, safeRemoveItem } from "./storage";
-export { validateUsername } from "./validation";
-export { formatIndex, truncate, capitalize } from "./format";
-export { sleep } from "./async";
-export { getProductById } from "./products";
+export { safeGetItem, safeSetItem, safeRemoveItem } from "@/utils/storage";
+export { validateUsername } from "@/utils/validation";
+export { formatIndex, truncate, capitalize } from "@/utils/format";
+export { sleep } from "@/utils/async";
+export { getProductById } from "@/utils/products";
 export {
   absoluteUrl,
   organizationSchema,
@@ -11,4 +11,4 @@ export {
   productSchema,
   breadcrumbSchema,
   personSchema,
-} from "./seo";
+} from "@/utils/seo";

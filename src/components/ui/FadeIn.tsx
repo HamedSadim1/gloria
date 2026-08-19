@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
-import { ANIM } from "../../config/constants";
+import { ANIM } from "@/config/constants";
 
 interface FadeInProps {
   children: ReactNode;

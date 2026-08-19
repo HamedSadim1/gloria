@@ -9,15 +9,11 @@ import {
   FeatureCard,
   StatCard,
   SectionHeading,
-} from "../ui";
-import {
-  GRADIENT_TEXT,
-  SECTION_HEADING_CLASS,
-  ANIM,
-} from "../../config/constants";
-import { SEO } from "../../config/seo";
-import Seo from "../seo/Seo";
-import { personSchema } from "../../utils";
+} from "@/components/ui";
+import { GRADIENT_TEXT, SECTION_HEADING_CLASS, ANIM } from "@/config/constants";
+import { SEO } from "@/config/seo";
+import Seo from "@/components/seo/Seo";
+import { personSchema } from "@/utils";
 
 const techStack = [
   {

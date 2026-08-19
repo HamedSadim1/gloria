@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import StatusDot from "./StatusDot";
+import StatusDot from "@/components/ui/StatusDot";
 
 interface BadgeProps {
   children: ReactNode;

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import type { ElementType } from "react";
-import { ANIM, STAGGER, DELAY } from "../../config/constants";
+import { ANIM, STAGGER, DELAY } from "@/config/constants";
 
 interface DashboardWidgetProps {
   Icon: ElementType;

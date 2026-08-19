@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ANIM, STAGGER } from "../../config/constants";
+import { ANIM, STAGGER } from "@/config/constants";
 
 interface StatCardProps {
   value: string;

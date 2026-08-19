@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
-import NavUserMenu from "./NavUserMenu";
-import { ANIM, STAGGER, DELAY } from "../../../config/constants";
+import NavUserMenu from "@/components/layout/navbar/NavUserMenu";
+import { ANIM, STAGGER, DELAY } from "@/config/constants";
 
 interface NavLink {
   to: string;

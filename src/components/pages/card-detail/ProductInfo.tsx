@@ -1,4 +1,4 @@
-import { FadeIn, StatusDot } from "../../ui";
+import { FadeIn, StatusDot } from "@/components/ui";
 
 interface ProductInfoProps {
   id: string;

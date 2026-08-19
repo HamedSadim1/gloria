@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ANIM, STAGGER, DELAY } from "../../config/constants";
+import { ANIM, STAGGER, DELAY } from "@/config/constants";
 
 interface SpecRowProps {
   label: string;

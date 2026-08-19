@@ -1,8 +1,8 @@
 import { Component, type ErrorInfo, type ReactNode } from "react";
 import { motion } from "framer-motion";
-import { AmbientGlow, Badge, FadeIn, Button } from "../ui";
-import { ROUTES } from "../../config/routes";
-import { ANIM } from "../../config/constants";
+import { AmbientGlow, Badge, FadeIn, Button } from "@/components/ui";
+import { ROUTES } from "@/config/routes";
+import { ANIM } from "@/config/constants";
 
 interface Props {
   children: ReactNode;

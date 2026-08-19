@@ -1,4 +1,4 @@
-import { BRAND } from "./constants";
+import { BRAND } from "@/config/constants";
 
 /** Central SEO configuration for the whole app */
 export const SEO = {

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import StatusDot from "./StatusDot";
+import StatusDot from "@/components/ui/StatusDot";
 
 interface ActivityRowProps {
   action: string;

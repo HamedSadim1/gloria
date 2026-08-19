@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
-import { SEO } from "../../config/seo";
-import { absoluteUrl } from "../../utils/seo";
+import { SEO } from "@/config/seo";
+import { absoluteUrl } from "@/utils/seo";
 
 interface SeoProps {
   /** Page title (site name is appended unless it is already included) */

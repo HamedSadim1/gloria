@@ -1,4 +1,4 @@
-import { MIN_USERNAME_LENGTH } from "../config/constants";
+import { MIN_USERNAME_LENGTH } from "@/config/constants";
 
 /** Validate a username, returning an error message or undefined if valid */
 export const validateUsername = (name: string): string | undefined => {

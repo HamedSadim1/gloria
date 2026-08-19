@@ -13,11 +13,11 @@ import {
   Button,
   DashboardWidget,
   ActivityRow,
-} from "../ui";
-import { useAuth } from "../../hooks/useAuth";
-import { ROUTES } from "../../config/routes";
-import { ANIM } from "../../config/constants";
-import Seo from "../seo/Seo";
+} from "@/components/ui";
+import { useAuth } from "@/hooks/useAuth";
+import { ROUTES } from "@/config/routes";
+import { ANIM } from "@/config/constants";
+import Seo from "@/components/seo/Seo";
 
 const widgets = [
   {

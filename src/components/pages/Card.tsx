@@ -1,16 +1,16 @@
 import { useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { PageLayout, GradientHeader } from "../ui";
-import { ANIM } from "../../config/constants";
-import { productUrl, ROUTES } from "../../config/routes";
+import { PageLayout, GradientHeader } from "@/components/ui";
+import { ANIM } from "@/config/constants";
+import { productUrl, ROUTES } from "@/config/routes";
 import {
   getProductById,
   capitalize,
   productSchema,
   breadcrumbSchema,
-} from "../../utils";
-import Seo from "../seo/Seo";
+} from "@/utils";
+import Seo from "@/components/seo/Seo";
 import {
   ProductNotFound,
   Breadcrumb,
@@ -18,7 +18,7 @@ import {
   ProductDescription,
   ProductSpecs,
   ProductActions,
-} from "./card-detail";
+} from "@/components/pages/card-detail";
 
 const Card = () => {
   const { user } = useParams();

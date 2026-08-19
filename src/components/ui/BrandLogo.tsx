@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { DiamondIcon } from "./Icons";
-import { ROUTES } from "../../config/routes";
-import { BRAND, ANIM } from "../../config/constants";
+import { DiamondIcon } from "@/components/ui/Icons";
+import { ROUTES } from "@/config/routes";
+import { BRAND, ANIM } from "@/config/constants";
 
 interface BrandLogoProps {
   /** Render as a link (Navbar) or plain text (Footer) */

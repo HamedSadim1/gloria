@@ -1,17 +1,17 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
-import { AuthProvider } from "./contexts/AuthContext";
-import ErrorBoundary from "./components/error/ErrorBoundary";
-import Home from "./components/pages/Home";
-import About from "./components/pages/About";
-import Products from "./components/pages/Products";
-import Card from "./components/pages/Card";
-import ErrorPage from "./components/error/ErrorPage";
-import SharedLayout from "./components/layout/SharedLayout";
-import Login from "./components/pages/Login";
-import Dashboard from "./components/pages/Dashboard";
-import ProtectedRoute from "./components/layout/ProtectedRoute";
-import { ROUTES } from "./config/routes";
+import { AuthProvider } from "@/contexts/AuthContext";
+import ErrorBoundary from "@/components/error/ErrorBoundary";
+import Home from "@/components/pages/Home";
+import About from "@/components/pages/About";
+import Products from "@/components/pages/Products";
+import Card from "@/components/pages/Card";
+import ErrorPage from "@/components/error/ErrorPage";
+import SharedLayout from "@/components/layout/SharedLayout";
+import Login from "@/components/pages/Login";
+import Dashboard from "@/components/pages/Dashboard";
+import ProtectedRoute from "@/components/layout/ProtectedRoute";
+import { ROUTES } from "@/config/routes";
 
 function App() {
   return (

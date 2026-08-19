@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { motion } from "framer-motion";
-import { ANIM } from "../../config/constants";
+import { ANIM } from "@/config/constants";
 
 interface SectionHeadingProps {
   /** Small uppercase label (e.g. "Features", "Tech Stack") */

@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { motion } from "framer-motion";
-import { ANIM } from "../../config/constants";
+import { ANIM } from "@/config/constants";
 
 interface GradientHeaderProps {
   label: string;
