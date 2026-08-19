@@ -137,10 +137,4 @@ Built with Tailwind CSS (mobile-first, `sm:`/`md:` breakpoints) and Framer Motio
 4. Test thoroughly
 5. Submit a pull request
 
-## 📄 License
-
-This project is for educational purposes. Feel free to use and modify as needed.
-
----
-
 Built with ❤️ using React, TypeScript, Vite, and Tailwind CSS
