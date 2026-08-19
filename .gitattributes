@@ -1,0 +1,7 @@
+# Normalize line endings to LF for all text files so Prettier checks pass
+# consistently on every platform (overrides core.autocrlf on Windows).
+* text=auto eol=lf
+
+# Binary files must never be normalized
+*.png binary
+*.ico binary
