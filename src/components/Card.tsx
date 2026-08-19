@@ -1,9 +1,9 @@
 import { useMemo } from "react";
 import { useParams } from "react-router-dom";
-import { products } from "./../models/Data";
 import { motion } from "framer-motion";
 import { PageLayout, GradientHeader } from "./ui";
 import { ANIM } from "../config/constants";
+import { getProductById } from "../utils";
 import {
   ProductNotFound,
   Breadcrumb,
@@ -15,10 +15,7 @@ import {
 
 const Card = () => {
   const { user } = useParams();
-  const product = useMemo(
-    () => products.find((p) => p.id === user) ?? null,
-    [user],
-  );
+  const product = useMemo(() => getProductById(user), [user]);
 
   if (!product) {
     return <ProductNotFound />;

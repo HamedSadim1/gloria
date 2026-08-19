@@ -4,11 +4,8 @@ import { AnimatePresence } from "framer-motion";
 import { useAuth } from "../hooks/useAuth";
 import { PageLayout, AmbientGlow, FadeIn } from "./ui";
 import { ROUTES } from "../config/routes";
-import {
-  MIN_USERNAME_LENGTH,
-  API_DELAY_MS,
-  LOGIN_REDIRECT_MS,
-} from "../config/constants";
+import { API_DELAY_MS, LOGIN_REDIRECT_MS } from "../config/constants";
+import { validateUsername, sleep } from "../utils";
 import {
   LoginHeader,
   LoginSuccess,
@@ -36,14 +33,10 @@ const Login: FC = () => {
   }, []);
 
   const validate = () => {
-    const newErrors: { name?: string } = {};
-    if (!name.trim()) {
-      newErrors.name = "Username is required";
-    } else if (name.trim().length < MIN_USERNAME_LENGTH) {
-      newErrors.name = `Username must be at least ${MIN_USERNAME_LENGTH} characters`;
-    }
+    const error = validateUsername(name);
+    const newErrors = error ? { name: error } : {};
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    return !error;
   };
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
@@ -55,7 +48,7 @@ const Login: FC = () => {
     setIsLoading(true);
 
     // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, API_DELAY_MS));
+    await sleep(API_DELAY_MS);
 
     login(name.trim());
     setIsLoading(false);

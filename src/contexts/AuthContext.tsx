@@ -1,30 +1,21 @@
 import { useState, useMemo, type ReactNode } from "react";
 import { AuthContext } from "./authContextInstance";
+import { safeGetItem, safeSetItem, safeRemoveItem } from "../utils/storage";
+
+const STORAGE_KEY = "name";
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [userName, setUserName] = useState<string | null>(() => {
-    try {
-      return localStorage.getItem("name");
-    } catch {
-      return null;
-    }
-  });
+  const [userName, setUserName] = useState<string | null>(() =>
+    safeGetItem(STORAGE_KEY),
+  );
 
   const login = (name: string) => {
-    try {
-      localStorage.setItem("name", name);
-    } catch {
-      // Private browsing or storage full — continue without persisting
-    }
+    safeSetItem(STORAGE_KEY, name);
     setUserName(name);
   };
 
   const logout = () => {
-    try {
-      localStorage.removeItem("name");
-    } catch {
-      // Ignore storage errors
-    }
+    safeRemoveItem(STORAGE_KEY);
     setUserName(null);
   };
 

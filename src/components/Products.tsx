@@ -5,6 +5,7 @@ import { PageLayout, PageHeader } from "./ui";
 import { ArrowRightIcon } from "./Icons";
 import { productUrl } from "../config/routes";
 import { ID_DISPLAY_LENGTH, ANIM, STAGGER, DELAY } from "../config/constants";
+import { formatIndex, truncate } from "../utils";
 
 const Products = () => {
   return (
@@ -43,7 +44,7 @@ const Products = () => {
                     whileHover={{ scale: 1.1 }}
                     transition={{ duration: 0.3 }}
                   >
-                    {String(index + 1).padStart(2, "0")}
+                    {formatIndex(index)}
                   </motion.div>
                 </div>
 
@@ -54,7 +55,7 @@ const Products = () => {
                         {product.name}
                       </h3>
                       <p className="font-mono text-[10px] sm:text-xs text-gray-400">
-                        ID: {product.id.slice(0, ID_DISPLAY_LENGTH)}...
+                        ID: {truncate(product.id, ID_DISPLAY_LENGTH)}...
                       </p>
                     </div>
                   </div>
