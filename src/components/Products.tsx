@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { PageLayout, PageHeader } from "./ui";
 import { ArrowRightIcon } from "./Icons";
+import { productUrl } from "../config/routes";
 
 const Products = () => {
   return (
@@ -29,7 +30,7 @@ const Products = () => {
               transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
             >
               <Link
-                to={`/contact/${product.id}`}
+                to={productUrl(product.id)}
                 className="group relative block overflow-hidden rounded-xl border border-gray-800 bg-[#12121a] no-underline transition-all duration-300 hover:border-[#00f5ff]/30 hover:shadow-[0_0_30px_rgba(0,245,255,0.1)]"
               >
                 <div className="relative h-24 sm:h-32 overflow-hidden bg-gradient-to-br from-[#00f5ff]/10 to-[#bf00ff]/10">

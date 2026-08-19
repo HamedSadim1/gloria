@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { DiamondIcon } from "./Icons";
+import { ROUTES } from "../config/routes";
+import { BRAND } from "../config/constants";
 
 const Footer = () => {
   return (
@@ -9,9 +11,10 @@ const Footer = () => {
           <span className="text-[#00f5ff]">
             <DiamondIcon className="h-4 w-4" />
           </span>
-          <Link to="/" className="no-underline">
+          <Link to={ROUTES.HOME} className="no-underline">
             <span className="text-gray-400 transition-colors hover:text-white">
-              GLORIA<span className="text-[#00f5ff]">.</span>
+              {BRAND}
+              <span className="text-[#00f5ff]">.</span>
             </span>
           </Link>
           <span className="mx-2 text-gray-700">|</span>

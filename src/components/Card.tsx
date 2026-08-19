@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { products } from "./../models/Data";
 import { motion } from "framer-motion";
 import { PageLayout, FadeIn, StatusDot, GradientHeader, SpecRow } from "./ui";
+import { ROUTES } from "../config/routes";
 
 const Card = () => {
   const { user } = useParams();
@@ -25,7 +26,7 @@ const Card = () => {
           </FadeIn>
           <FadeIn delay={0.2} y={20}>
             <Link
-              to="/contact"
+              to={ROUTES.PRODUCTS}
               className="inline-flex items-center gap-2 rounded-lg bg-[#00f5ff] px-6 py-3 font-semibold text-sm text-black no-underline transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,245,255,0.5)]"
             >
               ← Back to Products
@@ -49,7 +50,7 @@ const Card = () => {
           <ol className="flex items-center gap-1.5 text-xs sm:text-sm">
             <li>
               <Link
-                to="/"
+                to={ROUTES.HOME}
                 className="text-gray-400 no-underline transition-colors hover:text-white"
               >
                 Home
@@ -60,7 +61,7 @@ const Card = () => {
             </li>
             <li>
               <Link
-                to="/contact"
+                to={ROUTES.PRODUCTS}
                 className="text-gray-400 no-underline transition-colors hover:text-white"
               >
                 Products
@@ -146,13 +147,13 @@ const Card = () => {
               className="flex flex-col sm:flex-row gap-3 sm:gap-4"
             >
               <Link
-                to="/contact"
+                to={ROUTES.PRODUCTS}
                 className="flex-1 rounded-lg border border-gray-700 bg-transparent px-6 py-3 text-center font-medium text-white no-underline transition-all duration-300 hover:border-[#00f5ff]/50 hover:bg-[#00f5ff]/5"
               >
                 ← Back
               </Link>
               <Link
-                to="/login"
+                to={ROUTES.LOGIN}
                 className="flex-1 rounded-lg bg-[#00f5ff] px-6 py-3 text-center font-semibold text-black no-underline transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,245,255,0.5)]"
               >
                 Sign in to Purchase

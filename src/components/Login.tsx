@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { DiamondIcon } from "./Icons";
 import { useAuth } from "../hooks/useAuth";
 import { PageLayout, AmbientGlow, FadeIn } from "./ui";
+import { ROUTES } from "../config/routes";
 
 const Login: FC = () => {
   const [name, setName] = useState("");
@@ -51,7 +52,7 @@ const Login: FC = () => {
     setShowSuccess(true);
 
     timeoutRef.current = window.setTimeout(() => {
-      navigate("/dashboard");
+      navigate(ROUTES.DASHBOARD);
     }, 1000);
   };
 
@@ -197,7 +198,7 @@ const Login: FC = () => {
           <p className="text-xs text-gray-400">
             Don't have an account?{" "}
             <Link
-              to="/contact"
+              to={ROUTES.PRODUCTS}
               className="text-[#00f5ff] no-underline hover:underline"
             >
               View Products

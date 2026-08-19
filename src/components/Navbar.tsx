@@ -3,6 +3,8 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { DiamondIcon } from "./Icons";
 import { useAuth } from "../hooks/useAuth";
+import { ROUTES } from "../config/routes";
+import { BRAND } from "../config/constants";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,18 +19,18 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { to: "/", label: "Home" },
-    { to: "/about", label: "About" },
-    { to: "/contact", label: "Products" },
+    { to: ROUTES.HOME, label: "Home" },
+    { to: ROUTES.ABOUT, label: "About" },
+    { to: ROUTES.PRODUCTS, label: "Products" },
     ...(isLoggedIn
-      ? [{ to: "/dashboard", label: "Dashboard" }]
-      : [{ to: "/login", label: "Login" }]),
+      ? [{ to: ROUTES.DASHBOARD, label: "Dashboard" }]
+      : [{ to: ROUTES.LOGIN, label: "Login" }]),
   ];
 
   const handleLogout = () => {
     logout();
     setIsOpen(false);
-    navigate("/");
+    navigate(ROUTES.HOME);
   };
 
   return (
@@ -40,7 +42,7 @@ const Navbar = () => {
     >
       <div className="mx-auto flex max-w-5xl items-center justify-between px-4 sm:px-6 py-4">
         <Link
-          to="/"
+          to={ROUTES.HOME}
           className="flex items-center gap-2 text-lg sm:text-xl font-bold tracking-wider text-white no-underline transition-all duration-300 hover:text-[#00f5ff]"
         >
           <motion.span
@@ -52,7 +54,8 @@ const Navbar = () => {
             <DiamondIcon className="h-5 w-5 sm:h-6 sm:w-6" />
           </motion.span>
           <span>
-            GLORIA<span className="text-[#00f5ff]">.</span>
+            {BRAND}
+            <span className="text-[#00f5ff]">.</span>
           </span>
         </Link>
 

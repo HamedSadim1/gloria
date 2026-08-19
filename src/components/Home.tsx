@@ -10,6 +10,7 @@ import {
   SectionHeading,
   FeatureCard,
 } from "./ui";
+import { ROUTES } from "../config/routes";
 
 const features = [
   {
@@ -80,14 +81,14 @@ const Home = () => {
           className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4"
         >
           <Link
-            to="/contact"
+            to={ROUTES.PRODUCTS}
             className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-lg bg-[#00f5ff] px-6 sm:px-8 py-3 font-semibold text-black no-underline transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,245,255,0.5)]"
           >
             <span className="relative z-10">Explore Products</span>
             <BouncingArrow className="relative z-10 inline-flex" />
           </Link>
           <Link
-            to="/about"
+            to={ROUTES.ABOUT}
             className="inline-flex items-center justify-center gap-2 rounded-lg border border-gray-700 bg-transparent px-6 sm:px-8 py-3 font-semibold text-white no-underline transition-all duration-300 hover:border-[#00f5ff]/50 hover:bg-[#00f5ff]/5"
           >
             Learn More

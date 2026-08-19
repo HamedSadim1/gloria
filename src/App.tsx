@@ -10,6 +10,7 @@ import SharedLayout from "./components/SharedLayout";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
+import { ROUTES } from "./config/routes";
 
 function App() {
   return (
@@ -18,14 +19,14 @@ function App() {
         <AuthProvider>
           <div className="App flex min-h-screen flex-col">
             <Routes>
-              <Route path="/" element={<SharedLayout />}>
+              <Route path={ROUTES.HOME} element={<SharedLayout />}>
                 <Route index element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/contact" element={<Products />} />
-                <Route path="/contact/:user" element={<Card />} />
-                <Route path="/login" element={<Login />} />
+                <Route path={ROUTES.ABOUT} element={<About />} />
+                <Route path={ROUTES.PRODUCTS} element={<Products />} />
+                <Route path={ROUTES.PRODUCT_DETAIL} element={<Card />} />
+                <Route path={ROUTES.LOGIN} element={<Login />} />
                 <Route
-                  path="/dashboard"
+                  path={ROUTES.DASHBOARD}
                   element={
                     <ProtectedRoute>
                       <Dashboard />
