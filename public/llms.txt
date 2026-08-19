@@ -1,0 +1,27 @@
+# GLORIA
+
+<!-- TODO: replace gloria.example.com with the production domain -->
+
+> GLORIA is a next-generation digital platform built with modern web technologies — Vite, TypeScript, React 19 and Tailwind CSS. It showcases a premium product catalog with detailed specifications.
+
+## Author
+
+- [Hamed Sadim](https://github.com/HamedSadim1) — Full-Stack Web Developer specializing in React, Next.js, TypeScript and C#.
+
+## About
+
+GLORIA demonstrates modern web development: instant builds, full TypeScript coverage, glassmorphism UI with neon accents, and zero tracking. The site contains a home page, an about page describing the tech stack, and a product catalog.
+
+## Products
+
+- [Accent Chair](https://gloria.example.com/contact/recZkNf2kwmdBcqd0): Premium seating, quality A+, 3 year warranty.
+- [Albany Sectional](https://gloria.example.com/contact/recEHmzvupvT8ZONH): Living room sofa, quality A+, 5 year warranty.
+- [Albany Table](https://gloria.example.com/contact/rec5NBwZ5zCD9nfF0): Tables, quality A, 2 year warranty.
+- [Armchair](https://gloria.example.com/contact/recd1jIVIEChmiwhe): Premium seating, quality A+, 3 year warranty.
+- [Bar Stool](https://gloria.example.com/contact/recoM2MyHJGHLVi5l): Seating, quality B+, 1 year warranty.
+
+## Key Pages
+
+- [Home](https://gloria.example.com/)
+- [About](https://gloria.example.com/about)
+- [Products](https://gloria.example.com/contact)

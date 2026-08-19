@@ -1,38 +1,52 @@
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./components/Home";
-import About from "./components/About";
-import Contact from "./components/Contact";
-import Card from "./components/Card";
-import ErrorPage from "./components/ErrorPage";
-import SharedLayout from "./components/SharedLayout";
-import Login from "./components/Login";
-import Dashboard from "./components/Dashboard";
-import ProtectedRoute from "./components/ProtectedRoute";
+import { HelmetProvider } from "react-helmet-async";
+import { AuthProvider } from "@/contexts/AuthContext";
+import ErrorBoundary from "@/components/error/ErrorBoundary";
+import ErrorPage from "@/components/error/ErrorPage";
+import SharedLayout from "@/components/layout/SharedLayout";
+import ProtectedRoute from "@/components/layout/ProtectedRoute";
+import { ROUTES } from "@/config/routes";
+
+const Home = lazy(() => import("@/components/pages/Home"));
+const About = lazy(() => import("@/components/pages/About"));
+const Products = lazy(() => import("@/components/pages/Products"));
+const Card = lazy(() => import("@/components/pages/Card"));
+const Login = lazy(() => import("@/components/pages/Login"));
+const Dashboard = lazy(() => import("@/components/pages/Dashboard"));
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<SharedLayout />}>
-            <Route index element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="contact/:user" element={<Card />} />
-            <Route path="/login" element={<Login />} />
-            <Route
-              path="/dashboard"
-              element={
-                <ProtectedRoute>
-                  <Dashboard />
-                </ProtectedRoute>
-              }
-            />
-            <Route path="*" element={<ErrorPage />} />
-          </Route>
-        </Routes>
-      </div>
-    </BrowserRouter>
+    <ErrorBoundary>
+      <HelmetProvider>
+        <BrowserRouter>
+          <AuthProvider>
+            <div className="App flex min-h-screen flex-col">
+              <Suspense fallback={null}>
+                <Routes>
+                  <Route path={ROUTES.HOME} element={<SharedLayout />}>
+                    <Route index element={<Home />} />
+                    <Route path={ROUTES.ABOUT} element={<About />} />
+                    <Route path={ROUTES.PRODUCTS} element={<Products />} />
+                    <Route path={ROUTES.PRODUCT_DETAIL} element={<Card />} />
+                    <Route path={ROUTES.LOGIN} element={<Login />} />
+                    <Route
+                      path={ROUTES.DASHBOARD}
+                      element={
+                        <ProtectedRoute>
+                          <Dashboard />
+                        </ProtectedRoute>
+                      }
+                    />
+                    <Route path="*" element={<ErrorPage />} />
+                  </Route>
+                </Routes>
+              </Suspense>
+            </div>
+          </AuthProvider>
+        </BrowserRouter>
+      </HelmetProvider>
+    </ErrorBoundary>
   );
 }
 

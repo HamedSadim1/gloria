@@ -2,16 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="A beautiful React Router app with glassmorphism UI design"
-    />
+    <meta name="theme-color" content="#0a0a0f" />
+    <!--
+      Metadata (title, description, canonical, Open Graph, JSON-LD) is managed
+      per route by react-helmet-async (see src/components/seo/Seo.tsx).
+      Keeping SEO tags out of index.html prevents duplicate tags in the head.
+    -->
     <link rel="apple-touch-icon" href="/logo192.png" />
     <link rel="manifest" href="/manifest.json" />
-    <title>React App</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
