@@ -7,18 +7,16 @@ import {
   HardDriveIcon,
   UsersIcon,
   ActivityIcon,
-} from "./Icons";
-import { useAuth } from "../hooks/useAuth";
-import {
   PageLayout,
   FadeIn,
   StatusDot,
   Button,
   DashboardWidget,
   ActivityRow,
-} from "./ui";
-import { ROUTES } from "../config/routes";
-import { ANIM } from "../config/constants";
+} from "../ui";
+import { useAuth } from "../../hooks/useAuth";
+import { ROUTES } from "../../config/routes";
+import { ANIM } from "../../config/constants";
 
 const widgets = [
   {

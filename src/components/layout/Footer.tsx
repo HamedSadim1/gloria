@@ -1,4 +1,4 @@
-import { BrandLogo } from "./ui";
+import { BrandLogo } from "../ui";
 
 const Footer = () => {
   return (

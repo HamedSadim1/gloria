@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ROUTES } from "../../config/routes";
+import { ROUTES } from "../../../config/routes";
 
 const Breadcrumb = () => (
   <motion.nav

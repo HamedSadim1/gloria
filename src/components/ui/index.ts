@@ -14,3 +14,4 @@ export { default as Button } from "./Button";
 export { default as DashboardWidget } from "./DashboardWidget";
 export { default as ActivityRow } from "./ActivityRow";
 export { default as BrandLogo } from "./BrandLogo";
+export * from "./Icons";

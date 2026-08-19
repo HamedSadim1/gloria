@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { DiamondIcon } from "../Icons";
+import { DiamondIcon } from "./Icons";
 import { ROUTES } from "../../config/routes";
 import { BRAND, ANIM } from "../../config/constants";
 

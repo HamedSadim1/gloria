@@ -1,15 +1,15 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
-import ErrorBoundary from "./components/ErrorBoundary";
-import Home from "./components/Home";
-import About from "./components/About";
-import Products from "./components/Products";
-import Card from "./components/Card";
-import ErrorPage from "./components/ErrorPage";
-import SharedLayout from "./components/SharedLayout";
-import Login from "./components/Login";
-import Dashboard from "./components/Dashboard";
-import ProtectedRoute from "./components/ProtectedRoute";
+import ErrorBoundary from "./components/error/ErrorBoundary";
+import Home from "./components/pages/Home";
+import About from "./components/pages/About";
+import Products from "./components/pages/Products";
+import Card from "./components/pages/Card";
+import ErrorPage from "./components/error/ErrorPage";
+import SharedLayout from "./components/layout/SharedLayout";
+import Login from "./components/pages/Login";
+import Dashboard from "./components/pages/Dashboard";
+import ProtectedRoute from "./components/layout/ProtectedRoute";
 import { ROUTES } from "./config/routes";
 
 function App() {

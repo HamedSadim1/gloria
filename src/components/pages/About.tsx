@@ -1,17 +1,20 @@
 import { motion } from "framer-motion";
-import { BoltIcon, ShieldIcon, AtomIcon, PaletteIcon } from "./Icons";
 import {
+  BoltIcon,
+  ShieldIcon,
+  AtomIcon,
+  PaletteIcon,
   PageLayout,
   PageHeader,
   FeatureCard,
   StatCard,
   SectionHeading,
-} from "./ui";
+} from "../ui";
 import {
   GRADIENT_TEXT,
   SECTION_HEADING_CLASS,
   ANIM,
-} from "../config/constants";
+} from "../../config/constants";
 
 const techStack = [
   {

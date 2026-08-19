@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRightIcon } from "../Icons";
+import { ArrowRightIcon } from "./Icons";
 import { ANIM } from "../../config/constants";
 
 interface BouncingArrowProps {

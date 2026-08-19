@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { STAGGER } from "../../config/constants";
+import { STAGGER } from "../../../config/constants";
 
 interface NavLinkItem {
   to: string;

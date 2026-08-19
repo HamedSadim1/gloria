@@ -1,9 +1,9 @@
 import { useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { PageLayout, GradientHeader } from "./ui";
-import { ANIM } from "../config/constants";
-import { getProductById } from "../utils";
+import { PageLayout, GradientHeader } from "../ui";
+import { ANIM } from "../../config/constants";
+import { getProductById } from "../../utils";
 import {
   ProductNotFound,
   Breadcrumb,

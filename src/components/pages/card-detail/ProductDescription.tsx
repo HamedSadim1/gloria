@@ -1,5 +1,5 @@
-import { FadeIn } from "../ui";
-import { SECTION_HEADING_CLASS } from "../../config/constants";
+import { FadeIn } from "../../ui";
+import { SECTION_HEADING_CLASS } from "../../../config/constants";
 
 interface ProductDescriptionProps {
   name: string;

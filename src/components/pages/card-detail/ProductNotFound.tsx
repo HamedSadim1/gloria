@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { ROUTES } from "../../config/routes";
-import { PageLayout, FadeIn } from "../ui";
+import { ROUTES } from "../../../config/routes";
+import { PageLayout, FadeIn } from "../../ui";
 
 const ProductNotFound = () => (
   <PageLayout>

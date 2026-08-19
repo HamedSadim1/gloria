@@ -1,6 +1,6 @@
-import { FadeIn, SpecRow } from "../ui";
-import { SECTION_HEADING_CLASS } from "../../config/constants";
-import type { ProductSpec } from "../../models/Data";
+import { FadeIn, SpecRow } from "../../ui";
+import { SECTION_HEADING_CLASS } from "../../../config/constants";
+import type { ProductSpec } from "../../../models/Data";
 
 interface ProductSpecsProps {
   specs: ProductSpec[];

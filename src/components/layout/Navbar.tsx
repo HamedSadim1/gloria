@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useAuth } from "../hooks/useAuth";
-import { ROUTES } from "../config/routes";
-import { ANIM } from "../config/constants";
-import { BrandLogo } from "./ui";
+import { useAuth } from "../../hooks/useAuth";
+import { ROUTES } from "../../config/routes";
+import { ANIM } from "../../config/constants";
+import { BrandLogo } from "../ui";
 import { DesktopNav, MobileHamburger, MobileMenu } from "./navbar/index";
 
 const Navbar = () => {

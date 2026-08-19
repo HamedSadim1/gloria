@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
-import { DiamondIcon } from "../Icons";
-import { FadeIn } from "../ui";
-import { ANIM } from "../../config/constants";
+import { DiamondIcon, FadeIn } from "../../ui";
+import { ANIM } from "../../../config/constants";
 
 const LoginHeader = () => {
   return (

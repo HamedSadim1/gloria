@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
-import { BoltIcon, ShieldIcon, PaletteIcon } from "./Icons";
 import {
+  BoltIcon,
+  ShieldIcon,
+  PaletteIcon,
   PageLayout,
   AmbientGlow,
   Badge,
@@ -9,9 +11,9 @@ import {
   StatCard,
   SectionHeading,
   FeatureCard,
-} from "./ui";
-import { ROUTES } from "../config/routes";
-import { GRADIENT_TEXT } from "../config/constants";
+} from "../ui";
+import { ROUTES } from "../../config/routes";
+import { GRADIENT_TEXT } from "../../config/constants";
 
 const features = [
   {

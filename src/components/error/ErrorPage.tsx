@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { PageLayout, AmbientGlow, Badge, FadeIn } from "./ui";
-import { ROUTES } from "../config/routes";
-import { ANIM } from "../config/constants";
+import { PageLayout, AmbientGlow, Badge, FadeIn } from "../ui";
+import { ROUTES } from "../../config/routes";
+import { ANIM } from "../../config/constants";
 
 const ErrorPage = () => {
   return (
