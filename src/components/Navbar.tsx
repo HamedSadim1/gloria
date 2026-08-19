@@ -40,6 +40,7 @@ const Navbar = () => {
             className="text-[#00f5ff]"
             animate={{ rotate: [0, 360] }}
             transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            aria-hidden="true"
           >
             <DiamondIcon className="h-5 w-5 sm:h-6 sm:w-6" />
           </motion.span>
@@ -94,10 +95,10 @@ const Navbar = () => {
               transition={{ duration: 0.4, delay: 0.5 }}
             >
               <div className="ml-2 flex items-center gap-2 border-l border-gray-700 pl-4">
-                <span className="text-xs text-gray-500">{userName}</span>
+                <span className="text-xs text-gray-400">{userName}</span>{" "}
                 <button
                   onClick={handleLogout}
-                  className="cursor-pointer rounded-lg border border-gray-700 bg-transparent px-3 py-1.5 text-xs font-medium text-gray-400 transition-all duration-200 hover:border-red-500/50 hover:bg-red-500/10 hover:text-red-400"
+                  className="cursor-pointer rounded-lg border border-gray-700 bg-transparent px-3 py-1.5 text-xs font-medium text-gray-400 transition-all duration-200 hover:border-red-500/50 hover:bg-red-500/10 hover:text-red-400 focus-visible:ring-2 focus-visible:ring-[#00f5ff]"
                 >
                   Logout
                 </button>
@@ -109,27 +110,33 @@ const Navbar = () => {
         {/* Mobile hamburger */}
         <div className="flex items-center gap-3 md:hidden">
           {isLoggedIn && (
-            <span className="text-[10px] text-gray-500">{userName}</span>
+            <span className="text-[10px] text-gray-400">{userName}</span>
           )}
           <button
-            className="flex flex-col items-center justify-center gap-1.5 border-none bg-transparent p-2"
+            className="flex flex-col items-center justify-center gap-1.5 border-none bg-transparent p-2 rounded-lg transition-colors hover:bg-white/5"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
           >
+            {" "}
             <motion.span
               className="block h-0.5 w-6 bg-white"
               animate={isOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
               transition={{ duration: 0.3 }}
+              aria-hidden="true"
             />
             <motion.span
               className="block h-0.5 w-6 bg-white"
               animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
               transition={{ duration: 0.3 }}
+              aria-hidden="true"
             />
             <motion.span
               className="block h-0.5 w-6 bg-white"
               animate={isOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
               transition={{ duration: 0.3 }}
+              aria-hidden="true"
             />
           </button>
         </div>
@@ -139,7 +146,9 @@ const Navbar = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            id="mobile-menu"
             className="border-t border-gray-800 bg-[#0a0a0f]/95 backdrop-blur-xl md:hidden"
+            role="menu"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -156,6 +165,7 @@ const Navbar = () => {
                   <NavLink
                     to={to}
                     onClick={() => setIsOpen(false)}
+                    role="menuitem"
                     className={({ isActive }) =>
                       `block rounded-lg px-4 py-3 text-sm font-medium no-underline transition-all duration-200 ${
                         isActive
@@ -177,6 +187,7 @@ const Navbar = () => {
                 >
                   <button
                     onClick={handleLogout}
+                    role="menuitem"
                     className="w-full cursor-pointer rounded-lg border border-red-500/30 bg-transparent px-4 py-3 text-left text-sm font-medium text-red-400 transition-all duration-200 hover:bg-red-500/10"
                   >
                     Logout

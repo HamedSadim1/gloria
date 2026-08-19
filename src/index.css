@@ -51,3 +51,26 @@ html {
     linear-gradient(90deg, rgba(0, 245, 255, 0.03) 1px, transparent 1px);
   background-size: 50px 50px;
 }
+
+/* Global focus-visible ring for keyboard navigation */
+:focus-visible {
+  outline: 2px solid #00f5ff;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Disable all animations, transitions, and motion for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .bg-grid {
+    background-size: 50px 50px;
+  }
+}

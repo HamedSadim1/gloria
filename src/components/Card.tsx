@@ -57,29 +57,34 @@ const Card = () => {
             <li>
               <Link
                 to="/"
-                className="text-gray-500 no-underline transition-colors hover:text-white"
+                className="text-gray-400 no-underline transition-colors hover:text-white"
               >
                 Home
               </Link>
             </li>
-            <li className="text-gray-600">/</li>
+            <li className="text-gray-600" aria-hidden="true">
+              /
+            </li>
             <li>
               <Link
                 to="/contact"
-                className="text-gray-500 no-underline transition-colors hover:text-white"
+                className="text-gray-400 no-underline transition-colors hover:text-white"
               >
                 Products
               </Link>
             </li>
-            <li className="text-gray-600">/</li>
+            <li className="text-gray-600" aria-hidden="true">
+              /
+            </li>
             <li>
               <span className="text-[#00f5ff]">Details</span>
             </li>
           </ol>
         </motion.nav>
 
-        <motion.div
+        <motion.section
           className="overflow-hidden rounded-xl sm:rounded-2xl border border-gray-800 bg-[#12121a] mb-16 sm:mb-20"
+          aria-labelledby="product-heading"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -94,6 +99,7 @@ const Card = () => {
               Product Details
             </motion.div>
             <motion.h1
+              id="product-heading"
               className="text-2xl sm:text-3xl font-bold capitalize text-white"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -111,7 +117,7 @@ const Card = () => {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
               >
-                <div className="mb-1 text-[10px] sm:text-xs text-gray-500">
+                <div className="mb-1 text-[10px] sm:text-xs text-gray-400">
                   Product ID
                 </div>
                 <div className="font-mono text-[10px] sm:text-sm text-white break-all">
@@ -124,7 +130,7 @@ const Card = () => {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.6 }}
               >
-                <div className="mb-1 text-[10px] sm:text-xs text-gray-500">
+                <div className="mb-1 text-[10px] sm:text-xs text-gray-400">
                   Status
                 </div>
                 <div className="flex items-center gap-2 text-xs sm:text-sm text-green-400">
@@ -132,6 +138,7 @@ const Card = () => {
                     className="h-2 w-2 rounded-full bg-green-400"
                     animate={{ scale: [1, 1.3, 1] }}
                     transition={{ duration: 2, repeat: Infinity }}
+                    aria-hidden="true"
                   />
                   Active
                 </div>
@@ -207,7 +214,7 @@ const Card = () => {
               </Link>
             </motion.div>
           </div>
-        </motion.div>
+        </motion.section>
       </div>
     </div>
   );

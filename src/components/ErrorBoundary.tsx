@@ -43,6 +43,7 @@ class ErrorBoundary extends Component<Props, State> {
             className="pointer-events-none absolute top-1/3 left-1/2 -z-10 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-500/10 blur-[120px]"
             animate={{ opacity: [0.2, 0.4, 0.2] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            aria-hidden="true"
           />
 
           <div className="w-full max-w-md text-center">
@@ -104,7 +105,7 @@ class ErrorBoundary extends Component<Props, State> {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
               >
-                <p className="mb-1 text-xs font-medium text-gray-500 uppercase">
+                <p className="mb-1 text-xs font-medium text-gray-400 uppercase">
                   Error Details
                 </p>
                 <p className="font-mono text-xs text-red-400 break-all">
@@ -121,13 +122,13 @@ class ErrorBoundary extends Component<Props, State> {
             >
               <button
                 onClick={this.handleReset}
-                className="cursor-pointer rounded-lg bg-[#00f5ff] px-6 py-3 font-semibold text-black transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,245,255,0.5)]"
+                className="cursor-pointer rounded-lg bg-[#00f5ff] px-6 py-3 font-semibold text-black transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,245,255,0.5)] focus-visible:ring-2 focus-visible:ring-[#00f5ff] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0f]"
               >
                 Go to Home
               </button>
               <button
                 onClick={() => window.location.reload()}
-                className="cursor-pointer rounded-lg border border-gray-700 bg-transparent px-6 py-3 font-semibold text-white transition-all duration-300 hover:border-[#00f5ff]/50 hover:bg-[#00f5ff]/5"
+                className="cursor-pointer rounded-lg border border-gray-700 bg-transparent px-6 py-3 font-semibold text-white transition-all duration-300 hover:border-[#00f5ff]/50 hover:bg-[#00f5ff]/5 focus-visible:ring-2 focus-visible:ring-[#00f5ff] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0f]"
               >
                 Reload Page
               </button>

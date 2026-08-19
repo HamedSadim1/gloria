@@ -23,6 +23,7 @@ const Products = () => {
               className="h-1.5 w-1.5 rounded-full bg-[#00f5ff]"
               animate={{ opacity: [1, 0.3, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
+              aria-hidden="true"
             />
             Products
           </motion.div>
@@ -46,7 +47,10 @@ const Products = () => {
         </motion.div>
 
         {/* Product Grid */}
-        <div className="grid grid-cols-1 gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3 pb-16 sm:pb-20">
+        <section
+          className="grid grid-cols-1 gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3 pb-16 sm:pb-20"
+          aria-label="Product list"
+        >
           {products.map((product, index) => (
             <motion.div
               key={product.id}
@@ -74,7 +78,7 @@ const Products = () => {
                       <h3 className="mb-1 text-base sm:text-lg font-semibold text-white capitalize">
                         {product.name}
                       </h3>
-                      <p className="font-mono text-[10px] sm:text-xs text-gray-500">
+                      <p className="font-mono text-[10px] sm:text-xs text-gray-400">
                         ID: {product.id.slice(0, 12)}...
                       </p>
                     </div>
@@ -88,6 +92,7 @@ const Products = () => {
                       className="text-xs sm:text-sm text-gray-400 transition-colors group-hover:text-[#00f5ff]"
                       animate={{ x: [0, 5, 0] }}
                       transition={{ duration: 1.5, repeat: Infinity }}
+                      aria-hidden="true"
                     >
                       View Details →
                     </motion.span>
@@ -96,7 +101,7 @@ const Products = () => {
               </Link>
             </motion.div>
           ))}
-        </div>
+        </section>
       </div>
     </div>
   );

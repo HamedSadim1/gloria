@@ -107,12 +107,13 @@ const Dashboard: FC = () => {
                 className="h-2 w-2 rounded-full bg-green-400"
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
+                aria-hidden="true"
               />
               <span className="text-xs sm:text-sm text-gray-300">Online</span>
             </motion.div>
             <button
               onClick={handleLogout}
-              className="cursor-pointer rounded-lg border border-gray-700 bg-[#12121a] px-3 sm:px-4 py-2 text-xs sm:text-sm text-gray-400 transition-all duration-200 hover:border-red-500/50 hover:bg-red-500/10 hover:text-red-400"
+              className="cursor-pointer rounded-lg border border-gray-700 bg-[#12121a] px-3 sm:px-4 py-2 text-xs sm:text-sm text-gray-400 transition-all duration-200 hover:border-red-500/50 hover:bg-red-500/10 hover:text-red-400 focus-visible:ring-2 focus-visible:ring-[#00f5ff]"
             >
               Logout
             </button>
@@ -120,7 +121,10 @@ const Dashboard: FC = () => {
         </motion.div>
 
         {/* Stats Grid */}
-        <div className="mb-6 sm:mb-8 grid grid-cols-2 gap-3 sm:gap-4">
+        <section
+          className="mb-6 sm:mb-8 grid grid-cols-2 gap-3 sm:gap-4"
+          aria-label="Stats overview"
+        >
           {widgets.map(
             (
               { Icon, label, value, change, color, borderColor, iconColor },
@@ -144,6 +148,7 @@ const Dashboard: FC = () => {
                       ease: "easeInOut",
                       delay: index * 0.5,
                     }}
+                    aria-hidden="true"
                   >
                     <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
                   </motion.span>
@@ -159,23 +164,27 @@ const Dashboard: FC = () => {
                 >
                   {value}
                 </motion.div>
-                <div className="text-[10px] sm:text-xs text-gray-500">
+                <div className="text-[10px] sm:text-xs text-gray-400">
                   {label}
                 </div>
               </motion.div>
             ),
           )}
-        </div>
+        </section>
 
         {/* Activity Feed */}
-        <motion.div
+        <motion.section
           className="rounded-xl border border-gray-800 bg-[#12121a] p-4 sm:p-6 mb-16 sm:mb-20"
+          aria-labelledby="activity-heading"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
           <div className="mb-4 sm:mb-6 flex items-center justify-between">
-            <h2 className="flex items-center gap-2 text-base sm:text-lg font-semibold text-white">
+            <h2
+              id="activity-heading"
+              className="flex items-center gap-2 text-base sm:text-lg font-semibold text-white"
+            >
               <ActivityIcon className="h-5 w-5 text-[#00f5ff]" />
               Recent Activity
             </h2>
@@ -184,7 +193,7 @@ const Dashboard: FC = () => {
           {activity.length === 0 ? (
             <div className="py-12 text-center">
               <ActivityIcon className="mx-auto mb-3 h-10 w-10 text-gray-600" />
-              <p className="text-sm text-gray-500">No recent activity</p>
+              <p className="text-sm text-gray-400">No recent activity</p>
             </div>
           ) : (
             <div className="space-y-3 sm:space-y-4">
@@ -205,6 +214,7 @@ const Dashboard: FC = () => {
                         repeat: Infinity,
                         delay: index * 0.3,
                       }}
+                      aria-hidden="true"
                     />
                     <div>
                       <span className="text-xs sm:text-sm text-gray-300">
@@ -221,14 +231,14 @@ const Dashboard: FC = () => {
                       </span>
                     </div>
                   </div>
-                  <span className="text-[10px] sm:text-xs text-gray-500">
+                  <span className="text-[10px] sm:text-xs text-gray-400">
                     {time}
                   </span>
                 </motion.div>
               ))}
             </div>
           )}
-        </motion.div>
+        </motion.section>
       </div>
     </div>
   );

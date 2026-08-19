@@ -8,11 +8,13 @@ const ErrorPage = () => {
         className="pointer-events-none absolute top-1/3 left-1/2 -z-10 h-64 sm:h-96 w-64 sm:w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-500/10 blur-[80px] sm:blur-[120px]"
         animate={{ opacity: [0.2, 0.4, 0.2] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        aria-hidden="true"
       />
 
       <div className="mx-auto w-full max-w-md text-center">
         <motion.div
-          className="mb-4 sm:mb-6 text-6xl sm:text-8xl font-bold tracking-tighter text-gray-800"
+          className="mb-4 sm:mb-6 text-6xl sm:text-8xl font-bold tracking-tighter text-gray-600"
+          aria-hidden="true"
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
@@ -29,6 +31,7 @@ const ErrorPage = () => {
             className="h-1.5 w-1.5 rounded-full bg-red-400"
             animate={{ opacity: [1, 0.3, 1] }}
             transition={{ duration: 1.5, repeat: Infinity }}
+            aria-hidden="true"
           />
           Error
         </motion.div>

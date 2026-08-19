@@ -34,11 +34,13 @@ const Home = () => {
         className="pointer-events-none absolute top-0 left-1/2 -z-10 h-64 sm:h-96 w-64 sm:w-96 -translate-x-1/2 rounded-full bg-[#00f5ff]/10 blur-[80px] sm:blur-[120px]"
         animate={{ opacity: [0.4, 0.7, 0.4] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        aria-hidden="true"
       />
       <motion.div
         className="pointer-events-none absolute top-20 right-0 -z-10 h-48 sm:h-64 w-48 sm:w-64 rounded-full bg-[#bf00ff]/10 blur-[60px] sm:blur-[100px]"
         animate={{ opacity: [0.2, 0.5, 0.2] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        aria-hidden="true"
       />
 
       {/* Hero Section */}
@@ -53,6 +55,7 @@ const Home = () => {
             className="h-1.5 w-1.5 rounded-full bg-[#00f5ff]"
             animate={{ opacity: [1, 0.3, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
+            aria-hidden="true"
           />
           System Online
         </motion.div>
@@ -95,6 +98,7 @@ const Home = () => {
               className="relative z-10 inline-flex"
               animate={{ x: [0, 5, 0] }}
               transition={{ duration: 1.5, repeat: Infinity }}
+              aria-hidden="true"
             >
               <ArrowRightIcon className="h-5 w-5" />
             </motion.span>
@@ -144,6 +148,7 @@ const Home = () => {
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
+                aria-hidden="true"
               >
                 <Icon className="h-8 w-8 sm:h-10 sm:w-10" />
               </motion.div>
@@ -177,7 +182,7 @@ const Home = () => {
               >
                 {value}
               </motion.div>
-              <div className="text-xs sm:text-sm text-gray-500">{label}</div>
+              <div className="text-xs sm:text-sm text-gray-400">{label}</div>
             </motion.div>
           ))}
         </div>

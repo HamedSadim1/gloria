@@ -72,8 +72,12 @@ const About = () => {
         </motion.div>
 
         {/* Tech Stack */}
-        <div className="mb-10 sm:mb-16">
+        <section
+          className="mb-10 sm:mb-16"
+          aria-labelledby="tech-stack-heading"
+        >
           <motion.h2
+            id="tech-stack-heading"
             className="mb-4 sm:mb-6 text-xs sm:text-sm font-semibold tracking-widest text-[#00f5ff] uppercase"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -102,6 +106,7 @@ const About = () => {
                     ease: "easeInOut",
                     delay: index * 0.5,
                   }}
+                  aria-hidden="true"
                 >
                   <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
                 </motion.span>
@@ -112,17 +117,21 @@ const About = () => {
               </motion.div>
             ))}
           </div>
-        </div>
+        </section>
 
         {/* Mission */}
-        <motion.div
+        <motion.section
           className="rounded-xl border border-gray-800 bg-[#12121a] p-5 sm:p-8 mb-16 sm:mb-20"
+          aria-labelledby="mission-heading"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="mb-4 text-xs sm:text-sm font-semibold tracking-widest text-[#00f5ff] uppercase">
+          <h2
+            id="mission-heading"
+            className="mb-4 text-xs sm:text-sm font-semibold tracking-widest text-[#00f5ff] uppercase"
+          >
             Our Mission
           </h2>
           <p className="mb-6 text-base sm:text-lg leading-relaxed text-gray-300">
@@ -146,13 +155,13 @@ const About = () => {
                 <div className="text-lg sm:text-2xl font-bold text-[#00f5ff]">
                   {value}
                 </div>
-                <div className="text-[10px] sm:text-sm text-gray-500">
+                <div className="text-[10px] sm:text-sm text-gray-400">
                   {label}
                 </div>
               </motion.div>
             ))}
           </div>
-        </motion.div>
+        </motion.section>
       </div>
     </div>
   );

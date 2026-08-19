@@ -56,6 +56,7 @@ const Login: FC = () => {
         className="pointer-events-none absolute top-1/3 left-1/2 -z-10 h-64 sm:h-96 w-64 sm:w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#bf00ff]/10 blur-[80px] sm:blur-[120px]"
         animate={{ opacity: [0.2, 0.5, 0.2] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        aria-hidden="true"
       />
 
       <div className="mx-auto w-full max-w-md">
@@ -69,6 +70,7 @@ const Login: FC = () => {
             className="mb-4 inline-flex h-12 sm:h-16 w-12 sm:w-16 items-center justify-center rounded-xl sm:rounded-2xl border border-[#00f5ff]/30 bg-[#00f5ff]/10 text-[#00f5ff]"
             animate={{ rotate: [0, 5, -5, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            aria-hidden="true"
           >
             <DiamondIcon className="h-6 w-6 sm:h-8 sm:w-8" />
           </motion.div>
@@ -184,6 +186,7 @@ const Login: FC = () => {
                         repeat: Infinity,
                         ease: "linear",
                       }}
+                      aria-hidden="true"
                     />
                     Signing in...
                   </span>
@@ -196,7 +199,7 @@ const Login: FC = () => {
         </AnimatePresence>
 
         <motion.p
-          className="mt-4 sm:mt-6 text-center text-xs text-gray-500"
+          className="mt-4 sm:mt-6 text-center text-xs text-gray-400"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.8 }}
