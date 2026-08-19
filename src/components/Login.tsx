@@ -2,7 +2,7 @@ import { useState, useRef, useEffect, type FC } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { DiamondIcon } from "./Icons";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../hooks/useAuth";
 
 const Login: FC = () => {
   const [name, setName] = useState("");

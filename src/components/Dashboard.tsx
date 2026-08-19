@@ -8,7 +8,7 @@ import {
   UsersIcon,
   ActivityIcon,
 } from "./Icons";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../hooks/useAuth";
 
 const widgets = [
   {
