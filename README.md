@@ -1,34 +1,42 @@
-# React Router Demo App
+# GLORIA — React Router Demo App
 
-A modern React application demonstrating routing with React Router DOM, built with Vite and TypeScript. This app showcases navigation, protected routes, and dynamic routing.
+A modern React application demonstrating routing with React Router DOM, built with Vite, TypeScript, and Tailwind CSS. The app showcases nested routes, protected routes, dynamic routing, SEO metadata, and static prerendering.
 
 ## 🚀 Features
 
 - **React Router DOM v7**: Client-side routing with nested routes
 - **TypeScript**: Type-safe development
 - **Vite**: Fast build tool and development server
-- **Semantic UI**: Clean and responsive UI components
-- **Protected Routes**: Authentication-based access control
-- **Dynamic Routing**: Product detail pages with URL parameters
-- **Local Storage**: Simple user session management
+- **Tailwind CSS v4**: Custom neon theme defined via `@theme` in `src/index.css`
+- **Framer Motion**: Scroll/mount animations with centralized timing constants
+- **Protected Routes**: `/dashboard` redirects to `/login` when not authenticated
+- **Dynamic Routing**: Product detail pages with URL parameters (`/contact/:id`)
+- **Local Storage**: Simple user session management via `AuthContext`
+- **SEO & Prerendering**: Per-route metadata plus static HTML prerendering for scrapers
+- **Path Aliases**: All imports use the `@/` alias (maps to `src/`)
+- **Class Merging**: `cn()` utility built on `clsx` + `tailwind-merge`
 
 ## 📋 Pages
 
-- **Home**: Welcome page with introductory content
-- **About**: Information about the application
-- **Contact**: Product catalog with clickable product cards
-- **Login**: User authentication form
-- **Dashboard**: Protected user dashboard (requires login)
-- **Product Details**: Individual product pages (e.g., `/contact/:id`)
+- **Home** (`/`): Welcome page with hero, features, and stats
+- **About** (`/about`): Developer profile and tech stack
+- **Products** (`/contact`): Product catalog with clickable cards
+- **Product Details** (`/contact/:id`): Individual product page with specs
+- **Login** (`/login`): Username-based authentication
+- **Dashboard** (`/dashboard`): Protected user dashboard (requires login)
+- **404** (`*`): Error page for unknown routes
 
 ## 🛠️ Tech Stack
 
 - **Frontend Framework**: React 19
-- **Build Tool**: Vite 7
+- **Build Tool**: Vite 8
 - **Language**: TypeScript 5
 - **Routing**: React Router DOM 7
-- **Styling**: Semantic UI CSS
-- **State Management**: React Hooks + Local Storage
+- **Styling**: Tailwind CSS 4
+- **Animation**: Framer Motion
+- **SEO**: react-helmet-async
+- **State Management**: React Context + Local Storage
+- **Utilities**: clsx + tailwind-merge
 
 ## 📦 Installation
 
@@ -55,9 +63,15 @@ A modern React application demonstrating routing with React Router DOM, built wi
 
 ## 🔧 Available Scripts
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production (runs prerendering afterwards)
-- `npm run preview` - Preview production build locally
+- `npm run dev` — Start development server
+- `npm run build` — Build for production (runs prerendering afterwards)
+- `npm run preview` — Preview production build locally
+- `npm run lint` — Lint with ESLint
+- `npm run lint:fix` — Lint and auto-fix
+- `npm run format` — Format all files with Prettier
+- `npm run format:check` — Verify formatting
+
+Commits are checked by Husky hooks: `lint-staged` (Prettier + ESLint on staged files) and `commitlint` (Conventional Commits).
 
 ## 🔍 SEO & prerendering
 
@@ -72,48 +86,54 @@ Metadata (title, description, canonical, Open Graph, Twitter Card and JSON-LD) i
 ```text
 src/
 ├── components/
-│   ├── About.tsx          # About page
-│   ├── Card.tsx           # Product detail component
-│   ├── Contact.tsx        # Product listing page
-│   ├── Dashboard.tsx      # Protected dashboard
-│   ├── ErrorPage.tsx      # 404 error page
-│   ├── Footer.tsx         # Footer component
-│   ├── Home.tsx           # Home page
-│   ├── Login.tsx          # Login form
-│   ├── Navbar.tsx         # Navigation bar
-│   ├── ProtectedRoute.tsx # Route protection wrapper
-│   └── SharedLayout.tsx   # Layout with navbar
-├── models/
-│   └── Data.ts            # Product data
-├── App.tsx                # Main app component with routing
-├── index.tsx              # App entry point
-└── index.css              # Global styles
+│   ├── error/          # ErrorBoundary, ErrorPage
+│   ├── layout/         # SharedLayout, Navbar, Footer, ProtectedRoute, navbar/*
+│   ├── pages/          # Home, About, Products, Card, Login, Dashboard (+ sub-components)
+│   ├── seo/            # Seo (react-helmet-async metadata)
+│   └── ui/             # Shared UI primitives (Button, FadeIn, Badge, StatCard, …)
+├── config/             # Centralized routes, constants (brand, animations), SEO
+├── contexts/           # AuthContext (localStorage session)
+├── hooks/              # useAuth
+├── models/             # Product data & types
+├── utils/              # cn, storage, validation, format, async, seo helpers
+├── App.tsx             # Main app component with routing
+├── index.tsx           # App entry point
+└── index.css           # Tailwind v4 theme + global styles
 ```
+
+## ✨ Code Conventions
+
+- **Path aliases**: Imports use `@/` (e.g. `@/components/ui`, `@/config/constants`) — mapped to `src/` in `tsconfig.json` and `vite.config.mts`.
+- **`cn()` helper**: Dynamic class names go through `cn()` (`src/utils/cn.ts`), built on `clsx` + `tailwind-merge`. It accepts strings, arrays, and conditional objects: `cn("base", { "text-center": centered })`.
+- **Centralized config**: Route paths live in `src/config/routes.ts`, brand/animation/layout constants in `src/config/constants.ts`, SEO in `src/config/seo.ts`.
+- **Animation timing**: Framer Motion transitions use the `ANIM`, `STAGGER`, and `DELAY` constants instead of hardcoded durations.
+- **Shared UI**: Reusable components (buttons, badges, fade-ins, stat cards) live in `src/components/ui` and are re-exported through the `@/components/ui` barrel.
 
 ## 🎯 Usage
 
 1. **Navigation**: Use the navbar to navigate between pages
-2. **Products**: Click on product cards in Contact page to view details
+2. **Products**: Click on product cards on the Products page to view details
 3. **Login**: Use the login form to authenticate (stores name in localStorage)
-4. **Dashboard**: Access protected dashboard after login
+4. **Dashboard**: Access the protected dashboard after login — unauthenticated visitors are redirected to `/login`
 
 ## 🔐 Authentication
 
-The app uses a simple localStorage-based authentication:
+The app uses a simple localStorage-based authentication via `AuthContext`:
 
-- Login stores the username in localStorage
-- Dashboard displays the stored username
-- ProtectedRoute component wraps dashboard (currently allows all access)
+- `login(name)` stores the username under the `name` key in localStorage
+- `logout()` removes it and resets the session
+- `ProtectedRoute` redirects unauthenticated users from `/dashboard` to `/login`
+- `useAuth()` exposes `userName`, `isLoggedIn`, `login`, and `logout`
 
 ## 📱 Responsive Design
 
-Built with Semantic UI for responsive design that works on desktop and mobile devices.
+Built with Tailwind CSS (mobile-first, `sm:`/`md:` breakpoints) and Framer Motion, with a custom neon theme (`neon-cyan`, `neon-purple`, `neon-pink`) and reduced-motion support.
 
 ## 🤝 Contributing
 
 1. Fork the repository
 2. Create a feature branch
-3. Make your changes
+3. Make your changes (conventional commit messages)
 4. Test thoroughly
 5. Submit a pull request
 
@@ -123,4 +143,4 @@ This project is for educational purposes. Feel free to use and modify as needed.
 
 ---
 
-Built with ❤️ using React, TypeScript, and Vite
+Built with ❤️ using React, TypeScript, Vite, and Tailwind CSS
