@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ANIM, STAGGER } from "@/config/constants";
+import { cn } from "@/utils";
 
 interface StatCardProps {
   value: string;
@@ -20,7 +21,10 @@ const StatCard = ({
 }: StatCardProps) => {
   return (
     <motion.div
-      className={`rounded-xl border border-gray-800 bg-dark-800 p-4 sm:p-6 ${centered ? "text-center" : ""}`}
+      className={cn(
+        "rounded-xl border border-gray-800 bg-dark-800 p-4 sm:p-6",
+        centered && "text-center",
+      )}
       initial={{ opacity: 0, scale: 0.8 }}
       whileInView={viewport ? { opacity: 1, scale: 1 } : undefined}
       animate={viewport ? undefined : { opacity: 1, scale: 1 }}

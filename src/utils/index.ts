@@ -1,3 +1,4 @@
+export { cn } from "@/utils/cn";
 export { safeGetItem, safeSetItem, safeRemoveItem } from "@/utils/storage";
 export { validateUsername } from "@/utils/validation";
 export { formatIndex, truncate, capitalize } from "@/utils/format";

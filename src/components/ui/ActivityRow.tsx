@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import StatusDot from "@/components/ui/StatusDot";
+import { cn } from "@/utils";
 
 interface ActivityRowProps {
   action: string;
@@ -31,9 +32,10 @@ const ActivityRow = ({ action, time, status, index = 0 }: ActivityRowProps) => {
         <div>
           <span className="text-xs sm:text-sm text-gray-300">{action}</span>
           <span
-            className={`ml-2 text-[10px] sm:text-xs ${
-              status === "pending" ? "text-yellow-400" : "text-green-400"
-            }`}
+            className={cn(
+              "ml-2 text-[10px] sm:text-xs",
+              status === "pending" ? "text-yellow-400" : "text-green-400",
+            )}
           >
             {statusLabels[status]}
           </span>

@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import StatusDot from "@/components/ui/StatusDot";
+import { cn } from "@/utils";
 
 interface BadgeProps {
   children: ReactNode;
@@ -15,7 +16,10 @@ const variantClasses = {
 const Badge = ({ children, showDot, variant = "cyan" }: BadgeProps) => {
   return (
     <div
-      className={`mb-4 inline-flex items-center gap-2 rounded-full border px-3 sm:px-4 py-1.5 text-xs sm:text-sm ${variantClasses[variant]}`}
+      className={cn(
+        "mb-4 inline-flex items-center gap-2 rounded-full border px-3 sm:px-4 py-1.5 text-xs sm:text-sm",
+        variantClasses[variant],
+      )}
     >
       {showDot && (
         <StatusDot color={variant === "red" ? "bg-red-400" : "bg-neon-cyan"} />

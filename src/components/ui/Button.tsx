@@ -1,4 +1,5 @@
 import type { ButtonHTMLAttributes, ReactNode } from "react";
+import { cn } from "@/utils";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary";
@@ -20,7 +21,12 @@ const Button = ({
 }: ButtonProps) => {
   return (
     <button
-      className={`cursor-pointer rounded-lg ${variantClasses[variant]} focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-dark-900 ${className}`}
+      className={cn(
+        "cursor-pointer rounded-lg",
+        variantClasses[variant],
+        "focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-dark-900",
+        className,
+      )}
       {...props}
     >
       {children}

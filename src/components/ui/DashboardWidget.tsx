@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import type { ElementType } from "react";
 import { ANIM, STAGGER, DELAY } from "@/config/constants";
+import { cn } from "@/utils";
 
 interface DashboardWidgetProps {
   Icon: ElementType;
@@ -25,7 +26,10 @@ const DashboardWidget = ({
 }: DashboardWidgetProps) => {
   return (
     <motion.div
-      className={`rounded-xl border border-gray-800 bg-dark-800 p-3 sm:p-5 transition-all duration-300 ${borderColor}`}
+      className={cn(
+        "rounded-xl border border-gray-800 bg-dark-800 p-3 sm:p-5 transition-all duration-300",
+        borderColor,
+      )}
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: ANIM.ITEM, delay: DELAY.EARLY + index * STAGGER }}
@@ -33,7 +37,11 @@ const DashboardWidget = ({
     >
       <div className="mb-2 sm:mb-3 flex items-center justify-between">
         <motion.span
-          className={`flex h-8 sm:h-10 w-8 sm:w-10 items-center justify-center rounded-lg bg-linear-to-br ${color} ${iconColor}`}
+          className={cn(
+            "flex h-8 sm:h-10 w-8 sm:w-10 items-center justify-center rounded-lg bg-linear-to-br",
+            color,
+            iconColor,
+          )}
           animate={{ rotate: [0, 5, -5, 0] }}
           transition={{
             duration: ANIM.ROTATION,

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { cn } from "@/utils";
 
 interface AmbientGlowProps {
   color?: string;
@@ -13,7 +14,11 @@ const AmbientGlow = ({
 }: AmbientGlowProps) => {
   return (
     <motion.div
-      className={`pointer-events-none absolute -z-10 h-64 sm:h-96 w-64 sm:w-96 rounded-full blur-[80px] sm:blur-[120px] ${color} ${className}`}
+      className={cn(
+        "pointer-events-none absolute -z-10 h-64 sm:h-96 w-64 sm:w-96 rounded-full blur-[80px] sm:blur-[120px]",
+        color,
+        className,
+      )}
       animate={{ opacity: [0.2, 0.5, 0.2] }}
       transition={{ duration, repeat: Infinity, ease: "easeInOut" }}
       aria-hidden="true"

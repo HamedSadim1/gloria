@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import type { ElementType } from "react";
 import { ANIM, STAGGER } from "@/config/constants";
+import { cn } from "@/utils";
 
 interface FeatureCardProps {
   Icon: ElementType;
@@ -43,7 +44,7 @@ const FeatureCard = ({
       whileHover={{ y: -5 }}
     >
       <motion.div
-        className={`mb-3 sm:mb-4 ${iconColor ?? "text-neon-cyan"}`}
+        className={cn("mb-3 sm:mb-4", iconColor ?? "text-neon-cyan")}
         animate={{ rotate: [0, 10, -10, 0] }}
         transition={{
           duration: ANIM.ROTATION,
@@ -54,7 +55,12 @@ const FeatureCard = ({
       >
         {iconColor ? (
           <span
-            className={`inline-flex items-center justify-center rounded-lg sm:rounded-xl bg-linear-to-br ${iconColor} text-white ${containerSizes[iconSize]}`}
+            className={cn(
+              "inline-flex items-center justify-center rounded-lg sm:rounded-xl bg-linear-to-br",
+              iconColor,
+              "text-white",
+              containerSizes[iconSize],
+            )}
           >
             <Icon className={iconSizes[iconSize]} />
           </span>
