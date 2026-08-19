@@ -77,9 +77,11 @@ Commits are checked by Husky hooks: `lint-staged` (Prettier + ESLint on staged f
 
 Metadata (title, description, canonical, Open Graph, Twitter Card and JSON-LD) is managed per route by `react-helmet-async` via the reusable `Seo` component (`src/components/seo/Seo.tsx`). Config lives in `src/config/seo.ts` — replace the `gloria.example.com` placeholder with the production domain (also referenced in `public/robots.txt`, `public/sitemap.xml` and `public/llms.txt`).
 
-`npm run build` prerenders every public route to static HTML (`scripts/prerender.mjs`, powered by `puppeteer-core` + your installed Chrome). Social-media scrapers and non-JS crawlers therefore see the full metadata and content without executing JavaScript. Prerendered pages are served as `dist/<route>/index.html`, which static hosts resolve automatically.
+`npm run build` prerenders every public route to static HTML (`scripts/prerender.mjs`, powered by `puppeteer-core` + your installed Chrome/Chromium/Edge). Social-media scrapers and non-JS crawlers therefore see the full metadata and content without executing JavaScript. Prerendered pages are served as `dist/<route>/index.html`, which static hosts resolve automatically.
 
-> **Local preview note:** `vite preview` only serves the prerendered pages with a trailing slash (`/about/`). Use `npx serve dist` if you want clean URLs locally. Requires Chrome (override with `CHROME_PATH`).
+> **Browser requirement:** any Chromium-based browser (Chrome, Edge, Chromium) is auto-detected. If none is found, prerendering is skipped with a warning and the build still succeeds (without per-route static pages). Override the location with the `CHROME_PATH` environment variable.
+
+> **Local preview note:** `vite preview` only serves the prerendered pages with a trailing slash (`/about/`). Use `npx serve dist` if you want clean URLs locally.
 
 ## <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' width='18' height='18'%3E%3Cpath d='M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z'/%3E%3C/svg%3E" width="18" height="18" style="vertical-align: middle" alt="" /> Project Structure
 

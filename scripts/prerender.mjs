@@ -5,8 +5,10 @@
  * content without executing JavaScript.
  *
  * Runs automatically after `vite build` (see the "postbuild" script in
- * package.json). Requires Google Chrome / Chromium — override the location
- * with the CHROME_PATH environment variable if it is not auto-detected.
+ * package.json). Uses Google Chrome / Chromium / Microsoft Edge when found
+ * (override with the CHROME_PATH environment variable). If no browser is
+ * available, prerendering is skipped with a warning and the build still
+ * succeeds with the SPA shell.
  */
 import { spawn } from "node:child_process";
 import {
@@ -40,13 +42,31 @@ const routes = [
 
 const chromeCandidates = [
   process.env.CHROME_PATH,
+  // Windows — Google Chrome (system-wide and per-user installs)
   "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
   "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+  process.env.LOCALAPPDATA
+    ? path.join(process.env.LOCALAPPDATA, "Google", "Chrome", "Application", "chrome.exe")
+    : null,
+  // Windows — Microsoft Edge (Chromium-based) as a fallback
+  process.env["ProgramFiles(x86)"]
+    ? path.join(process.env["ProgramFiles(x86)"], "Microsoft", "Edge", "Application", "msedge.exe")
+    : null,
+  process.env.ProgramFiles
+    ? path.join(process.env.ProgramFiles, "Microsoft", "Edge", "Application", "msedge.exe")
+    : null,
+  process.env.LOCALAPPDATA
+    ? path.join(process.env.LOCALAPPDATA, "Microsoft", "Edge", "Application", "msedge.exe")
+    : null,
+  // macOS
+  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+  "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+  // Linux
   "/usr/bin/google-chrome",
   "/usr/bin/google-chrome-stable",
   "/usr/bin/chromium",
   "/usr/bin/chromium-browser",
-  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+  "/snap/bin/chromium",
 ].filter(Boolean);
 
 function findChrome() {
@@ -86,10 +106,12 @@ if (!existsSync(path.join(DIST, "index.html"))) {
 
 const chromePath = findChrome();
 if (!chromePath) {
-  console.error(
-    "✖ No Chrome/Chromium found. Install Chrome or set the CHROME_PATH environment variable.",
+  console.warn(
+    "⚠ No Chrome/Chromium/Edge found — skipping prerendering. " +
+      "dist will contain the SPA shell without per-route static pages. " +
+      "Install Chrome or set the CHROME_PATH environment variable to enable it.",
   );
-  process.exit(1);
+  process.exit(0);
 }
 
 const server = startPreviewServer();
